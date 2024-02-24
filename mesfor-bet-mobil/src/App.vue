@@ -46,6 +46,7 @@ export default {
   display: flex;
   flex-direction: column;
   width: 100vw;
+  overflow-x: hidden;
 }
 .scroll-top {
   position: fixed;

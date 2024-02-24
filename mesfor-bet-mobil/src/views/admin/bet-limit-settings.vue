@@ -19,7 +19,7 @@
             </select>
           </div>
           <section v-if="betLimitSettings !== null" class="users-container">
-            <li class="set-li">
+            <li class="fac mb10">
               <label for="allUsers" class="toggle-settings">
                 <input type="checkbox" v-model="allUsers" id="allUsers" class="toggle-checkbox">
                 <span class="toggle-switch"></span>

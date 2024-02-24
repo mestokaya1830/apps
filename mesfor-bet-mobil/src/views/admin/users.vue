@@ -10,14 +10,12 @@
         <div>
           <div class="bet-list-header">
             <div class="bet-search">
-              <input v-model="searchBox" type="text" class="search-5" placeholder="Ara..."
+              <input v-model="searchBox" type="text" class="search-5 ml10" placeholder="Ara..."
                 @keyup.enter="search()" />
             </div>
             <div class="sort-items" @click="sortList('admin')">ADMİN</div>
-            <div class="sort-items" @click="sortList('role')">YETKİ</div>
             <div v-if = "role == 'Admin'" class="sort-items">BAKİYE</div>
             <div v-if = "role == 'Boss' || role == 'Superadmin'" class="sort-items">ÜYE LİMİTİ</div>
-            <div class="sort-items" @click="sortList('state')">DURUM</div>
             <div v-if="role == 'Superadmin'" class="sort-items" @click="sortList('payment')">ÖDEME</div>
           </div>
         </div>
@@ -29,10 +27,8 @@
                 <span>{{ list.user }}</span>
               </div>
               <div>{{ list.admin }}</div>
-              <div>{{ list.role }}</div>
               <div v-if = "role == 'Admin'"> {{ (list.creditremain).toFixed(2) }}</div>
               <div v-if = "role == 'Boss' || role == 'Superadmin'">{{ list.userlimit }} / {{ (list.userlimit - list.usedlimit) }}</div>
-              <div>{{ list.state }}</div>
               <div  v-if="role == 'Superadmin'" class="payment-list" :class="{ paymentTimeClass: cancelTime(list.payment) > 30 }">
                 {{ moment(list.payment).format('MM-DD') }}
               </div>

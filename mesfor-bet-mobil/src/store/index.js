@@ -16,7 +16,7 @@ export default createStore({
     openchat:'',
     slips: [],
     betslip: false,
-    openslip: false,
+    slipopen: false,
     adminmenu: false,
   },
   mutations: {
@@ -50,8 +50,8 @@ export default createStore({
     setAdminMenu : (state, payload) => {
       state.adminmenu = payload
     },
-    setOpenSlip : (state, payload) => {
-      state.openslip = payload
+    setSlipOpen : (state, payload) => {
+      state.slipopen = payload
     }
   },
   plugins: [vuexLocalStorage.plugin]

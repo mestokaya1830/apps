@@ -3,7 +3,7 @@
     <NavbarComponent />
     <BannerComponent />
     <main class="admin-wrapper">
-      <AdminMenuComponent />
+      <AdminMenuComponent v-if="$store.state.adminmenu" class="admin-menu"/>
       <RouterView class="admin-router" />
     </main>
     <FooterComponent />
@@ -30,7 +30,6 @@
 .admin-wrapper{
   display: flex;
   margin-bottom: 5px;
-  padding: 0 5px;
 }
 .admin-router{
   width: 100%;
@@ -40,29 +39,13 @@
 .admin-con{
   width: 100%;
 }
-.admin-menu{
-  min-width: 18%;
-  margin-right: 0.5%;
-  border-left: 1px solid #ccc;
-  background-color: var(--black);
-}
+
 .admin-side{
   width: 79%;
   border-right: 1px solid #ccc;
   background-color: #f1f1f1;
 }
-.admin-menu{
-  display: none;
-  background-color: var(--black);
-  border-radius: var(--radiuslarge);
-}
-.admin-menu-title{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 56px;
-  color: var(--yellow);
-}
+
 .title-1{
   display: flex;
   align-items: center;
@@ -71,27 +54,7 @@
   border-top: 1px solid #444;
   color: darkgrey;
 }
-.admin-menu-links{
-  display: flex;
-  flex-direction: column;
-  color: #fff;
-}
-.admin-links{
-  display: flex;
-  align-items: center;
-  height: 46px;
-  padding-left: 30px;
-}
-.admin-links:hover{
-  background-color: #556b2f45;
-}
-.admin-menu-icons{
-  color: var(--green);
-  min-width: 30px;
-}
-.admin-menu-text{
-  color: #fff;
-}
+
 .bet-menu{
   display: flex;
   justify-content: space-between;
@@ -300,10 +263,10 @@
 .set-li,
 .fix-li {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   position: relative;
   width: 100%;
-  height: 44px;
+  height: auto;
   min-height: 44px;
 }
 .set-li div{
@@ -321,10 +284,12 @@
   width: 100%;
   min-height:40px ;
   cursor: pointer;
+  border-bottom: 1px solid #ddd;
+  padding: 5px 0;
 }
 .fix-li-2 {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   width: 100%;
   min-height: 50px;
   padding-left: 10px;
@@ -509,7 +474,7 @@
 .user-details-items {
   display: flex;
   align-items: center;
-  width: 30%;
+  width: 100%;
   margin: 20px 0;
 }
 .user-details-title-text {
@@ -621,7 +586,7 @@
 }
 .coupon-list{
   display: flex;
-  justify-content: space-between;
+ flex-direction: column;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: var(--radius);

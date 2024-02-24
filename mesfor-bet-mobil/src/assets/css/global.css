@@ -334,7 +334,6 @@ summary{
 .select-2{
   height: calc(28px + 0.2vh);
   border:1px solid #ccc ;
-  margin-left: 10px;
 }
 .select-3{
   margin-left: 10px;
@@ -405,5 +404,4 @@ summary{
 .active {
   color: var(--yellow) !important;
   background-color: rgb(58 90 64 / 34%);
-  border-radius: 30px;
 }

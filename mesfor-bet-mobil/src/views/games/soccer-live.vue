@@ -258,7 +258,7 @@
         </div>
       </div>
     </div>
-    <aside class="slip-side">
+    <aside class="slip-side" v-if="$store.state.slipopen">
       <SlipComponent />
     </aside>
   </div>

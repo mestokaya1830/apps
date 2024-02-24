@@ -32,16 +32,12 @@ export default {
       isLoader: false,
       newMsg: '',
       adminIcon: false,
-      slipIcon: false,
       slipState: false
     };
   },
   mounted() {
     if(window.matchMedia('screen and (max-width: 1280px)').matches){
       this.$route.path.includes('admin') ? this.adminIcon = true : this.adminIcon = false
-    }
-    if(window.matchMedia('screen and (max-width: 1280px)').matches){
-      this.$route.path.includes('games') ? this.slipIcon = true : this.slipIcon = false
     }
     socket.on("msgcount", () => {
       this.newMsg++
@@ -104,10 +100,6 @@ export default {
     },
     openAdminMenu() {
       this.$store.commit("setAdminMenu", true)
-    },
-    openSlip(){
-      this.slipState = true
-      this.$store.commit('setOpenSlip', this.slipState)
     }
   }
 };

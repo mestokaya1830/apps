@@ -32,9 +32,6 @@ import FooterComponent from "@/components/footer-component.vue";
 .fixture-side {
   width: 100vw;
 }
-.slip-side {
-display: none;
-}
 .filter-menu{
   padding: 5px;
   background-color: var(--black);
@@ -591,31 +588,5 @@ display: none;
 .fixture-con{
   height: 100%;
   width: 100%;
-}
-
-.countries{
-  display: flex;
-  flex-direction: column;
-  width: 14%;
-  font-family: 'roboto';
-  display: none;
-}
-.countries-title{
-  height: 100%;
-  color: var(--white);
-  font-size: calc(16px + 0.2vw);
-}
-.countries-list{
-  display: flex;
-  align-items: center;
-  height: calc(32px + 0.5vw);
-  background-color: var(--black);
-  padding: 0 5px;
-  cursor: pointer;
-  border-top: 1px solid var(--green);
-  font-family: serif;
-}
-.countries-flag{
-  margin: 0 10px;
 }
 </style>

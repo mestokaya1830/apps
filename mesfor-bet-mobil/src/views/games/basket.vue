@@ -1,20 +1,5 @@
 <template>
   <div>
-    <aside class="countries">
-      <header class="menu-1">
-        <div class="countries-title">Ülkeler</div>
-      </header>
-      <div class="countries-list" v-for="item in countries" :key="item.Id" @click="getCountries(item[0].RegionId)">
-        <article class="fjsbac">
-          <div class="fac">
-            <img :src="getFlagsMix(item[0].RegionName)" class="countries-flag" onerror="this.src='../../../img/Unknown.png'">
-            <span class="title-5">{{ item[0].RegionName }}</span>
-          </div>
-          <span class="title-5 mr10">{{ item.length }}</span>
-        </article>
-      </div>
-      <PageEndComponent :length="countries.length" />
-    </aside>
     <aside class="fixture-side">
       <menu class="menu-1 fjsbac">
         <div>
@@ -109,7 +94,7 @@
         <PageEndComponent :length="leaguesLength" />
       </div>
     </aside>
-    <aside class="slip-side">
+    <aside class="slip-side" v-if="$store.state.slipopen">
         <SlipComponent />
     </aside>
     <div v-if="isSubOptions" class="suboptions-model">
@@ -209,7 +194,6 @@ export default {
     return {
       leagues: {},
       subOdds: {},
-      countries: {},
       leaguesLength: 0,
       oddsLength: 0,
       searchMatches:{},
@@ -249,7 +233,6 @@ export default {
         this.searchMatches = final;
         this.timeBox = 'Saat'
         this.dateBox = 'Gün'
-        this.countries = this.setGroupMix(final, 'RegionId')
       })
     },
     async getOdds(id) {
@@ -284,12 +267,7 @@ export default {
         this.activeItem = 'all'
       });
     },
-    getCountries(id) {
-      const test = this.searchMatches.filter((item) => item.RegionId === id);
-      this.leagues = this.setGroupMix(test, 'LeagueId')
-      this.leaguesLength = test.length;
-      window.scrollTo(0, 0)
-    },
+   
     async filterAsDay() {
       let start = ''
       let end = ''
@@ -318,7 +296,6 @@ export default {
         this.leagues = this.setGroupMix(result.data.result, 'LeagueId')
         this.searchMatches = result.data.result
         this.leaguesLength = result.data.result.length
-        this.countries = this.setGroupMix(result.data.result, 'RegionId')
       })
     },
     filterAsTime() {

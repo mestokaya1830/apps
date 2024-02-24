@@ -1,9 +1,16 @@
 <template>
   <div>
     <div class="banner">
-      <div class="banner-user-info">
-        <div v-if="$store.state.auth">Sahip: {{ $store.state.auth.user }}</div>
-        <div v-if="(role == 'Admin' || role == 'Member') && $store.state.betinfo.creditremain">Bakiye: {{ ($store.state.betinfo.creditremain).toFixed(2) }} </div>
+      <div class="banner-user-info-con">
+        <div class="banner-user-info">
+          <div v-if="$store.state.auth">Sahip: {{ $store.state.auth.user }}</div>
+          <div v-if="(role == 'Admin' || role == 'Member') && $store.state.betinfo.creditremain">Bakiye: {{ ($store.state.betinfo.creditremain).toFixed(2) }} </div>
+        </div>
+        <div>
+          <span v-if="slipIcon" class="slip-open cl-w pr" @click="slipOpenFunction()" title="Kuponlar">
+            <span class="navbar-slip-length">{{ $store.state.slips.length }}</span>
+          </span>
+        </div>
       </div>
       <div class="anons-con">
         <p class="anons" v-if="anons">
@@ -23,11 +30,14 @@ export default {
   Name:'Banner',
   data() {
     return {
-      anons: ""
+      anons: "",
+      slipIcon: false,
+      slipOpen: false
     };
   },
   mounted(){
     this.getAnons()
+    this.$route.path.includes('games') ? this.slipIcon = true : this.slipIcon = false
   },
   computed: {
     lastMsg() {
@@ -49,6 +59,10 @@ export default {
           this.anons = result.data.result.anons;
         }
       });
+    },
+    slipOpenFunction(){
+      this.slipOpen = true
+      this.$store.commit('setSlipOpen', this.slipOpen)
     }
   },
 };
@@ -66,14 +80,32 @@ export default {
   padding-top: 20px;
   box-shadow: 0px 5px 10px #000;
 }
+.banner-user-info-con {
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+  color: #fff;
+  padding: 0 10px;
+}
+.slip-open{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 50px;
+  position: fixed;
+  right: 0;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-color: var(--lightgreen);
+  font-size: 22px;
+}
 .banner-user-info {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   height: 50px;
   color: #fff;
-  display: flex;
-  padding-left: 20px;
   font-size: calc(16px + 0.2vw);
 }
 .banner-bottom-logo{

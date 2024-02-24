@@ -6,7 +6,7 @@
         <span class="title-2">Kuponlar</span>
         <span v-if="$store.state.betslip" class="cl-y ml10">({{ slips.length }})</span>
       </article>
-      <img src="@/assets/img/close.webp" v-if="closeSlip" class="close" title="Kapat" @click="closeSlipHandle()" >
+      <img src="@/assets/img/close.webp" v-if="closeSlip" class="close" title="Kapat" @click="closeSlipOpen()" >
     </div>
     <div class="slip-side-con">
       <div v-if="this.$store.state.betslip">
@@ -444,14 +444,23 @@ export default {
         this.betInfoMix()
       }, 500)
     },
-    closeSlipHandle(){
-      this.$store.commit('setOpenSlip', false)
+    closeSlipOpen(){
+      this.$store.commit('setSlipOpen', false)
     }
   }
 }
 </script>
 
 <style>
+.slip-side{
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 12;
+  background-color: var(--black);
+}
+
 .slip-header {
   display: flex;
   justify-content: space-between;
@@ -464,11 +473,7 @@ export default {
   border-bottom: 1px solid #ccc;
 }
 .slip-side-con{
-  border: 1px solid #ccc;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
   overflow: hidden;
-  border-top: none;
 }
 .slip-con {
   display: flex;
@@ -666,7 +671,6 @@ export default {
   height: 500px;
   background-size: cover;
   background-position: center;
-  background-color: var(--black);
 }
 .last-coupon {
   width: 94%;
