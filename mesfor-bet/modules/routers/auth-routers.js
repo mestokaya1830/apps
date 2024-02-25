@@ -6,6 +6,13 @@ import tryCatch from "../../middleware/try-catch-middleware.js";
 import Users from "../schemas/users-schema.js"
 import Loginlogs from "../schemas/login-logs-schema.js"
 
+router.get('/', tryCatch(async (req, res) => {
+  if(req.session.auth){
+    return false
+  } else {
+    res.json('no auth')
+  }
+}))
 router.post("/login", tryCatch(async (req, res) => {
   if (req.body.user) {
     const result = await Users.findOne({ user: req.body.user });

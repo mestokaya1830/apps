@@ -1,7 +1,6 @@
 import { createStore } from 'vuex'
 import VuexPersist from 'vuex-persist';
 
-
 const vuexLocalStorage = new VuexPersist({
   key: 'vuex',
   storage: window.localStorage

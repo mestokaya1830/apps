@@ -9,7 +9,7 @@
         </article>
         <div class="fjeac">
           <img src="@/assets/img/switch.webp" class="menu-icons mr10 cp" alt="" @click="isLeagueOpen =! isLeagueOpen"  title="Hepsi">
-          <img src="@/assets/img/all.webp" class="menu-icons mr10 cp" alt="" @click="getLive()"  title="Hepsi">
+          <img src="@/assets/img/all.webp" class="menu-icons mr10 ml10 cp" alt="" @click="getLive()"  title="Hepsi">
         </div>
       </div>
       <div class="live-left-container">
@@ -208,8 +208,8 @@ export default {
     async getLive () {
       this.isLoader = true
       await axios.get("/api/games/basket-live").then((result) => {
-        if(result) {
-          this.isLoader = false
+        if(result.data.auth){
+          window.location.reload()
           return false
         }
         const final = result.data

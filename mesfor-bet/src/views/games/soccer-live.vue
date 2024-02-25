@@ -9,7 +9,7 @@
         </article>
         <div class="fjeac">
           <img src="@/assets/img/switch.webp" class="menu-icons mr10 cp" alt="" @click="isLeagueOpen =! isLeagueOpen"  title="Hepsi">
-          <img src="@/assets/img/all.webp" class="menu-icons mr10 cp" alt="" @click="getLive()"  title="Hepsi">
+          <img src="@/assets/img/all.webp" class="menu-icons mr10 ml10 cp" alt="" @click="getLive()"  title="Hepsi">
         </div>
       </div>
       <div class="live-left-container">
@@ -316,8 +316,8 @@ export default {
     async getLive() {
       this.isLoader = true
       await axios.get("/api/games/soccer-live").then((result) => {
-        if(result) {
-          this.isLoader = false
+        if(result.data.auth){
+          window.location.reload()
           return false
         }
         const final = result.data.filter(item =>  !item.LeagueName.includes('eSoccer') && !item.LeagueName.includes('Price Boost') && !item.LeagueName.includes('Enhanced Accas'))

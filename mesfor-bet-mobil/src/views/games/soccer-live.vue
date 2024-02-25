@@ -316,8 +316,8 @@ export default {
     async getLive() {
       this.isLoader = true
       await axios.get("/api/games/soccer-live").then((result) => {
-        if(result.data.code == 400){
-          this.isLoader = false
+        if(result.data.auth){
+          window.location.reload()
           return false
         }
         const final = result.data.filter(item =>  !item.LeagueName.includes('eSoccer') && !item.LeagueName.includes('Price Boost') && !item.LeagueName.includes('Enhanced Accas'))

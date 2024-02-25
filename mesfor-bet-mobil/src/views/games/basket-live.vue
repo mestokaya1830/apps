@@ -208,8 +208,8 @@ export default {
     async getLive () {
       this.isLoader = true
       await axios.get("/api/games/basket-live").then((result) => {
-        if(result.data.code == 400){
-          this.isLoader = false
+        if(result.data.auth){
+          window.location.reload()
           return false
         }
         const final = result.data

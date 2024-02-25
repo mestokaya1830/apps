@@ -36,7 +36,7 @@ app.use(session({
   secret: 'secret_key',
   resave: false,
   saveUninitialized: false,
-  // cookie: { maxAge: 6 * 3600000},//6 hour
+  cookie: { maxAge: 12 * 3600000},//12 hour
   httpOnly: true,
   secure: true,
   rolling: true,

@@ -43,7 +43,7 @@ export default {
     }
   },
   mounted(){
-    if(this.$store.state.auth){
+    if(this.$store.state.auth != ''){
       this.$router.push('/categories')
     }
     this.$refs.username.focus()

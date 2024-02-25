@@ -58,7 +58,12 @@ body::-webkit-scrollbar-thumb,
 }
 .fjeac{
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-end !important;
+  align-items: center;
+}
+.fjsac{
+  display: flex;
+  justify-content: flex-start !important;
   align-items: center;
 }
 .fjsaac{
@@ -154,6 +159,9 @@ body::-webkit-scrollbar-thumb,
 }
 .ml10{
   margin-left: 10px;
+}
+.ml20{
+  margin-left: 20px;
 }
 .mb10{
   margin-bottom: 10px;

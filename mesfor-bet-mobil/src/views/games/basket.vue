@@ -225,6 +225,10 @@ export default {
     async getLeagues() {
       this.isLoader = true;
       await axios.get('/api/games/basket').then((result) => {
+        if(result.data.auth){
+          window.location.reload()
+          return false
+        }
         const final = result.data.result
         this.transCountriesMix(final)
         this.leagues = this.setGroupMix(final, 'LeagueId')

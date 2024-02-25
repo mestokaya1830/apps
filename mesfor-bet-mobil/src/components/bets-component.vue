@@ -538,6 +538,10 @@ export default {
   methods: {
     async getUserlist() {
       await axios.get('/api/admin/user-list').then((result) => {
+        if(result.data.auth){
+          window.location.reload()
+          return false
+        }
         if (result.data.result) {
           this.userList = result.data.result
         }

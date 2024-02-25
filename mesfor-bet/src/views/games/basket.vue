@@ -23,8 +23,8 @@
             <span class="title-2">Basketbol</span>
             <span class="cl-y">({{ leaguesLength }})</span>
           </article>
-          <div class="fjeac">
-            <img src="@/assets/img/switch.webp" class="menu-icons mr10 cp" alt="" @click="isLeagueOpen =! isLeagueOpen"  title="Hepsi">
+          <div class="fjsac">
+            <img src="@/assets/img/switch.webp" class="menu-icons mr10 ml20 cp" alt="" @click="isLeagueOpen =! isLeagueOpen"  title="Hepsi">
             <img src="@/assets/img/all.webp" class="menu-icons ml10 mr10 cp" alt="" @click="getLeagues()"  title="Hepsi">
           </div>
         </div>
@@ -245,6 +245,10 @@ export default {
     async getLeagues() {
       this.isLoader = true;
       await axios.get('/api/games/basket').then((result) => {
+        if(result.data.auth){
+          window.location.reload()
+          return false
+        }
         const final = result.data.result
         this.transCountriesMix(final)
         this.leagues = this.setGroupMix(final, 'LeagueId')

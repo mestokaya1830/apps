@@ -13,6 +13,7 @@
 
 <script>
 import moment from "moment";
+import axios from 'axios'
 export default {
   name: "app",
   data() {
@@ -21,7 +22,18 @@ export default {
       scrollPosition: 1000
     };
   },
+  mounted(){
+    this.checkSession()
+  },
   methods: {
+    async checkSession(){
+      await axios.get('/api').then(result => {
+        if(result.data == 'no auth'){
+          this.$store.commit('setAuth', '')
+          this.$router.push('/')
+        }
+      })
+    },
     updateScroll() {
       if (window.scrollY > this.scrollPosition) {
         this.scrollState = true;

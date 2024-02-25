@@ -109,7 +109,7 @@ export default {
   padding: 0 20px;
 }
 .categories-con {
-  width: 86%;
+  width: 100%;
   height: 180px;
   margin-top: 60px;
   padding: 10px;
