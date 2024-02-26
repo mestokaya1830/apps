@@ -11,7 +11,9 @@ import zip from 'express-zip'
 
 dotenv.config()
 app.use(helmet())
-app.use(cors({credentials: true}))
+// app.use(cors({
+//   origin: 'http://localhost:5173'
+// }))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true, limit: '3mb' }))
 app.use(express.static('public'))

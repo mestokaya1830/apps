@@ -8,14 +8,14 @@ export default defineConfig({
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     }
   },
-  server:{//for development short url (http://localhost:3000)
-    proxy:{
-      '/api':{
-        target:'http://localhost:3000',
-        changeOrigin: true
-      }
-    }
-  },
+  // server:{//for development short url (http://localhost:3000)
+  //   proxy:{
+  //     '/api':{
+  //       target:'http://localhost:3000',
+  //       changeOrigin: true
+  //     }
+  //   }
+  // },
   plugins: [
     vue(),
     VitePWA({

@@ -11,7 +11,9 @@ import zip from 'express-zip'
 
 dotenv.config({ debug: true })
 app.use(helmet())
-app.use(cors({credentials: true}))
+// app.use(cors({
+//   origin: 'http://localhost:5173'
+// }))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true, limit: '3mb' }))
 app.use(express.static('public'))
@@ -29,6 +31,7 @@ const storage = multer.diskStorage({
     cb(null, file.originalname)
   },
 })
+
 const fileFilter = function (req, file, cb) {
   const types = ['image/jpeg','image/jpg','image/png','image/gif', 'image/webp', 'image/avif', 'image/tiff']
   if(!types.includes(file.mimetype)){
@@ -103,6 +106,7 @@ app.post('/api/download/:imagepath', async (req, res) => {
     res.json({code: 400, message:'Sorry no images to download!'})
   }
 })
+
 app.post('/api/remove-images', async (req, res) => {
   const imagePath = './public/uploads/'+req.body.imagepath
   if (fs.existsSync(imagePath)){
@@ -113,6 +117,7 @@ app.post('/api/remove-images', async (req, res) => {
     res.json({code: 400, message:'Sorry no images to remove!'})
   }
 })
+
 app.use((error, req, res, next) => {
   if(error.code == 'LIMIT_FILE_TYPES'){
     res.json({error:'Wrong file type!'})
