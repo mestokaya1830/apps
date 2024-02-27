@@ -8,7 +8,7 @@ import Messages from '../schemas/messages-schema.js'
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'public/uploads')
+    cb(null, 'dist/uploads')
     // cb(null, 'dist/uploads')
   },
   filename: function (req, file, cb) {
@@ -16,7 +16,7 @@ const storage = multer.diskStorage({
   },
 });
 const fileFilter = function(req, file, cb){
-  const types = ['image/jpeg','image/jpg','image/png','image/gif','image/webp']
+  const types = ['image/jpeg','image/jpg','image/png','image/gif','image/webp', 'image/avif']
   if(!types.includes(file.mimetype)){
     return cb(new Error('Wrong file type'), false)
   }

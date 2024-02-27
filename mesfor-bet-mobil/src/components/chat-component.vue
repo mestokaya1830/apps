@@ -26,7 +26,7 @@
              <audio v-if="list.type == 'audio'" class="recordSender" controls style="height:30px;width:180px;">
                <source :src="`uploads/${list.msg}`" type="audio/webm">
              </audio>
-             <img v-if="list.type == 'image'" :src="`uploads/${list.msg}`" alt="" class="imgMsg">
+             <img v-if="list.type == 'image'" :src="`/uploads/${list.msg}`" alt="" class="imgMsg">
              <span v-if="list.type == 'text'" class="chat-text">{{ list.msg }}</span>
              <span class="chat-date">{{ moment(list.date).format('MM-DD HH:MM:s') }}</span>
            </div>
@@ -37,7 +37,7 @@
              <audio v-if="list.type == 'audio'" class="record" controls style="height:30px;width:180px;">
                <source :src="`uploads/${list.message}`" type="audio/webm">
              </audio>
-             <img v-if="list.type == 'image'" :src="`uploads/${list.message}`" alt="" class="imgMsg" />
+             <img v-if="list.type == 'image'" :src="`/uploads/${list.message}`" alt="" class="imgMsg" />
              <span v-if="list.type == 'text'" class="chat-text">{{ list.message }}</span>
              <span class="chat-date">{{ moment(list.date).format('MM-DD HH:MM:s') }}</span>
              <span v-if="list.onlinestate" class="chatOnlinClass">&#10003;</span>
@@ -248,9 +248,9 @@ export default {
     },
     async selectImg(event) {
       let file = event.target.files[0];
-      const types = ['image/jpeg','image/jpg','image/webp','image/gif','image/webp']
+      const types = ['image/jpeg','image/jpg','image/png','image/gif','image/webp', 'image/avif']
       if (!types.includes(file.type)) {
-        alert("Resim formata uygun degil! \n jpg/jpeg/webp/webp");
+        alert("Resim formata uygun degil!");
       } else if (file.size > 1000000) {//1 mgb
         alert("Resim boyutu çok yüksek!");
       } else {
