@@ -29,9 +29,9 @@ export default defineConfig({
       selfDestroying: true,
       includeAssets: ["icon.ico", "apple-touch-icon.webp", "mask-icon.svg"],
       manifest: {
-        name: "Mesfor Image Converter",
+        name: "Mesfor File Convertor",
         short_name: "MIR",
-        description: "Mesfor Image Converter",
+        description: "Mesfor File Convertor",
         theme_color: "#ffffff",
         icons: [
           {

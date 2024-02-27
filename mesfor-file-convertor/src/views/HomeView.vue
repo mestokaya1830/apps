@@ -2,63 +2,55 @@
   <main>
     <div class="container">
       <img src="@/assets/logo.webp" alt="" class="logo">
-      <h1 class="title">Mesfor Image Converter</h1>
-      <p class="text-format">Convert your JPEG, PNG, AVIF, WEBP and GIF images without compromising on image quality.</p>
+      <h1 class="title">Mesfor File Convertor</h1>
+      <p class="text-format">Convert your CSV-JSON, JSON-CSV file without compromising on image quality.</p>
       <form @submit.prevent="sendFile()" enctype="multipart/form-data" class="form">
         <div class="dimentions">
-         TO: 
-          <select v-model="format">
-            <option value="png" selected>Png</option>
-            <option value="jpeg">Jpeg</option>
-            <option value="jpg">Jpg</option>
-            <option value="avif">Avif</option>
-            <option value="webp">Webp</option>
-            <option value="gif">Gif</option>
+         FROM: 
+          <select v-model="sourceFile">
+            <option value="csv" selected>Csv</option>
+            <option value="json" selected>Json</option>
+          </select>
+          TO:
+          <select v-model="targetFile">
+            <option value="json" selected>Json</option>
+            <option value="csv" selected>csv</option>
           </select>
         </div>
-        <div class="dropzone">
-           <input type="file" class="input-field" multiple accept="image/*" ref="file" id="files" @change="sendFile()">
+        <div class="dropzone" v-if="!fileName">
+           <input type="file" class="input-field" accept="text/*, application/json" ref="file" id="file" @change="sendFile()">
           <!-- <input type="file" class="input-field" multiple accept="image/png, image/gif, image/jpeg" ref="file" id="files" @change="sendFile()"> -->
-          <div v-if="!uploading" class="img-container">
+          <div v-if="!fileName" class="img-container">
             <img src="@/assets/upload.png" alt="" width="70px">
             <p class="drag-text">Click here to upload files...</p>
-            <span class="warning-text">Supports: Jpeg, Jpg, Png, Avif, Webp, Gif</span>
-            <span class="warning-text">Max File: 20 -> Max Size: Total 50 MB</span>
             <span class="warning-text">Each file must be less then 10 MB</span>
           </div>
         </div>
         <ul class="progress-side">
-          <div class="progress-center-bottom" v-if="uploading">
-            <progress  class="progress is-link" :value="progress" max="100"></progress>
-          </div>
-          <div v-if="isLoader && !uploading" class="loader-con">
+          <div v-if="isLoader" class="loader-con">
             <Loader />
           </div>
-          <template v-for="file in uploadedFile[0]" :key="file.filename">
+          <div v-if="fileName">
             <li class="progress-con" ref="list">
-              <div class="progress-left"><img :src="`/uploads/${this.imagePath}/${file.filename}`" alt="" width="40px" class="images"></div>
+              <div class="progress-left"><img :src="`/uploads/${this.imagePath}/${fileName}`" alt="" width="40px" class="images"></div>
               <div class="progress-center">
                 <div class="progress-center-top">
-                  <span class="file-name">{{file.filename}}</span>
+                  <span class="file-name">{{fileName}}</span>
                   <span class="file-status">Progress</span>
                 </div>
                 <div class="progress-center-bottom">
                   <progress  class="progress is-link" :value="progress" max="100"></progress>
                 </div>
               </div>
-              <div class="progress-right">
-                <a :href="`/uploads/${this.imagePath}/${file.filename}`" download><img src="@/assets/download.png" alt="" class="cp" width="30px"></a>
+              <div class="progress-right" @click="clearForm()">
+                <a :href="`/uploads/${this.imagePath}/${fileName}`" download><img src="@/assets/download.png" alt="" class="cp" width="30px"></a>
               </div>
             </li>
-          </template>
+          </div>
         </ul>
       </form>
-      <div class="footer" v-if="uploadedFile[0]">
+      <div class="footer" v-if="fileName">
         <button id="clear-all" class="clear-all" @click="clearForm()">Clear All <img src="@/assets/clear.png" alt="" class="clear-btn-img"/></button>
-        <form :action="`/api/download/${imagePath}`" method="post" class="download-btn-con ">
-          <input type="submit" id="download-all" value="Download All" class="download-all">
-          <img src="@/assets/download.png" alt="" class="download-btn-img"/>
-        </form>
       </div>
     </div>
   </main>
@@ -72,64 +64,65 @@ export default {
   components:{Loader},
   data () {
     return {
-      uploading: false,
-      uploadedFile: [],
+      fileName: '',
       progress: 0,
       isLoader: false,
       imagePath: 0,
-      format: 'png'
+      sourceFile: 'csv',
+      targetFile: 'json'
     }
   },
   methods:{
     async sendFile(){
       const formData = new FormData()
       let files = this.$refs.file.files
-      const imageSize = Array.from(files).reduce((a, b) => a + b.size, 0)
+      if(this.sourceFile == this.targetFile){
+        this.$refs.file.value = null
+        alert('Source-Format and Target-Format cant be same!')
+        return false
+      }
+      if(this.sourceFile != files[0].name.split('.').pop()){
+        this.$refs.file.value = null
+        alert('Source-File-Format not correct!')
+        return false
+      }
       try {
-        if(files.length > 20){
-          alert('File length must be 20')
-        } else if(imageSize > 5e+7){
-          alert('Toatal File size must be less 50 MB')
+        if(files[0].size > 1e+7){
+          alert('Toatal File size must be less 10 MB')
         } else {
-          for (const item of files) {
-            if (!item.name.match(/\.(jpg|jpeg|png|webp|avif|gif)$/i)){
-              alert('Some file is not image type!');
-              return false
-            } else {
-              formData.append('files', item)
-            }
+          if (!files[0].name.match(/\.(csv|json)$/i)){
+            alert('Some file is not image type!');
+            return false
+          } else {
+            formData.append('files', files[0])
+            this.isLoader = true
           }
-          this.uploading = true
           this.imagePath = Math.floor(Math.random() * 123456789)
-          const res = await axios.post(`/api/convert/${this.format}/${this.imagePath}` , formData, {
+          const res = await axios.post(`/api/convert/${this.sourceFile}-${this.targetFile}/${this.imagePath}` , formData, {
             onUploadProgress: e => {
               this.progress = Math.round(e.loaded * 100 / e.total)
-              if(this.progress == 100){
-                this.uploading = false
-                this.isLoader = true
-              }
             }
           })
-          if(res.data.files){
-            this.uploadedFile.push(res.data.files)
+          if(res.data.code == 200){
+            this.fileName = res.data.filename
+            console.log(this.fileName)
+            this.$refs.file.value = null
           } else {
             alert(res.data.error)
           }
-          files = null
           this.$refs.file.value = null
           this.isLoader = false
         }
       } catch (error) {
         console.error(error)
-        this.uploading = false
+        this.isLoader = false
       }
     },
     clearForm(){
-      this.uploadedFile = []
-      document.querySelectorAll('.dimentions-input').forEach(item => {
-        item.value = ''
-      })
-      this.removeImages()
+      setTimeout(() => {
+        this.fileName = ''
+        this.removeImages()
+      }, 200)
     },
     async removeImages(){
       await axios.post('/api/remove-images', {imagepath: this.imagePath}).then((result) => {
@@ -232,7 +225,7 @@ export default {
   select{
     appearance: none;
     outline: 0;
-    width: 85%;
+    width: 35%;
     padding: 0 10px;
     background: url('@/assets/select-arrow.webp') no-repeat right 10px center / 16px,
     linear-gradient(to left, #ddd 36px, #f1f1f1 36px);
@@ -241,7 +234,7 @@ export default {
     border: 1px solid #ccc;
     border-radius: 3px;
     cursor: pointer;
-    font-size: calc(16px + 0.1vw);
+    font-size: calc(14px + 0.1vw);
   }
   .progress-right, .progress-left{
     padding: 10px;
