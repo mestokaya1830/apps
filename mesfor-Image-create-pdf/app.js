@@ -1,31 +1,26 @@
 import express from 'express'
 const app = express()
-import cors from 'cors'
 import helmet from 'helmet'
 import multer from 'multer'
 import sharp from 'sharp'
 import fs from 'fs'
 import dotenv from 'dotenv'
 import path from 'path'
-import zip from 'express-zip'
 
-dotenv.config({ debug: true })
+dotenv.config()
 app.use(helmet())
-// app.use(cors({
-//   origin: 'http://localhost:5173'
-// }))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true, limit: '3mb' }))
-app.use(express.static('public'))
+app.use(express.static('dist'))
 
 if(process.env.NODE_ENV == 'production'){
-  app.use(express.static('public'))
-  app.get('*', (req, res) => res.sendFile(path.resolve('public/index.html')))
+  app.use(express.static('dist'))
+  app.get('*', (req, res) => res.sendFile(path.resolve('dist/index.html')))
 }
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'public/')
+    cb(null, 'dist/')
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname)
@@ -49,7 +44,7 @@ const resize = multer({
   }
 })
 
-app.post('/api/upload/:imagepath/:pdfformat', resize.array('files', 30), async (req, res, ) => {
+app.post('/api/upload/:imagepath/:pdfformat', resize.array('files', 50), async (req, res, ) => {
   try {
     let width = 794
     let height = 1122
@@ -57,19 +52,19 @@ app.post('/api/upload/:imagepath/:pdfformat', resize.array('files', 30), async (
       width = 1122
       height = 794
     }
-    fs.mkdir(path.resolve('./public/uploads/', req.params.imagepath), { recursive: true }, () => {
+    fs.mkdir(path.resolve('./dist/uploads/', req.params.imagepath), { recursive: true }, () => {
       return false
     })
     const originalName = []
     for (const item of req.files) {
       await sharp(item.path)
       .resize(width, height, {fit: 'fill'})
-      .toFile('./public/uploads/'+ req.params.imagepath +'/'+ item.originalname)
+      .toFile('./dist/uploads/'+ req.params.imagepath +'/'+ item.originalname)
       fs.unlink(item.path, () => {
         originalName.push(item.originalname)
       })
     }
-    const files = req.files.map(item => './public/uploads/'+ req.params.imagepath +'/'+ item.originalname)
+    const files = req.files.map(item => '/uploads/'+ req.params.imagepath +'/'+ item.originalname)
     res.status(200).json({files})
   } catch (error) {
     console.log(error)
@@ -77,7 +72,7 @@ app.post('/api/upload/:imagepath/:pdfformat', resize.array('files', 30), async (
 })
 
 app.post('/api/remove-images', async (req, res) => {
-  const imagePath = './public/uploads/'+req.body.imagepath
+  const imagePath = './dist/uploads/'+req.body.imagepath
   if (fs.existsSync(imagePath)){
     fs.rmSync(imagePath, { recursive: true }, () => {
       res.json({code:200})

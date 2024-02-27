@@ -122,7 +122,7 @@ export default {
       setTimeout(() => {
         this.fileName = ''
         this.removeImages()
-      }, 500)
+      }, 200)
     },
     async removeImages(){
       await axios.post('/api/remove-images', {imagepath: this.imagePath}).then((result) => {

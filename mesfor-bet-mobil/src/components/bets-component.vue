@@ -46,9 +46,9 @@
             </div>
           </div>
           <section v-if="role != 'Boss' && isCalendar" class="mobil-calendar">
-            <input v-model="dateStart" type="date" class="calendar-items search-m-1" />
-            <input v-model="dateFinish" type="date" class="calendar-items search-m-1" />
-            <select v-model="dateBox" @change="dateFilter()" class="calendar-items select-m-1">
+            <input v-model="dateStart" type="date" class="calendar-items search-1" />
+            <input v-model="dateFinish" type="date" class="calendar-items search-1 mh5" />
+            <select v-model="dateBox" @change="dateFilter()" class="calendar-items select-1">
               <option value="Tür Seç" selected disabled>Tür Seç</option>
               <option value="Aktif">Aktifler</option>
               <option value="Hepsi">Hepsi</option>

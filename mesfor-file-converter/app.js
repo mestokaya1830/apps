@@ -1,6 +1,5 @@
 import express from 'express'
 const app = express()
-import cors from 'cors'
 import helmet from 'helmet'
 import multer from 'multer'
 import fs from 'fs'
@@ -11,21 +10,19 @@ import { json2csv } from 'csv42'
 
 dotenv.config()
 app.use(helmet())
-// app.use(cors({
-//   origin: 'http://localhost:5173'
-// }))
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: true, limit: '3mb' }))
-app.use(express.static('public'))
+app.use(express.static('dist'))
 
 if(process.env.NODE_ENV == 'production'){
-  app.use(express.static('public'))
-  app.get('*', (req, res) => res.sendFile(path.resolve('public/index.html')))
+  app.use(express.static('dist'))
+  app.get('*', (req, res) => res.sendFile(path.resolve('dist/index.html')))
 }
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'public/')
+    cb(null, 'dist/')
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname)
@@ -50,13 +47,13 @@ const target = multer({
 })
 
 app.post('/api/convert/csv-json/:imagepath', target.array('files'), async (req, res, ) => {
-  fs.mkdir(path.resolve('./public/uploads/', req.params.imagepath), { recursive: true }, () => {
+  fs.mkdir(path.resolve('./dist/uploads/', req.params.imagepath), { recursive: true }, () => {
     return false
   })
   const targetName = req.files[0].filename.split('.')[0]
   try {
-    const result = await csvToJson().fromFile(`./public/${req.files[0].filename}`)
-    fs.writeFileSync(`./public/uploads/${req.params.imagepath}/${targetName}.json`, JSON.stringify(result), 'utf-8', (err) => {
+    const result = await csvToJson().fromFile(`./dist/${req.files[0].filename}`)
+    fs.writeFileSync(`./dist/uploads/${req.params.imagepath}/${targetName}.json`, JSON.stringify(result), 'utf-8', (err) => {
       if(err){
         console.log(err)
         return false
@@ -69,14 +66,14 @@ app.post('/api/convert/csv-json/:imagepath', target.array('files'), async (req, 
 })
 
 app.post('/api/convert/json-csv/:imagepath', target.array('files'), async (req, res, ) => {
-  fs.mkdir(path.resolve('./public/uploads/', req.params.imagepath), { recursive: true }, () => {
+  fs.mkdir(path.resolve('./dist/uploads/', req.params.imagepath), { recursive: true }, () => {
     return false
   })
   try {
     const targetName = req.files[0].filename.split('.')[0]
-    const data = JSON.parse(fs.readFileSync(`./public/${req.files[0].filename}`))
+    const data = JSON.parse(fs.readFileSync(`./dist/${req.files[0].filename}`))
     const final = json2csv(data, { flatten: true })
-    fs.writeFileSync(`./public/uploads/${req.params.imagepath}/${targetName}.csv`, final, 'utf-8', (err) => {
+    fs.writeFileSync(`./dist/uploads/${req.params.imagepath}/${targetName}.csv`, final, 'utf-8', (err) => {
       if(err){
         console.log(err)
         return false
@@ -89,7 +86,7 @@ app.post('/api/convert/json-csv/:imagepath', target.array('files'), async (req, 
 })
 
 app.post('/api/remove-images', async (req, res) => {
-  const imagePath = './public/uploads/'+req.body.imagepath
+  const imagePath = './dist/uploads/'+req.body.imagepath
   if (fs.existsSync(imagePath)){
     fs.rmSync(imagePath, { recursive: true }, () => {
       res.json({code:200})

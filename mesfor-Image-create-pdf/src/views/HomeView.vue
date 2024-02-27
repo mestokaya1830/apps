@@ -19,7 +19,7 @@
             <img src="@/assets/upload.png" alt="" width="70px">
             <p class="drag-text">Click here to upload files...</p>
             <span class="warning-text">Supports: Jpeg, Jpg, Png, Avif, Webp, Tif, Gif</span>
-            <span class="warning-text">Max File: 30 -> Max Size: Total 100 MB</span>
+            <span class="warning-text">Max File: 50 -> Max Size: Total 100 MB</span>
             <span class="warning-text">Each file size must be less then 10 MB</span>
           </div>
         </div>
@@ -59,8 +59,8 @@ export default {
       let files = this.$refs.file.files
       const imageSize = Array.from(files).reduce((a, b) => a + b.size, 0)
       try {
-        if(files.length > 30){
-          alert('File length must be 30')
+        if(files.length > 50){
+          alert('File length must be 50')
         } else if(imageSize > 1e+8){
           alert('Toatal file size must be less 100 MB')
         } else {

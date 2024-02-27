@@ -8,10 +8,11 @@ export default defineConfig({
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     }
   },
-  // server:{//for development short url (http://localhost:3000)
+
+  // server:{//for development short url (http://localhost:4000)
   //   proxy:{
   //     '/api':{
-  //       target:'http://localhost:3000',
+  //       target:'http://localhost:4000',
   //       changeOrigin: true
   //     }
   //   }

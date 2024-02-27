@@ -1,6 +1,5 @@
 import express from 'express'
 const app = express()
-import cors from 'cors'
 import helmet from 'helmet'
 import multer from 'multer'
 import sharp from 'sharp'
@@ -9,23 +8,20 @@ import dotenv from 'dotenv'
 import path from 'path'
 import zip from 'express-zip'
 
-dotenv.config({ debug: true })
+dotenv.config()
 app.use(helmet())
-// app.use(cors({
-//   origin: 'http://localhost:5173'
-// }))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true, limit: '3mb' }))
-app.use(express.static('public'))
+app.use(express.static('dist'))
 
 if(process.env.NODE_ENV == 'production'){
-  app.use(express.static('public'))
-  app.get('*', (req, res) => res.sendFile(path.resolve('public/index.html')))
+  app.use(express.static('dist'))
+  app.get('*', (req, res) => res.sendFile(path.resolve('dist/index.html')))
 }
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'public/')
+    cb(null, 'dist/')
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname)
@@ -51,7 +47,7 @@ const resize = multer({
 
 app.post('/api/compression/:quality/:imagepath', resize.array('files', 20), async (req, res, ) => {
   try {
-    fs.mkdir(path.resolve('./public/uploads/', req.params.imagepath), { recursive: true }, () => {
+    fs.mkdir(path.resolve('./dist/uploads/', req.params.imagepath), { recursive: true }, () => {
       return false
     })
     const originalName = []
@@ -65,7 +61,7 @@ app.post('/api/compression/:quality/:imagepath', resize.array('files', 20), asyn
           withoutEnlargement: true,
         })
         .jpeg({ quality:quality, progressive: true }) // Progressive JPEGs
-        .toFile('./public/uploads/'+ req.params.imagepath +'/'+ item.originalname)
+        .toFile('./dist/uploads/'+ req.params.imagepath +'/'+ item.originalname)
       } else if(imageType == 'gif'){
         await sharp(item.path, { animated: true })
         .resize(5600, 3200, {
@@ -73,7 +69,7 @@ app.post('/api/compression/:quality/:imagepath', resize.array('files', 20), asyn
           withoutEnlargement: true,
         })
         .gif({quality:quality, interFrameMaxError: 8 })
-        .toFile('./public/uploads/'+ req.params.imagepath +'/'+ item.originalname)
+        .toFile('./dist/uploads/'+ req.params.imagepath +'/'+ item.originalname)
       } else {
         await sharp(item.path)
         .resize(5600, 3200, {
@@ -81,7 +77,7 @@ app.post('/api/compression/:quality/:imagepath', resize.array('files', 20), asyn
           withoutEnlargement: true,
         })
         [imageType]({ quality:quality })
-        .toFile('./public/uploads/'+ req.params.imagepath +'/'+ item.originalname)
+        .toFile('./dist/uploads/'+ req.params.imagepath +'/'+ item.originalname)
       }
 
       fs.unlink(item.path, () => {
@@ -95,9 +91,9 @@ app.post('/api/compression/:quality/:imagepath', resize.array('files', 20), asyn
 })
 
 app.post('/api/download/:imagepath', async (req, res) => {
-  const imagePath = `./public/uploads/${req.params.imagepath}`
+  const imagePath = `./dist/uploads/${req.params.imagepath}`
   if (fs.existsSync(imagePath)){
-    fs.readdir(`./public/uploads/${req.params.imagepath}`, function (err, files) {
+    fs.readdir(`./dist/uploads/${req.params.imagepath}`, function (err, files) {
       if (err) return console.log('Unable to scan directory: ' + err)
       const allFiles = files.map(item => {
         return {
@@ -112,7 +108,7 @@ app.post('/api/download/:imagepath', async (req, res) => {
   }
 })
 app.post('/api/remove-images', async (req, res) => {
-  const imagePath = './public/uploads/'+req.body.imagepath
+  const imagePath = './dist/uploads/'+req.body.imagepath
   if (fs.existsSync(imagePath)){
     fs.rmSync(imagePath, { recursive: true }, () => {
       res.json({code:200})

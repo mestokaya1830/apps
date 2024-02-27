@@ -1,6 +1,5 @@
 import express from 'express'
 const app = express()
-import cors from 'cors'
 import helmet from 'helmet'
 import Db from './modules/db.js'
 import Messages from './modules/schemas/messages-schema.js'
@@ -21,26 +20,20 @@ import { Server } from "socket.io"
 import Bets from './modules/schemas/bets-schema.js'
 import Betsummaries from './modules/schemas/bet-summaries-schema.js'
 
-const server = http.createServer(app)
-const io = new Server(server)
-
-dotenv.config({ debug: true })
-app.use(helmet())
-// app.use(cors({
-//   origin: 'http://localhost:5173'
-// }))
+dotenv.config()
+app.use(helmet({contentSecurityPolicy: false}))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true, limit: '3mb' }))
-app.use(express.static('public'))
+app.use(express.static('dist'))
 
 app.use(session({
   name:'secret_name',
   secret: 'secret_key',
   resave: false,
   saveUninitialized: false,
-  // cookie: { maxAge: 6 * 3600000},//6 hour
-  httpOnly: true,
-  secure: true,
+  cookie: { maxAge: 12 * 3600000},//12 hour
+  httpOnly: false,
+  secure: false,
   rolling: true,
   store: MongoStore.create({
     mongoUrl: 'mongodb://mesto:MK1972mk11130113@localhost:27017/bet?authSource=bet',
@@ -56,6 +49,9 @@ app.use('/api/admin', auth, betRouters)
 app.use('/api/admin', auth, marketsRouters)
 app.use('/api/admin', auth, bossRouters)
 
+
+const server = http.createServer(app)
+const io = new Server(server)
 let readState = ''
 let activeusers = {}
 let openedusers = []
@@ -261,6 +257,6 @@ app.use((req, res)=>{
   res.status(404).send('page not found')
 })
 
-server.listen(3000, () => {
-  console.log(`Server is running... ${3000}`)
+server.listen(4000, () => {
+  console.log(`Server is running... ${4000}`)
 })

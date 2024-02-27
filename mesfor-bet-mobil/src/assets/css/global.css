@@ -166,6 +166,9 @@ body::-webkit-scrollbar {
   margin: 50px 0;
 }
 .mtb5{margin: 5px 0;}
+.mh5{
+  margin: 0 5px;
+}
 .strict-width{
   max-width: 80%;
 }

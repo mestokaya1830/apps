@@ -1,6 +1,5 @@
 import express from 'express'
 const app = express()
-import cors from 'cors'
 import helmet from 'helmet'
 import fs from 'fs'
 import dotenv from 'dotenv'
@@ -8,24 +7,21 @@ import path from 'path'
 import ytdl from 'ytdl-core'
 import cookie  from 'cookie-parser'
 
-dotenv.config({ debug: true })
+dotenv.config()
 app.use(helmet())
-// app.use(cors({
-//   origin: 'http://localhost:5173'
-// }))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true, limit: '3mb' }))
-app.use(express.static('public'))
+app.use(express.static('dist'))
 
 if(process.env.NODE_ENV == 'production'){
-  app.use(express.static('public'))
-  app.get('*', (req, res) => res.sendFile(path.resolve('public/index.html')))
+  app.use(express.static('dist'))
+  app.get('*', (req, res) => res.sendFile(path.resolve('dist/index.html')))
 }
 
 app.post('/api/download', async (req, res) => {
   let fileName = ''
   ytdl.getInfo(req.body.url).then((info) => {
-    fileName = info.videoDetails.title
+    fileName = encodeURI(info.videoDetails.title)
     res.header("Content-Disposition", `attachment; filename=${fileName}.${req.body.format}`)
     let range = req.headers.range
     if(!range){

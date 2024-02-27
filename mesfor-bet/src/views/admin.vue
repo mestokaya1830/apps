@@ -146,7 +146,7 @@
 .bet-list-header {
   display: flex;
   align-items: center;
-  padding: 3px;
+  padding: 8px;
   color: #fff;
   height: 46px;
   margin: 5px 0;
@@ -215,7 +215,9 @@
   width: 16px;
   cursor: pointer;
 }
-.bet-search{margin-left: 5px;}
+.bet-search{
+  justify-content: flex-start !important;
+}
 .info {
   display: flex;
   justify-content: center;
@@ -483,7 +485,6 @@
 .Offline, .colorRed{color: var(--red);}
 .ip-field{
   word-break: break-all;
-  padding: 5px;
 }
 .iptal,
 .iptalrepeat {
@@ -787,6 +788,10 @@
 .btn-2{
   color: var(--black) !important;
 }
+.betid-con{
+  display: flex;
+  justify-content: flex-start !important;
+}
 @media screen and (max-width: 1280px){
   .users-wrapper{
     width: 100vw;;
@@ -814,6 +819,5 @@
   .coupon-list{
     flex-direction: column;
   }
-
 }
 </style>

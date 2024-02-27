@@ -1,6 +1,5 @@
 import express from 'express'
 const app = express()
-import cors from 'cors'
 import helmet from 'helmet'
 import multer from 'multer'
 import sharp from 'sharp'
@@ -11,21 +10,18 @@ import zip from 'express-zip'
 
 dotenv.config()
 app.use(helmet())
-// app.use(cors({
-//   origin: 'http://localhost:5173'
-// }))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true, limit: '3mb' }))
-app.use(express.static('public'))
+app.use(express.static('dist'))
 
 if(process.env.NODE_ENV == 'production'){
-  app.use(express.static('public'))
-  app.get('*', (req, res) => res.sendFile(path.resolve('public/index.html')))
+  app.use(express.static('dist'))
+  app.get('*', (req, res) => res.sendFile(path.resolve('dist/index.html')))
 }
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'public/')
+    cb(null, 'dist/')
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname)
@@ -51,7 +47,7 @@ const resize = multer({
 
 app.post('/api/convert/:format/:imagepath', resize.array('files', 20), async (req, res, ) => {
   try {
-    fs.mkdir(path.resolve('./public/uploads/', req.params.imagepath), { recursive: true }, () => {
+    fs.mkdir(path.resolve('./dist/uploads/', req.params.imagepath), { recursive: true }, () => {
       return false
     })
     const originalName = []
@@ -61,7 +57,7 @@ app.post('/api/convert/:format/:imagepath', resize.array('files', 20), async (re
       const imageName = item.originalname.lastIndexOf(".");
       await sharp(item.path)
       [imageFormat]({quality: 100})
-      .toFile('./public/uploads/'+ req.params.imagepath +'/'+ item.originalname.substring(0, imageName) +'.'+imageFormat)
+      .toFile('./dist/uploads/'+ req.params.imagepath +'/'+ item.originalname.substring(0, imageName) +'.'+imageFormat)
       fs.unlink(item.path, () => {
         originalName.push(item.originalname)
       })
@@ -77,7 +73,7 @@ app.post('/api/convert/:format/:imagepath', resize.array('files', 20), async (re
 })
 
 app.post('/api/download/:imagepath', async (req, res) => {
-  const imagePath = `./public/uploads/${req.params.imagepath}`
+  const imagePath = `./dist/uploads/${req.params.imagepath}`
   if (fs.existsSync(imagePath)){
     fs.readdir(imagePath, function (err, files) {
       if (err) return console.log('Unable to scan directory: ' + err)
@@ -94,7 +90,7 @@ app.post('/api/download/:imagepath', async (req, res) => {
   }
 })
 app.post('/api/remove-images', async (req, res) => {
-  const imagePath = './public/uploads/'+req.body.imagepath
+  const imagePath = './dist/uploads/'+req.body.imagepath
   if (fs.existsSync(imagePath)){
     fs.rmSync(imagePath, { recursive: true }, () => {
       res.json({code:200})

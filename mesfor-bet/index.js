@@ -1,6 +1,5 @@
 import express from 'express'
 const app = express()
-import cors from 'cors'
 import helmet from 'helmet'
 import Db from './modules/db.js'
 import Messages from './modules/schemas/messages-schema.js'
@@ -21,14 +20,9 @@ import { Server } from "socket.io"
 import Bets from './modules/schemas/bets-schema.js'
 import Betsummaries from './modules/schemas/bet-summaries-schema.js'
 
-const server = http.createServer(app)
-const io = new Server(server)
 
-dotenv.config({ debug: true })
+dotenv.config()
 app.use(helmet())
-// app.use(cors({
-//   origin: 'http://localhost:5173'
-// }))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true, limit: '3mb' }))
 app.use(express.static('public'))
@@ -56,6 +50,8 @@ app.use('/api/admin', auth, betRouters)
 app.use('/api/admin', auth, marketsRouters)
 app.use('/api/admin', auth, bossRouters)
 
+const server = http.createServer(app)
+const io = new Server(server)
 let readState = ''
 let activeusers = {}
 let openedusers = []

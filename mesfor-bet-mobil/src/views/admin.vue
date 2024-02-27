@@ -326,7 +326,18 @@
   border-radius: 2px;
   margin-right: 10px;
 }
-
+.mobil-calendar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 28px;
+  padding: 0;
+}
+.mobil-calendar select, .mobil-calendar input{
+  width: 40%;
+  height: 100%;
+  font-size: 14px;
+}
 .title-list-icon {
   min-width: 15px;
   margin-right: 10px;
