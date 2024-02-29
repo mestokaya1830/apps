@@ -21,6 +21,7 @@ app.use(helmet({
 app.use(express.json())
 app.use(express.static("public"))
 
+//check ip
 app.get('/check-ip', (req, res) => {
   ip = req.headers["x-forwarded-for"] || req.remoteAddress ||
   req.socket.remoteAddress ||
@@ -33,12 +34,12 @@ app.get('/check-ip', (req, res) => {
       return false
     }
   })
-
   stream.on('close',(err) => {
     res.status(200).json({result: state})
   })
 })
 
+//save ip
 const saveIP = () => {
   fs.appendFileSync('./public/ip.txt', ip+'\n', (err) => {
     if(!err){
@@ -47,6 +48,7 @@ const saveIP = () => {
   })
 }
 
+//update vote
 const updateVotes = (index) => {
   const selectedItem = data.filter(item => item.id == index)
   let newVote = selectedItem[0].votes += 1
@@ -62,6 +64,7 @@ const updateVotes = (index) => {
   }))
 }
 
+//get vote from frontend via socket
 io.on("connection", (socket) => {
   io.emit("update", data)
   socket.on("vote", (index) => {
