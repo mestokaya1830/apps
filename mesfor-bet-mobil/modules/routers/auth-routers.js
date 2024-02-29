@@ -18,9 +18,9 @@ router.post("/login", tryCatch(async (req, res) => {
         } else {
           const ip =
             req.headers["x-forwarded-for"] ||
-            req.connection.remoteAddress ||
+            req.remoteAddress ||
             req.socket.remoteAddress ||
-            (req.connection.socket ? req.connection.socket.remoteAddress : null)
+            (req.socket ? req.socket.remoteAddress : null)
 
           let loginlogs = new Loginlogs({
             user: result.user,

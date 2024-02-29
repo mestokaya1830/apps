@@ -1,7 +1,8 @@
-const wrapAsync = (param) => {
-  return (req, res, next) => {
-    param(req, res, next).catch(next)
+const tryCatch = (controller) => async(req, res, next) => {
+  try {
+    await controller(req, res)
+  } catch (error) {
+    return next(error.message)
   }
 }
-
-export default  wrapAsync
+export default  tryCatch
