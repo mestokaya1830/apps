@@ -1,0 +1,18 @@
+([
+  {marketId: "Handicap", marketName: "Handikap Bahisleri"},
+  {marketId: "1st Half", marketName: "Devre 1 Bahisleri"},
+  {marketId: "2nd Half", marketName: "Devre 2 Bahisleri"},
+  {marketId: "1st quarter", marketName: "1.Çeyrek Bahisleri"},
+  {marketId: "2nd quarter", marketName: "2.Çeyrek Bahisleri"},
+  {marketId: "3rd quarter", marketName: "3.Çeyrek Bahisleri"},
+  {marketId: "4th quarter", marketName: "4.Çeyrek Bahisleri"},
+  {marketId: "Race to", marketName: "Zaman Aralığı Bahisleri"},
+  {marketId: "Winning Margin", marketName: "Kazanma Aralıği Bahisleri"},
+  {marketId: "How many rebounds will", marketName: "Rebound Bahisleri"},
+  {marketId: "How many assists will", marketName: "Asist Bahisleri"},
+  {marketId: "How many three-pointers will", marketName: "Toplam Üçlük Sayı Bahisleri"},
+  {marketId: "How many blocks wil", marketName: "Blok Sayı Bahisleri"},
+  {marketId: "How many steals wil", marketName: "Top Çalma Bahisleri"},
+  {marketId: "How many turnovers", marketName: "Hücum Faul Bahisleri"},
+  {marketId: "FG", marketName: "FG Bahisleri"}
+])
