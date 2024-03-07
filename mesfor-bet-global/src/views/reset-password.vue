@@ -15,18 +15,18 @@
             pattern="^[A-Za-z0-9].{3,50}"
             oninvalid="this.setCustomValidity('Üye alanı en az 4 karekter ilk karekter Harf yada Sayı olmalıdır!')"
             oninput="setCustomValidity('')"
-            placeholder="Üye Adı"
+            placeholder="Kullanıcı Adı"
           />
           <input
-            v-model="setPass.nick"
+            v-model="setPass.email"
             @focus="removeError()"
             type="text"
             class="login-inputs"
             required
             pattern="^[A-Za-z0-9].{3,50}"
-            oninvalid="this.setCustomValidity('Nick alanı en az 4 karekter ilk karekter Harf yada Sayı olmalıdır!')"
+            oninvalid="this.setCustomValidity('Email alanı en az 4 karekter ilk karekter Harf yada Sayı olmalıdır!')"
             oninput="setCustomValidity('')"
-            placeholder="Nick"
+            placeholder="Email"
           />
           <input
             v-model="setPass.pass"
@@ -63,7 +63,7 @@ export default {
     return {
       setPass: {
         user: '',
-        nick: '',
+        email: '',
         pass: '',
       },
       isLoader: false,

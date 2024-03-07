@@ -1,7 +1,7 @@
 <template>
   <div class="categories-page">
     <header class="categories-header fjeac">
-      <a href="/login" v-if="!$store.state.auth" class="navbar-icons" title="Çıkış">
+      <a href="/login" v-if="!$store.state.auth" class="navbar-icons" title="Giriş">
         <LoaderComponent v-if="isLoader"/>
         <img v-else src="@/assets/img/login.png" alt="" class="logout-icons cp">
       </a>
@@ -67,19 +67,9 @@ export default {
     };
   },
   mounted() {
-    this.getSettings()
     this.betInfoMix()
   },
   methods: {
-    async getSettings() {
-      await axios.get("/api/admin/settings").then((result) => {
-        if (result.data.result.length > 0) {
-          localStorage.setItem("set", JSON.stringify(result.data.result))
-          return false
-        }
-        localStorage.removeItem('set')
-      })
-    },
     async logout() {
       this.isLoader = true;
       await axios.post("/api/logout").then((result) => {

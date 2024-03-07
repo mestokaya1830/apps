@@ -22,7 +22,7 @@
         <img src="@/assets/img/chat.webp" alt="" class="navbar-icons">
         <span class="msg-count" v-if="$store.state.msgcount > 0">{{ newMsg }}</span>
       </div>
-      <a href="/login" v-if="!$store.state.auth" class="navbar-icons" title="Çıkış">
+      <a href="/login" v-if="!$store.state.auth" class="navbar-icons" title="Giriş">
         <LoaderComponent v-if="isLoader"/>
         <img v-else src="@/assets/img/login.png" alt="" class="logout-icons cp">
       </a>

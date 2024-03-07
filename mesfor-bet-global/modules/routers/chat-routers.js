@@ -30,7 +30,7 @@ const uploadAudio = multer({
   storage
 })
 router.get("/", tryCatch(async (req, res) => {
-  const chatuser = await Users.find({ $or: [{ user: req.session.auth.admin }, { admin: req.session.auth.user }] }, 'user admin logincheck')
+  const chatuser = await Users.find({ user: req.session.auth.admin }, 'user logincheck')
   const usersarray = chatuser.map(item => item.user)
   const chatcount = await Messages.aggregate([
     { $match: { sender: { $in: usersarray }, receiver: req.session.auth.user, readed: 'no' } },

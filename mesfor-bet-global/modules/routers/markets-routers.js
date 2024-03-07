@@ -50,7 +50,6 @@ router.post('/markets-update', tryCatch(async (req, res) => {
   if (req.body.state == false) {
     const setting = new Settings({
       user: req.session.auth.user,
-      admin: req.session.auth.admin,
       type: req.body.type,
       marketId: req.body.marketId
     })

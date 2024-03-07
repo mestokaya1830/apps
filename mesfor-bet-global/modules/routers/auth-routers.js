@@ -5,7 +5,58 @@ const cryptr = new Cryptr("myTotalySecretKey");
 import tryCatch from "../../middleware/try-catch-middleware.js";
 import Users from "../schemas/users-schema.js"
 import Loginlogs from "../schemas/login-logs-schema.js"
+import Creditlogs from '../schemas/credit-logs-schema.js'
 
+router.post('/register', tryCatch(async (req, res) => {
+  const newUser = req.body.newUser
+  const user = await Users.find({email: newUser.email }, 'email')
+  if (user.length > 0) {
+    if (user[0].email == newUser.email) {
+      res.json({ message: 'Bu email kullanılmaktadır' })
+    }
+  } else {
+    const newUsers = new Users({
+      user: newUser.user,
+      email: newUser.email,
+      pass: cryptr.encrypt(newUser.pass),
+      credit: newUser.credit,
+      creditremain: newUser.credit,
+      customercomission: newUser.customercomission,
+      usercancelbet: newUser.usercancelbet,
+      role: 'Member',
+      payment: new Date(),
+      settings:{}
+    })
+    newUsers.settings = {
+      minms: 1,
+      maxms: 15,
+      minkm: 5,
+      maxkm: 1000,
+      maxrate: 1000,
+      maxearn: 10000,
+      cminms: 1,
+      cmaxms: 15,
+      cminkm: 5,
+      cmaxkm: 1000,
+      cmaxrate: 1000,
+      cmaxearn: 10000
+    }
+    let credit = ''
+    newUser.credit ? credit = newUser.credit : credit = 0
+    const creditlogs = new Creditlogs({
+      user: newUser.user,
+      date: new Date(),
+      amount: credit,
+      credit: credit,
+      creditremain: credit,
+      ope: 'Tanımlandı',
+      des: 'Yeni Kayıt'
+    })
+    await newUsers.save()
+    await creditlogs.save()
+    res.json({ code: 200, message: 'Kayıt Başarılı' })
+  }
+}))
 router.post("/login", tryCatch(async (req, res) => {
   if (req.body.user) {
     const result = await Users.findOne({ user: req.body.user });

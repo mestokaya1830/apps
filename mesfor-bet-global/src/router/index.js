@@ -114,12 +114,7 @@ const routes = [
         component: () => import('@/views/admin/users-details.vue'),
         meta:{title:'Mesfor-Üye Detayları'}
       },
-      {
-        path: "/admin/add-user",
-        name:'add-user',
-        component: () => import('@/views/admin/add-user.vue'),
-        meta:{title:'Mesfor-Üye Ekle'}
-      },
+      
       {
         path: "/admin/profile",
         name:'profile',
@@ -221,7 +216,7 @@ const router = createRouter({
 
   scrollBehavior(to, from) {
     return {
-      top: 0
+      top:500
     }
   },
 });

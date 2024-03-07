@@ -38,10 +38,6 @@
             <span class="admin-menu-icons">&#9785;</span>
             <span class="admin-menu-text">Üyeler</span>
           </router-link>
-          <router-link to="/admin/add-user" class="admin-links" exact-active-class="active" >
-            <span class="admin-menu-icons">&#9785;</span>
-            <span class="admin-menu-text">Üye Ekle</span>
-          </router-link>
           <router-link to="/admin/profile" class="admin-links" exact-active-class="active" >
             <span class="admin-menu-icons">&#9785;</span>
             <span class="admin-menu-text">Profil</span>

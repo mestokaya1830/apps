@@ -36,8 +36,6 @@ router.post('/add-bet', tryCatch(async (req, res) => {
     const betSummary = new Betsummaries({
       sumid: newSummary.sumid,
       user: newSummary.user,
-      admin: newSummary.admin,
-      superadmin: newSummary.superadmin,
       date: Date.now(),
       betscount: req.body.sliplength,
       betscountremain: 0,
@@ -63,8 +61,6 @@ router.post('/add-bet', tryCatch(async (req, res) => {
       const gamelog = new Gamelogs({
         gameid: newSummary.sumid,
         user: result.user,
-        admin: result.admin,
-        superadmin: result.superadmin,
         date: new Date(),
         amount: newSummary.amount,
         creditremain: result.creditremain,
@@ -84,8 +80,6 @@ router.post('/cancel-bet', tryCatch(async (req, res) => {
   const gamelog = new Gamelogs({
     gameid: req.body.betsum.sumid,
     user: req.body.betsum.user,
-    admin: req.body.betsum.admin,
-    superadmin: req.body.betsum.superadmin,
     date: new Date(),
     amount: req.body.betsum.amount,
     creditremain: getusers.creditremain,
@@ -107,8 +101,6 @@ router.put('/return-bet', tryCatch(async (req, res) => {
     const gamelog = new Gamelogs({
       gameid: req.body.betsum.sumid,
       user: req.body.betsum.user,
-      admin: req.body.betsum.admin,
-      superadmin: req.body.betsum.superadmin,
       date: new Date(),
       amount: req.body.betsum.amount,
       creditremain: lcr.creditremain,
@@ -131,57 +123,17 @@ router.get('/last-coupon/', tryCatch(async (req, res) => {
 router.get('/bet-summary/:userbox/:statebox', tryCatch(async (req, res) => {
   const start = moment().format('YYYY-MM-DD 00:00:00')
   const end = moment().format('YYYY-MM-DD 24:00:00')
-  if (req.session.auth.role == 'Member') {
-    if (req.params.statebox == 'Aktif') {
-      const betsummary = await Betsummaries.find({ user: req.session.auth.user, state: 'Aktif' }).sort({ _id: -1 })
-      res.json({ betsummary })
-    } else {
-      if (req.params.statebox == 'Hepsi') {
-        const betsummary = await Betsummaries.find({ user: req.session.auth.user, date: { $gte: start, $lt: end }, state: { $ne: 'iptal' } }).sort({ _id: -1 })
-        res.json({ betsummary })
-      } else {
-        const betsummary = await Betsummaries.find({ user: req.session.auth.user, date: { $gte: start, $lt: end }, state: req.params.statebox }).sort({ _id: -1 })
-        res.json({ betsummary })
-      }
-    }
-  } else if (req.session.auth.role == 'Admin') {
-    if (req.params.userbox == 'Hepsi') {
-      if (req.params.statebox == 'Aktif') {
-        const betsummary = await Betsummaries.find({ admin: req.session.auth.user, state: 'Aktif'}).sort({ _id: -1 })
-        res.json({ betsummary })
-      } else {
-        if (req.params.statebox == 'Hepsi') {
-          const betsummary = await Betsummaries.find({ admin: req.session.auth.user, date: { $gte: start, $lt: end }, state: { $ne: 'iptal' } }).sort({ _id: -1 })
-          res.json({ betsummary })
-        } else {
-          const betsummary = await Betsummaries.find({ admin: req.session.auth.user, date: { $gte: start, $lt: end }, state: req.params.statebox }).sort({ _id: -1 })
-          res.json({ betsummary })
-        }
-      }
-    } else {
-      if (req.params.statebox == 'Aktif') {
-        const betsummary = await Betsummaries.find({ user: req.params.userbox, state: 'Aktif' }).sort({ _id: -1 })
-        res.json({ betsummary })
-      } else {
-        if (req.params.statebox == 'Hepsi') {
-          const betsummary = await Betsummaries.find({ user: req.params.userbox, date: { $gte: start, $lt: end }, state: { $ne: 'iptal' } }).sort({ _id: -1 })
-          res.json({ betsummary })
-        } else {
-          const betsummary = await Betsummaries.find({ user: req.params.userbox, state: req.params.statebox }).sort({ _id: -1 })
-          res.json({ betsummary })
-        }
-      }
-    }
-  } else if(req.session.auth.role == 'Boss') {
-    if (req.params.userbox == 'Hepsi') {
-      const betsummary = await Betsummaries.find({ state: 'Aktif' }).sort({ _id: -1 })
-      res.json({ betsummary })
-    } else {
-      const betsummary = await Betsummaries.find({ superadmin: req.params.userbox, state: 'Aktif' }).sort({ _id: -1 })
-      res.json({ betsummary })
-    }
+  if (req.params.statebox == 'Aktif') {
+    const betsummary = await Betsummaries.find({ user: req.session.auth.user, state: 'Aktif' }).sort({ _id: -1 })
+    res.json({ betsummary })
   } else {
-    return false
+    if (req.params.statebox == 'Hepsi') {
+      const betsummary = await Betsummaries.find({ user: req.session.auth.user, date: { $gte: start, $lt: end }, state: { $ne: 'iptal' } }).sort({ _id: -1 })
+      res.json({ betsummary })
+    } else {
+      const betsummary = await Betsummaries.find({ user: req.session.auth.user, date: { $gte: start, $lt: end }, state: req.params.statebox }).sort({ _id: -1 })
+      res.json({ betsummary })
+    }
   }
 }))
 router.get('/bet-summary/:id', tryCatch(async (req, res) => {
@@ -189,140 +141,41 @@ router.get('/bet-summary/:id', tryCatch(async (req, res) => {
   res.json({ bets: bets })
 }))
 router.get('/bet-summary/date-filter/:userbox/:statebox/:start/:end', tryCatch(async (req, res) => {
-  if (req.session.auth.role == 'Member') {
-    if (req.params.statebox == 'Hepsi') {
-      const datefilter = await Betsummaries.find({ user: req.session.auth.user, date: { $gte: req.params.start, $lte: req.params.end }, state: { $ne: 'iptal' } }).sort({ _id: -1 })
-      res.json({ code: 200, datefilter: datefilter })
-    } else {
-      const datefilter = await Betsummaries.find({ user: req.session.auth.user, state: req.params.statebox, date: { $gte: req.params.start, $lte: req.params.end } }).sort({ _id: -1 })
-      res.json({ code: 200, datefilter: datefilter })
-    }
-  } else if(req.session.auth.role == 'Admin') {
-    if (req.params.userbox == 'Hepsi') {
-      if (req.params.statebox == 'Hepsi') {
-        const datefilter = await Betsummaries.find({ admin: req.session.auth.user, date: { $gte: req.params.start, $lte: req.params.end }, state: { $ne: 'iptal' } }).sort({ _id: -1 })
-        res.json({ code: 200, datefilter: datefilter })
-      } else {
-        const datefilter = await Betsummaries.find({ admin: req.session.auth.user, state: req.params.statebox, date: { $gte: req.params.start, $lte: req.params.end } }).sort({ _id: -1 })
-        res.json({ code: 200, datefilter: datefilter })
-      }
-    } else {
-      if (req.params.statebox == 'Hepsi') {
-        const datefilter = await Betsummaries.find({ user: req.params.userbox, state: { $ne: 'iptal' }, date: { $gte: req.params.start, $lte: req.params.end } }).sort({ _id: -1 })
-        res.json({ code: 200, datefilter: datefilter })
-      } else {
-        const datefilter = await Betsummaries.find({ user: req.params.userbox, state: req.params.statebox, date: { $gte: req.params.start, $lte: req.params.end } }).sort({ _id: -1 })
-        res.json({ code: 200, datefilter: datefilter })
-      }
-    }
+  if (req.params.statebox == 'Hepsi') {
+    const datefilter = await Betsummaries.find({ user: req.session.auth.user, date: { $gte: req.params.start, $lte: req.params.end }, state: { $ne: 'iptal' } }).sort({ _id: -1 })
+    res.json({ code: 200, datefilter: datefilter })
   } else {
-    return false
+    const datefilter = await Betsummaries.find({ user: req.session.auth.user, state: req.params.statebox, date: { $gte: req.params.start, $lte: req.params.end } }).sort({ _id: -1 })
+    res.json({ code: 200, datefilter: datefilter })
   }
 }))
 router.get('/bet-summary/day-filter/:userbox/:start/:end', tryCatch(async (req, res) => {
-  if (req.session.auth.role == 'Member') {
-    const dayfilter = await Betsummaries.find({ user: req.session.auth.user, date: { $gte: req.params.start, $lte: req.params.end }, state: { $ne: 'iptal' } }).sort({ _id: -1 })
-    res.json({ code: 200, dayfilter: dayfilter })
-  } else if(req.session.auth.role == 'Admin') {
-    if (req.params.userbox == 'Hepsi') {
-      const dayfilter = await Betsummaries.find({ admin: req.session.auth.user, date: { $gte: req.params.start, $lte: req.params.end }, state: { $ne: 'iptal' } }).sort({ _id: -1 })
-      res.json({ code: 200, dayfilter: dayfilter })
-    } else {
-      const dayfilter = await Betsummaries.find({ user: req.params.userbox, date: { $gte: req.params.start, $lte: req.params.end }, state: { $ne: 'iptal' } }).sort({ _id: -1 })
-      res.json({ code: 200, dayfilter: dayfilter })
-    }
-  } else {
-    return false
-  }
+  const dayfilter = await Betsummaries.find({ user: req.session.auth.user, date: { $gte: req.params.start, $lte: req.params.end }, state: { $ne: 'iptal' } }).sort({ _id: -1 })
+  res.json({ code: 200, dayfilter: dayfilter })
 }))
 router.get('/bet-summary/week-filter/:userbox/:weekdate/:start/:end', tryCatch(async (req, res) => {
-  if (req.session.auth.role == 'Member') {
-    if (req.params.weekdate == 'Hepsi') {
-      const weekfilter = await Betsummaries.find({ user: req.session.auth.user, date: { $gte: req.params.start, $lte: req.params.end }, state: { $ne: 'iptal' } }).sort({ _id: -1 })
-      res.json({ code: 200, weekfilter: weekfilter })
-    } else {
-      const weekfilter = await Betsummaries.find({ user: req.session.auth.user, state: req.params.weekdate, date: { $gte: req.params.start, $lte: req.params.end } }).sort({ _id: -1 })
-      res.json({ code: 200, weekfilter: weekfilter })
-    }
-  } else if(req.session.auth.role == 'Admin') {
-    if (req.params.userbox == 'Hepsi') {
-      if (req.params.weekdate == 'Hepsi') {
-        const weekfilter = await Betsummaries.find({ admin: req.session.auth.user, date: { $gte: req.params.start, $lte: req.params.end }, state: { $ne: 'iptal' } }).sort({ _id: -1 })
-        res.json({ code: 200, weekfilter: weekfilter })
-      } else {
-        const weekfilter = await Betsummaries.find({ admin: req.session.auth.user, state: req.params.weekdate, date: { $gte: req.params.start, $lte: req.params.end } }).sort({ _id: -1 })
-        res.json({ code: 200, weekfilter: weekfilter })
-      }
-    } else {
-      if (req.params.weekdate == 'Hepsi') {
-        const weekfilter = await Betsummaries.find({ user: req.params.userbox, state: { $ne: 'iptal' }, date: { $gte: req.params.start, $lte: req.params.end } }).sort({ _id: -1 })
-        res.json({ code: 200, weekfilter: weekfilter })
-      } else {
-        const weekfilter = await Betsummaries.find({ user: req.params.userbox, state: req.params.weekdate, date: { $gte: req.params.start, $lte: req.params.end } }).sort({ _id: -1 })
-        res.json({ code: 200, weekfilter: weekfilter })
-      }
-    }
+  if (req.params.weekdate == 'Hepsi') {
+    const weekfilter = await Betsummaries.find({ user: req.session.auth.user, date: { $gte: req.params.start, $lte: req.params.end }, state: { $ne: 'iptal' } }).sort({ _id: -1 })
+    res.json({ code: 200, weekfilter: weekfilter })
   } else {
-    return false
+    const weekfilter = await Betsummaries.find({ user: req.session.auth.user, state: req.params.weekdate, date: { $gte: req.params.start, $lte: req.params.end } }).sort({ _id: -1 })
+    res.json({ code: 200, weekfilter: weekfilter })
   }
 }))
 router.get('/bet-summary-single/:userbox/:statebox', tryCatch(async (req, res) => {
-  if (req.session.auth.role == 'Member') {
-    let betsummary = await Betsummaries.find({ user: req.session.auth.user, state: 'Aktif' }).sort({ _id: -1 })
-    if (betsummary) {
-      betsummary = betsummary.filter((item) => {
-        if ((item.betscount - item.betscountremain) == 1) {
-          return true
-        }
-      })
-    }
-    res.json({ betsummary })
-  } else if (req.session.auth.role == 'Admin') {
-    if (req.params.userbox == 'Hepsi') {
-      let betsummary = await Betsummaries.find({ admin: req.session.auth.user, state: 'Aktif' }).sort({ _id: -1 })
-      if (betsummary) {
-        betsummary = betsummary.filter((item) => {
-          if ((item.betscount - item.betscountremain) == 1) {
-            return true
-          }
-        })
+  let betsummary = await Betsummaries.find({ user: req.session.auth.user, state: 'Aktif' }).sort({ _id: -1 })
+  if (betsummary) {
+    betsummary = betsummary.filter((item) => {
+      if ((item.betscount - item.betscountremain) == 1) {
+        return true
       }
-      res.json({ betsummary })
-    } else {
-      let betsummary = await Betsummaries.find({ user: req.params.userbox, state: 'Aktif' }).sort({ _id: -1 })
-      if (betsummary) {
-        betsummary = betsummary.filter((item) => {
-          if ((item.betscount - item.betscountremain) == 1) {
-            return true
-          }
-        })
-      }
-      res.json({ betsummary })
-    }
-  } else if(req.session.auth.role == 'Boss') {
-    let betsummary = await Betsummaries.find({ state: 'Aktif' }).sort({ _id: -1 })
-    if (betsummary) {
-      betsummary = betsummary.filter((item) => {
-        if ((item.betscount - item.betscountremain) == 1) {
-          return true
-        }
-      })
-    }
-    res.json({ betsummary })
-  } else {
-    return false
+    })
   }
+  res.json({ betsummary })
 }))
 router.get('/bet-summary-search/:sumid', tryCatch(async (req, res) => {
-  if(req.session.auth.role == 'Member'){
-    const betsummary = await Betsummaries.find({ user: req.session.auth.user, sumid: req.params.sumid })
-    res.json({ betsummary })
-  } else if(req.session.auth.role == 'Admin'){
-    const betsummary = await Betsummaries.find({admin: req.session.auth.user, sumid: req.params.sumid })
-    res.json({ betsummary })
-  } else {
-    return false
-  }
+  const betsummary = await Betsummaries.find({ user: req.session.auth.user, sumid: req.params.sumid })
+  res.json({ betsummary })
 }))
 router.put('/bet-state-update', tryCatch(async (req, res) => {
   let rbb = req.body.betdetail
@@ -369,14 +222,14 @@ router.put('/bet-summary-state-update', tryCatch(async (req, res) => {
     await Betsummaries.updateOne({ sumid: betsum.sumid }, { $set: { rate: 1, earn: betsum.amount } })
     ope = 'Eklendi'
     des = 'iade'
-    insertGameLog(betsum.user, finduser.user, finduser.admin, betsum.amount, ope, des)
+    insertGameLog(betsum.user, finduser.user, betsum.amount, ope, des)
   } else if (cbss.state == 'Kaybetti' && betstate == 'Aktif') {
     res.json({ code: 200 })
   } else if ((cbss.state == 'iade' && betstate == 'Aktif') || (cbss.state == 'iade' && betstate == 'Kaybetti')) {
     await Users.updateOne({ user: betsum.user }, { $inc: { creditremain: - betsum.amount } })
     ope = 'Eksilen'
     des = 'Düzeltme'
-    insertGameLog(betsum.user, finduser.user, finduser.admin, betsum.amount, ope, des)
+    insertGameLog(betsum.user, finduser.user, betsum.amount, ope, des)
   } else if (betstate == 'Kazandi') {
     const drawBet = await Bets.find({ sumid: betsum.sumid, state: 'iade' })
     if (drawBet) {
@@ -395,7 +248,7 @@ router.put('/bet-summary-state-update', tryCatch(async (req, res) => {
         await Users.updateOne({ user: betsum.user }, { $inc: { creditremain: + newEarn } })
         ope = 'Eklendi'
         des = 'Kazandi'
-        insertGameLog(betsum.user, finduser.user, finduser.admin, newEarn, ope, des)
+        insertGameLog(betsum.user, finduser.user, newEarn, ope, des)
         return false
       }
       res.json({code: 200})
@@ -405,7 +258,7 @@ router.put('/bet-summary-state-update', tryCatch(async (req, res) => {
           await Users.updateOne({ user: betsum.user }, { $inc: { creditremain: + betsum.earn } })
           ope = 'Eklendi'
           des = 'Kazandi'
-          insertGameLog(betsum.user, finduser.user, finduser.admin, betsum.earn, ope, des)
+          insertGameLog(betsum.user, finduser.user, betsum.earn, ope, des)
         }
       }
   } else if ((cbss.state == 'Kazandi' && betstate == 'Aktif') || (cbss.state == 'Kazandi' && betstate == 'Kaybetti')) {
@@ -415,13 +268,13 @@ router.put('/bet-summary-state-update', tryCatch(async (req, res) => {
       await Users.updateOne({ user: betsum.user }, { $inc: { creditremain: - oldearn.earn } })
       ope = 'Eksilen'
       des = 'Düzeltme'
-      insertGameLog(betsum.user, cbss.admin, finduser.admin, oldearn.earn, ope, des)
+      insertGameLog(betsum.user, cbss.admin, oldearn.earn, ope, des)
     } else {
       if (cbss.adminpay == 'yes') {
         await Users.updateOne({ user: betsum.user }, { $inc: { creditremain: - oldearn.earn } })
         ope = 'Eksilen'
         des = 'Düzeltme'
-        insertGameLog(betsum.user, finduser.user, finduser.admin, oldearn.earn, ope, des)
+        insertGameLog(betsum.user, finduser.user, oldearn.earn, ope, des)
       } else {
         res.json({ code: 200 })
       }
@@ -429,13 +282,11 @@ router.put('/bet-summary-state-update', tryCatch(async (req, res) => {
   } else {
     res.json({ message: 'active' })
   }
-  async function insertGameLog(user, admin, superadmin, earn, ope, des) {
+  async function insertGameLog(user, earn, ope, des) {
     const users = await Users.findOne({ user: betsum.user }, 'creditremain')
     const gamelog = new Gamelogs({
       gameid: betsum.sumid,
       user,
-      admin,
-      superadmin,
       date: new Date(),
       amount: earn,
       creditremain: users.creditremain,
@@ -453,8 +304,6 @@ router.put('/bet-payment', tryCatch(async (req, res) => {
   const gamelog = new Gamelogs({
     gameid: req.body.betsum.sumid,
     user: req.body.betsum.user,
-    admin:req.session.auth.user,
-    superadmin:req.session.auth.admin,
     date: new Date(),
     amount: req.body.betsum.earn,
     creditremain: users.creditremain,
@@ -465,112 +314,40 @@ router.put('/bet-payment', tryCatch(async (req, res) => {
   res.json({code: 200})
 }))
 router.get('/active-info/:userbox', tryCatch(async (req, res) => {
-  if (req.session.auth.role == 'Member') {
-    const activeinfo = await Betsummaries.aggregate([
-      { $match: { user: req.session.auth.user, state: 'Aktif' } },
-      { $group: { _id: null, activeamount: { $sum: '$amount' }, activeearn: { $sum: '$earn' }, activecount: { $sum: 1 } } }])
-    res.json({ activeinfo: activeinfo[0] })
-  } else {
-    if (req.params.userbox == 'Hepsi') {
-      const activeinfo = await Betsummaries.aggregate([
-        { $match: { admin: req.session.auth.user, state: 'Aktif'} },
-        { $group: { _id: null, activeamount: { $sum: '$amount' }, activeearn: { $sum: '$earn' }, activecount: { $sum: 1 } } }])
-      res.json({ activeinfo: activeinfo[0] })
-    } else {
-      const activeinfo = await Betsummaries.aggregate([
-        { $match: { user: req.params.userbox, state: 'Aktif' } },
-        { $group: { _id: null, activeamount: { $sum: '$amount' }, activeearn: { $sum: '$earn' }, activecount: { $sum: 1 } } }])
-      res.json({ activeinfo: activeinfo[0] })
-    }
-  }
+  const activeinfo = await Betsummaries.aggregate([
+    { $match: { user: req.session.auth.user, state: 'Aktif' } },
+    { $group: { _id: null, activeamount: { $sum: '$amount' }, activeearn: { $sum: '$earn' }, activecount: { $sum: 1 } } }])
+  res.json({ activeinfo: activeinfo[0] })
 }))
 router.get('/won-info/:userbox', tryCatch(async (req, res) => {
-  if (req.session.auth.role == 'Member') {
-    const woninfo = await Betsummaries.aggregate([
-      { $match: { user: req.session.auth.user, state: 'Kazandi' } },
-      { $group: { _id: null, wonamount: { $sum: '$amount' }, wonearn: { $sum: '$earn' }, woncount: { $sum: 1 } } }])
-    res.json({ woninfo: woninfo[0] })
-  } else {
-    if (req.params.userbox == 'Hepsi') {
-      const woninfo = await Betsummaries.aggregate([
-        { $match: { admin: req.session.auth.user, state: 'Kazandi'} },
-        { $group: { _id: null, wonamount: { $sum: '$amount' }, wonearn: { $sum: '$earn' }, woncount: { $sum: 1 } } }])
-      res.json({ woninfo: woninfo[0] })
-    } else {
-      const woninfo = await Betsummaries.aggregate([
-        { $match: { user: req.params.userbox, state: 'Kazandi' } },
-        { $group: { _id: null, wonamount: { $sum: '$amount' }, wonearn: { $sum: '$earn' }, woncount: { $sum: 1 } } }])
-      res.json({ woninfo: woninfo[0] })
-    }
-  }
+  const woninfo = await Betsummaries.aggregate([
+    { $match: { user: req.session.auth.user, state: 'Kazandi' } },
+    { $group: { _id: null, wonamount: { $sum: '$amount' }, wonearn: { $sum: '$earn' }, woncount: { $sum: 1 } } }])
+  res.json({ woninfo: woninfo[0] })
 }))
 router.get('/lost-info/:userbox', tryCatch(async (req, res) => {
-  if (req.session.auth.role == 'Member') {
-    const lostinfo = await Betsummaries.aggregate([
-      { $match: { user: req.session.auth.user, state: 'Kaybetti' } },
-      { $group: { _id: null, lostamount: { $sum: '$amount' }, lostearn: { $sum: '$earn' }, lostcount: { $sum: 1 } } }])
-    res.json({ lostinfo: lostinfo[0] })
-  } else {
-    if (req.params.userbox == 'Hepsi') {
-      const lostinfo = await Betsummaries.aggregate([
-        { $match: { admin: req.session.auth.user, state: 'Kaybetti' } },
-        { $group: { _id: null, lostamount: { $sum: '$amount' }, lostearn: { $sum: '$earn' }, lostcount: { $sum: 1 } } }])
-      res.json({ lostinfo: lostinfo[0] })
-    } else {
-      const lostinfo = await Betsummaries.aggregate([
-        { $match: { user: req.params.userbox, state: 'Kaybetti' } },
-        { $group: { _id: null, lostamount: { $sum: '$amount' }, lostearn: { $sum: '$earn' }, lostcount: { $sum: 1 } } }])
-      res.json({ lostinfo: lostinfo[0] })
-    }
-  }
+  const lostinfo = await Betsummaries.aggregate([
+    { $match: { user: req.session.auth.user, state: 'Kaybetti' } },
+    { $group: { _id: null, lostamount: { $sum: '$amount' }, lostearn: { $sum: '$earn' }, lostcount: { $sum: 1 } } }])
+  res.json({ lostinfo: lostinfo[0] })
 }))
 router.get('/total-info/:userbox', tryCatch(async (req, res) => {
-  if (req.session.auth.role == 'Member') {
-    const totalinfo = await Betsummaries.aggregate([
-      { $match: { user: req.session.auth.user, $or:[{state: 'Aktif'}, {state:'Kazandi'}, {state:'Kaybetti'}] }},
-      { $group: { _id: null, totalamount: { $sum: '$amount' }, totalearn: { $sum: '$earn' }, totalcount: { $sum: 1 } } }])
-    res.json({ totalinfo: totalinfo[0] })
-  } else {
-    if (req.params.userbox == 'Hepsi') {
-      const totalinfo = await Betsummaries.aggregate([
-        { $match: { admin: req.session.auth.user, $or:[{state: 'Aktif'}, {state:'Kazandi'}, {state:'Kaybetti'}] }},
-        { $group: { _id: null, totalamount: { $sum: '$amount' }, totalearn: { $sum: '$earn' }, totalcount: { $sum: 1 } } }])
-      res.json({ totalinfo: totalinfo[0] })
-    } else {
-      const totalinfo = await Betsummaries.aggregate([
-        { $match: { user: req.params.userbox, $or:[{state: 'Aktif'}, {state:'Kazandi'}, {state:'Kaybetti'}] }},
-        { $group: { _id: null, totalamount: { $sum: '$amount' }, totalearn: { $sum: '$earn' }, totalcount: { $sum: 1 } } }])
-      res.json({ totalinfo: totalinfo[0] })
-    }
-  }
+  const totalinfo = await Betsummaries.aggregate([
+    { $match: { user: req.session.auth.user, $or:[{state: 'Aktif'}, {state:'Kazandi'}, {state:'Kaybetti'}] }},
+    { $group: { _id: null, totalamount: { $sum: '$amount' }, totalearn: { $sum: '$earn' }, totalcount: { $sum: 1 } } }])
+  res.json({ totalinfo: totalinfo[0] })
 }))
 router.get('/game-logs/:userbox', tryCatch(async (req, res) => {
-  if (req.session.auth.role == 'Member') {
-    const gamelog = await Gamelogs.find({ user: req.session.auth.user }).sort({ _id: -1 })
-    res.json({ gamelog: gamelog })
-  } else if(req.session.auth.role == 'Admin') {
-    const gamelog = await Gamelogs.find({ user: req.params.userbox }).sort({ _id: -1 })
-    res.json({ gamelog: gamelog })
-  } else {
-    return false
-  }
+  const gamelog = await Gamelogs.find({ user: req.session.auth.user }).sort({ _id: -1 })
+  res.json({ gamelog: gamelog })
 }))
 router.get('/game-logs-search/:gameid', tryCatch(async (req, res) => {
-  if(req.session.auth.role == 'Admin' || req.session.auth.role == 'Member'){
-    const gamelog = await Gamelogs.find({ gameid: req.params.gameid })
-    res.json({ gamelog: gamelog })
-  }
+  const gamelog = await Gamelogs.find({ gameid: req.params.gameid })
+  res.json({ gamelog: gamelog })
 }))
 router.get('/game-logs-date-filter/:userbox/:start/:end', tryCatch(async (req, res) => {
-  if (req.session.auth.role == 'Member') {
-    const datefilter = await Gamelogs.find({ user: req.session.auth.user, date: { $gte: req.params.start, $lte: req.params.end } }).sort({ _id: -1 })
-    res.json({ datefilter: datefilter })
-  } else if(req.session.auth.role == 'Admin') {
-    const datefilter = await Gamelogs.find({ user: req.params.userbox, date: { $gte: req.params.start, $lte: req.params.end } }).sort({ _id: -1 })
-    res.json({ datefilter: datefilter })
-  } else {
-    return false
-  }
+  const datefilter = await Gamelogs.find({ user: req.session.auth.user, date: { $gte: req.params.start, $lte: req.params.end } }).sort({ _id: -1 })
+  res.json({ datefilter: datefilter })
 }))
 
 export default router
