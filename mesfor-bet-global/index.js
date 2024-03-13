@@ -30,12 +30,14 @@ app.use(express.static('public'))
 app.use(session({
   name:'secret_name',
   secret: 'secret_key',
-  resave: false,
+  resave: true,
   saveUninitialized: false,
-  cookie: { maxAge: 12 * 3600000},//12 hour
-  httpOnly: true,
-  secure: true,
   rolling: true,
+  cookie: { 
+  maxAge: 12 * 3600000,
+    httpOnly: true,
+    secure: true,
+  },//12 hour
   store: MongoStore.create({
     mongoUrl: 'mongodb://mesto:MK1972mk11130113@localhost:27017/bet?authSource=bet',
     autoRemove: 'native'
