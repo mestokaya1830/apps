@@ -77,7 +77,7 @@ router.post("/logout", tryCatch(async (req, res) => {
   await loginlogs.save();
   await Users.updateOne({ user: req.session.auth.user },{ logincheck: "passive" })
   delete req.session.auth
-  res.send({code: 200})
+  res.send({code: 204})
 }));
 router.post("/reset-password", tryCatch(async (req, res) => {
   const result = await Users.findOne({ user: req.body.user }, "user nick");
@@ -85,7 +85,7 @@ router.post("/reset-password", tryCatch(async (req, res) => {
     let newPass = cryptr.encrypt(req.body.pass);
     if (req.body.nick === result.nick) {
       await Users.updateOne({ user: req.body.user },{pass: newPass, logincheck: "passive", fakelogin: 0, sessioncount: 0,});
-      res.json({ code: 200, message: "Sıfırlama başarılı" });
+      res.json({ code: 204, message: "Sıfırlama başarılı" });
     } else {
       return res.json({ message: "Gecersiz nick" });
     }

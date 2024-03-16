@@ -96,7 +96,7 @@ router.post('/add-user', tryCatch(async (req, res) => {
         await newUsers.save()
         await creditlogs.save()
         await Users.updateOne({ user: newUser.admin }, { $inc: { usedlimit: + 1 } })
-        res.json({ code: 200, message: 'Yeni kullanici eklendi' })
+        res.json({ code: 201, message: 'Yeni kullanici eklendi' })
       }
     }
   }
@@ -190,7 +190,7 @@ router.post('/delete/:id', tryCatch(async (req, res) => {
       await Soccermarkets.updateMany({}, { $unset: { [req.params.id]: 1 } })
       await Soccerlivemarkets.updateMany({}, { $unset: { [req.params.id]: 1 } })
 
-      res.json({ code: 200, message: 'Kullanıcı başarıyla silindi' })
+      res.json({ code: 204, message: 'Kullanıcı başarıyla silindi' })
     }
   } else if (req.session.auth.role === 'Boss') {
     const subUser = await Users.find({ superadmin: req.params.id })
@@ -220,7 +220,7 @@ router.post('/delete/:id', tryCatch(async (req, res) => {
       for (let item of result) { await Basketlivemarkets.updateMany({}, { $unset: { [item.user]: 1 } }) }
       for (let item of result) { await Soccermarkets.updateMany({}, { $unset: { [item.user]: 1 } }) }
       for (let item of result) { await Soccerlivemarkets.updateMany({}, { $unset: { [item.user]: 1 } }) }
-      res.json({ code: 200, message: 'Kullanıcı başarıyla silindi' })
+      res.json({ code: 204, message: 'Kullanıcı başarıyla silindi' })
     }
   } else {
     return false

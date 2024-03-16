@@ -10,7 +10,6 @@ import Betsummaries from '../schemas/bet-summaries-schema.js'
 import moment from 'moment-timezone'
 import request from 'sync-request'
 import fetch from 'node-fetch'
-import { fork } from 'child_process'
 
 
 cron.schedule("*/5 * * * *", async () => {

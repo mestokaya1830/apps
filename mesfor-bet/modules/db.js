@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const db = mongoose.connect('mongodb://mesto:MK1972mk11130113@localhost:27017/bet?authSource=bet')
+const db = mongoose.connect(process.env.MONGO_URL)
 .then(() => {
   console.log('Connected')
 }).catch(() => {

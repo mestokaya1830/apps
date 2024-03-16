@@ -134,7 +134,7 @@ export default {
       if(cfm){
         this.isLoader = 'delete'
         await axios.post('/api/admin/delete/' + id).then((result) => {
-          if (result.data.code === 200) {
+          if (result.data.code === 204) {
             this.$router.push('/admin/users')
             this.betInfoMix()
             this.isLoader = ''

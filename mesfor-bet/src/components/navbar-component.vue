@@ -59,7 +59,7 @@ export default {
     async logout() {
       this.isLoader = true;
       await axios.post("/api/logout").then((result) => {
-        if (result.data.code == 200) {
+        if (result.data.code == 204) {
           this.$store.commit("setBetSlip", false);
           this.$store.commit("removeSlips", '');
           this.$store.commit("setOpenChat", false);

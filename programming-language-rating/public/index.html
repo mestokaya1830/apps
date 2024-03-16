@@ -72,7 +72,7 @@
         }
       });
       
-      const socket = io("localhost:4000");
+      const socket = io("localhost:3000");
       //get data from data.json via socket
       socket.on("update", (data) => {
         data = Object.entries(data);
@@ -99,7 +99,7 @@
 
       //check ip and send vote via socket
       const vote = async (index) => {
-        const result = await fetch('http://localhost:4000/check-ip')
+        const result = await fetch('http://localhost:3000/check-ip')
         const final = await result.json()
         if(final.result == true){
           document.querySelectorAll('button').forEach(item => {

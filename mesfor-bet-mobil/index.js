@@ -10,7 +10,7 @@ import betRouters from './modules/routers/bet-routers.js'
 import marketsRouters from './modules/routers/markets-routers.js'
 import chatRouters from './modules/routers/chat-routers.js'
 import bossRouters from './modules/routers/boss-routers.js'
-import dotenv from 'dotenv'
+import 'dotenv/config'
 import path from 'path'
 import auth from './middleware/auth.js'
 import session from 'express-session'
@@ -20,7 +20,6 @@ import { Server } from "socket.io"
 import Bets from './modules/schemas/bets-schema.js'
 import Betsummaries from './modules/schemas/bet-summaries-schema.js'
 
-dotenv.config()
 app.use(helmet({contentSecurityPolicy: false}))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true, limit: '3mb' }))
@@ -38,7 +37,7 @@ app.use(session({
     secure: true,
   },//12 hour
   store: MongoStore.create({
-    mongoUrl: 'mongodb://mesto:MK1972mk11130113@localhost:27017/bet?authSource=bet',
+    mongoUrl: process.env.MONGO_URL,
     autoRemove: 'native'
   })
 }))
@@ -259,6 +258,6 @@ app.use((req, res)=>{
   res.status(404).send('page not found')
 })
 
-server.listen(4000, () => {
-  console.log(`Server is running... ${4000}`)
+server.listen(process.env.PORT, () => {
+  console.log(`Server is running... ${process.env.PORT}`)
 })
