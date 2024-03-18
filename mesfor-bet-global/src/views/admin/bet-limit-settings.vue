@@ -234,7 +234,7 @@ export default {
         }
         this.isLoader = column
         await axios.put('/api/admin/user-settings-update', { column: column, value: value, userbox: this.userBox}).then((result) => {
-          if (result.data.code === 200) {
+          if (result.status === 204) {
             this.isLoader = ''
           }
         })

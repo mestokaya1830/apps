@@ -52,14 +52,14 @@ router.get("/", tryCatch(async (req, res) => {
         })
       }
     })
-    res.json({ chatuser: final })
+    res.status(200).json({ chatuser: final })
   }
 }))
 router.get("/get-chat-msg/:receiver/:sender", tryCatch(async (req, res) => {
   const sender = req.params.sender + "-" + req.params.receiver
   const receiver = req.params.receiver + "-" + req.params.sender
   const getmsg = await Messages.find({ $or: [{ betweenmsg: sender }, { betweenmsg: receiver }] }, 'msg date sender receiver readed type')
-  res.json({ getmsg: getmsg })
+  res.status(200).json({ getmsg: getmsg })
 }))
 router.post("/msg-delete-all", tryCatch(async (req, res) => {
   const sender = req.body.sender + "-" + req.body.receiver
@@ -73,7 +73,7 @@ router.post("/msg-delete-all", tryCatch(async (req, res) => {
     }
   }
   await Messages.deleteMany(query)
-  res.json({ message: "Mesajlar başarıyla silindi" })
+  res.status(200).json({ message: "Mesajlar başarıyla silindi" })
 }))
 router.post("/msg-delete", tryCatch(async (req, res) => {
   const result = await Messages.deleteOne({_id: req.body.data._id})
@@ -82,12 +82,12 @@ router.post("/msg-delete", tryCatch(async (req, res) => {
     if (fs.existsSync(path)) {
       fs.unlinkSync(path)
     }
-    res.json('Deleted')
+    res.status(200).json('Deleted')
   }
 }))
 router.put("/msg-update", tryCatch(async (req, res) => {
   await Messages.updateMany({ sender: req.body.sender, receiver: req.session.auth.user}, { $set: { readed: "yes" } })
-  res.json({ status: 200 })
+  res.status(204).send()
 }))
 router.get("/msg-count", tryCatch(async (req, res) => {
   const result = await Messages.aggregate([
@@ -98,7 +98,7 @@ router.get("/msg-count", tryCatch(async (req, res) => {
     res.json({ message: result[0].count })
     return false
   }
-  res.json({ message: '' })
+  res.status(200).json({ message: '' })
 }))
 router.post("/add-chat-image", upload.single('file'), tryCatch(async(req, res) => {
   res.status(200).json({message:'success'})

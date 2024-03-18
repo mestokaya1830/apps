@@ -408,7 +408,7 @@ export default {
       })
     },
     async returnBet(betsum, index) {
-      await axios.put('/api/admin/return-bet', { betsum: betsum }).then((result) => {
+      await axios.patch('/api/admin/return-bet', { betsum: betsum }).then((result) => {
         if (result.data.code == 200) {
           this.betSummary.splice(index, 1)
           this.betInfoMix()
@@ -438,7 +438,7 @@ export default {
     async setBetState(betdetail) {
       this.betLoader = betdetail.betid
       this.getDetails = this.bets.map((item) => item.state)
-      await axios.put('/api/admin/bet-state-update', { betsum: this.betSum, betdetail: betdetail }).then(() => {
+      await axios.patch('/api/admin/bet-state-update', { betsum: this.betSum, betdetail: betdetail }).then(() => {
         this.betLoader = ''
       })
     },
@@ -462,7 +462,7 @@ export default {
           betstate = 'Aktif'
         }
         if (betstate !== '') {
-          await axios.put('/api/admin/bet-summary-state-update', {betsum: this.betSum, betstate: betstate,}).then((result) => {
+          await axios.patch('/api/admin/bet-summary-state-update', {betsum: this.betSum, betstate: betstate,}).then((result) => {
             if (result.data.message !== 'active') {
               setTimeout(() => {
                 this.betSummary.splice(this.removeIndex, 1)
@@ -498,7 +498,7 @@ export default {
       })
     },
     async paymentBet(list, event) {
-      await axios.put('/api/admin/bet-payment', { betsum: list }).then((result) => {
+      await axios.patch('/api/admin/bet-payment', { betsum: list }).then((result) => {
         if (result.data.code == 200) {
           event.target.value = 'ÖDENDİ'
           event.target.style.backgroundColor = '#1A6D91'

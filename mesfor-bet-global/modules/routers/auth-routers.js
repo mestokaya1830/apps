@@ -85,7 +85,7 @@ router.post("/login", tryCatch(async (req, res) => {
           await Users.updateOne({ user: req.body.user },{ logincheck: "active"});
           req.session.auth = result
           req.session.save()
-          res.json({ code: 200, login: "Giriş Başarılı", auth: result});
+          res.status(200).json({ login: "Giriş Başarılı", auth: result});
         }
       } else {
         if (result.fakelogin < result.logincount) {
@@ -93,13 +93,13 @@ router.post("/login", tryCatch(async (req, res) => {
             { user: req.body.user },
             { $inc: { fakelogin: + 1 } }
           );
-          res.json({ login: "Geçersiz üye" });
+          res.status(200).json({ login: "Geçersiz üye" });
         } else {
-          res.json({ login: "Hatalı giriş sınırı!" });
+          res.status(200).json({ login: "Hatalı giriş sınırı!" });
         }
       }
     } else {
-      res.json({ login: "Geçersiz üye" });
+      res.status(200).json({ login: "Geçersiz üye" });
     }
   }
 }))
@@ -121,7 +121,7 @@ router.post("/logout", tryCatch(async (req, res) => {
   await loginlogs.save();
   await Users.updateOne({ user: req.session.auth.user },{ logincheck: "passive" })
   delete req.session.auth
-  res.send({code: 200})
+  res.status(204).send()
 }));
 router.post("/reset-password", tryCatch(async (req, res) => {
   const result = await Users.findOne({ user: req.body.user }, "user nick");
@@ -129,12 +129,12 @@ router.post("/reset-password", tryCatch(async (req, res) => {
     let newPass = cryptr.encrypt(req.body.pass);
     if (req.body.nick === result.nick) {
       await Users.updateOne({ user: req.body.user },{pass: newPass, logincheck: "passive", fakelogin: 0, sessioncount: 0,});
-      res.json({ code: 200, message: "Sıfırlama başarılı" });
+      res.status(200).json({ message: "Sıfırlama başarılı" });
     } else {
-      return res.json({ message: "Gecersiz nick" });
+      return res.status(200).json({ message: "Gecersiz nick" });
     }
   } else {
-    return res.json({ message: "Gecersiz kullanici" });
+    return res.status(200).json({ message: "Gecersiz kullanici" });
   }
 }))
 

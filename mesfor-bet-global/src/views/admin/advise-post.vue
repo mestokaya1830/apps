@@ -48,7 +48,7 @@ export default {
       } else {
         this.isLoader = true
         await axios.post('/api/admin/boss/advise', {advise: this.advise}).then(result => {
-          if(result.data.code == 200){
+          if(result.status == 204){
             this.isLoader = false
             this.message = {
               state:'success',

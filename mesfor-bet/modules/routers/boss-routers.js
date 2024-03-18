@@ -20,7 +20,7 @@ router.post("/boss-backup-database",tryCatch(async (req, res) => {
   const setBackup = () => {
     cp.exec(`mongodump --db=bet --out ${path}  --authenticationDatabase admin --username 'Boss' --password 'MK1972mk11130113'`,function(error, stdout, stderr) {
       if (!error) {
-        res.json("Backedup")
+        res.status(200).json("Backedup")
         return false
       }
       console.log(error)
@@ -39,7 +39,7 @@ router.post("/boss-restore-database",tryCatch(async (req, res) => {
       let path = stdout.substring(0, stdout.length-1)
       cp.exec(`mongorestore -d bet ~/dump/${path}/bet --drop --authenticationDatabase admin --username 'Boss' --password 'MK1972mk11130113'`,function(error) {
         if (!error) {
-          res.json("Restored")
+          res.status(200).json("Restored")
           return false
         }
         console.log(error)
@@ -54,7 +54,7 @@ router.post("/boss-set-anons",tryCatch(async (req, res) => {
 }))
 router.get("/boss-get-anons",tryCatch(async (req, res) => {
   const result = await Anons.findOne()
-  res.json({ result })
+  res.status(200).json({ result })
 }))
 router.post("/boss-delete-anons",tryCatch(async (req, res) => {
   await Anons.deleteOne()
@@ -63,7 +63,7 @@ router.post("/boss-delete-anons",tryCatch(async (req, res) => {
 router.get("/boss-active-users",tryCatch(async (req, res) => {
   if (req.session.auth.role === "Boss") {
     const users = await Users.find({ logincheck: "active" }, "user admin")
-    res.json({ result: users })
+    res.status(200).json({ result: users })
   }
 }))
 router.get("/boss-get-old-data",tryCatch(async (req, res) => {
@@ -77,7 +77,7 @@ router.get("/boss-get-old-data",tryCatch(async (req, res) => {
       const creditLogs = await Creditlogs.countDocuments({ date: { $lte: start } })
       const loginLogs = await Loginlogs.countDocuments({ date: { $lte: start } })
       Promise.all([betSummaries, bets, gameLogs, creditLogs, loginLogs]).then((result) => {
-        res.json(result)
+        res.status(200).json(result)
       })
     }
   }
@@ -93,10 +93,10 @@ router.post("/boss-delete-old-data",tryCatch(async (req, res) => {
       const creditLogs = await Creditlogs.deleteMany({ date: { $lte: start } })
       const gameLogs = await Gamelogs.deleteMany({ date: { $lte: start } })
       Promise.all([betSummaries, bets, loginLogs, creditLogs, gameLogs]).then((result) => {
-        res.json('Deleted')
+        res.status(200).json('Deleted')
       })
     } else {
-      res.json('No Data')
+      res.status(200).json('No Data')
     }
   }
 }))
@@ -112,10 +112,10 @@ router.post("/boss-delete-old-messages",tryCatch(async (req, res) => {
             fs.unlinkSync(path)
           }
         }
-        res.json('Deleted')
+        res.status(200).json('Deleted')
       })
     } else {
-      res.json('No Data')
+      res.status(200).json('No Data')
     }
   }
 }))
@@ -128,11 +128,11 @@ router.post("/boss/advise", tryCatch(async (req, res) => {
     text:req.body.advise.text
    })
   await newAdvise.save()
-  res.json({code: 200})
+  res.status(204).send()
 }))
 router.get("/boss/advise-list", tryCatch(async (req, res) => {
   const result = await Advise.find()
-  if(result.length > 0) res.json(result)
+  if(result.length > 0) res.status(200).json(result)
   
 }))
 export default router

@@ -77,7 +77,7 @@ router.post("/logout", tryCatch(async (req, res) => {
   await loginlogs.save();
   await Users.updateOne({ user: req.session.auth.user },{ logincheck: "passive" })
   delete req.session.auth
-  res.send({code: 204})
+  res.status(204).send()
 }));
 router.post("/reset-password", tryCatch(async (req, res) => {
   const result = await Users.findOne({ user: req.body.user }, "user nick");

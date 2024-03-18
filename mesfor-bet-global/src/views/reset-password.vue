@@ -77,7 +77,7 @@ export default {
     async resetPass() {
       this.isLoader = true;
       await axios.post("/api/reset-password", this.setPass).then((result) => {
-        if (result.data.code === 200) {
+        if (result.status === 200) {
           this.message = {
             state:'success',
             result: result.data.message

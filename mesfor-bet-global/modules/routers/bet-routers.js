@@ -10,7 +10,7 @@ import Ides from '../schemas/ides-schema.js'
 
 router.get('/ides', tryCatch(async(req, res) => {
   const ides = await Ides.findOne({})
-  res.json({ides: ides})
+  res.status(200).json({ides: ides})
 }))
 router.post('/add-bet', tryCatch(async (req, res) => {
   if (req.session.auth.role == 'Member') {
@@ -50,7 +50,7 @@ router.post('/add-bet', tryCatch(async (req, res) => {
     })
     const checkcredit = await Users.findOne({ user: req.session.auth.user }, 'credit creditremain')
     if (newSummary.amount > checkcredit.creditremain) {
-      return res.json({ error: 'Yetersiz Bakiye' })
+      return res.status(200).json({ error: 'Yetersiz Bakiye' })
     } else {
       await Bets.insertMany(newBets)
       await betSummary.save()
@@ -68,7 +68,7 @@ router.post('/add-bet', tryCatch(async (req, res) => {
         des: 'Kupon'
       })
       await gamelog.save()
-      res.json({ message: 'Kupon basarıyla eklendi', credit: result.credit, creditremain: result.creditremain })
+      res.status(200).json({ message: 'Kupon basarıyla eklendi', credit: result.credit, creditremain: result.creditremain })
     }
   }
 }))
@@ -87,12 +87,12 @@ router.post('/cancel-bet', tryCatch(async (req, res) => {
     des: 'iptal'
   })
   await gamelog.save()
-  res.json({ code: 200, message: 'Kupon iptal edildi' })
+  res.status(200).json({ message: 'Kupon iptal edildi' })
 }))
-router.put('/return-bet', tryCatch(async (req, res) => {
+router.patch('/return-bet', tryCatch(async (req, res) => {
   const ccr = await Users.findOne({ user: req.body.betsum.user }, 'creditremain')
   if (req.body.betsum.amount > ccr.creditremain) {
-    res.json({ code: 401 })
+    res.status(400).send()
   } else {
     await Betsummaries.updateOne({ sumid: req.body.betsum.sumid }, { $set: { state: 'Aktif' } })
     await Bets.updateMany({ _id: req.body.betsum.betid }, { $set: { state: 'Aktif' } })
@@ -108,16 +108,16 @@ router.put('/return-bet', tryCatch(async (req, res) => {
       des: 'iptal-Aktif'
     })
     await gamelog.save()
-    res.json({ code: 200 })
+    res.status(204).send()
   }
 }))
 router.get('/last-coupon/', tryCatch(async (req, res) => {
   const lastSumId = await Betsummaries.findOne({ $and: [{ user: req.session.auth.user }, { stream: 'Bülten' }, { state: 'Aktif' }] }).sort({ _id: -1 }).limit(1)
   if (lastSumId) {
     const result = await Bets.find({ sumid: lastSumId.sumid }, 'code matches games options rate betid eventtime branch')
-    res.json(result)
+    res.status(200).json(result)
   } else {
-    res.json({ status: 401 })
+    res.status(400).send()
   }
 }))
 router.get('/bet-summary/:userbox/:statebox', tryCatch(async (req, res) => {
@@ -125,41 +125,41 @@ router.get('/bet-summary/:userbox/:statebox', tryCatch(async (req, res) => {
   const end = moment().format('YYYY-MM-DD 24:00:00')
   if (req.params.statebox == 'Aktif') {
     const betsummary = await Betsummaries.find({ user: req.session.auth.user, state: 'Aktif' }).sort({ _id: -1 })
-    res.json({ betsummary })
+    res.status(200).json({ betsummary })
   } else {
     if (req.params.statebox == 'Hepsi') {
       const betsummary = await Betsummaries.find({ user: req.session.auth.user, date: { $gte: start, $lt: end }, state: { $ne: 'iptal' } }).sort({ _id: -1 })
-      res.json({ betsummary })
+      res.status(200).json({ betsummary })
     } else {
       const betsummary = await Betsummaries.find({ user: req.session.auth.user, date: { $gte: start, $lt: end }, state: req.params.statebox }).sort({ _id: -1 })
-      res.json({ betsummary })
+      res.status(200).json({ betsummary })
     }
   }
 }))
 router.get('/bet-summary/:id', tryCatch(async (req, res) => {
   const bets = await Bets.find({ sumid: req.params.id })
-  res.json({ bets: bets })
+  res.status(200).json({ bets: bets })
 }))
 router.get('/bet-summary/date-filter/:userbox/:statebox/:start/:end', tryCatch(async (req, res) => {
   if (req.params.statebox == 'Hepsi') {
     const datefilter = await Betsummaries.find({ user: req.session.auth.user, date: { $gte: req.params.start, $lte: req.params.end }, state: { $ne: 'iptal' } }).sort({ _id: -1 })
-    res.json({ code: 200, datefilter: datefilter })
+    res.status(200).json({ datefilter: datefilter })
   } else {
     const datefilter = await Betsummaries.find({ user: req.session.auth.user, state: req.params.statebox, date: { $gte: req.params.start, $lte: req.params.end } }).sort({ _id: -1 })
-    res.json({ code: 200, datefilter: datefilter })
+    res.status(200).json({ datefilter: datefilter })
   }
 }))
 router.get('/bet-summary/day-filter/:userbox/:start/:end', tryCatch(async (req, res) => {
   const dayfilter = await Betsummaries.find({ user: req.session.auth.user, date: { $gte: req.params.start, $lte: req.params.end }, state: { $ne: 'iptal' } }).sort({ _id: -1 })
-  res.json({ code: 200, dayfilter: dayfilter })
+  res.status(200).json({ dayfilter: dayfilter })
 }))
 router.get('/bet-summary/week-filter/:userbox/:weekdate/:start/:end', tryCatch(async (req, res) => {
   if (req.params.weekdate == 'Hepsi') {
     const weekfilter = await Betsummaries.find({ user: req.session.auth.user, date: { $gte: req.params.start, $lte: req.params.end }, state: { $ne: 'iptal' } }).sort({ _id: -1 })
-    res.json({ code: 200, weekfilter: weekfilter })
+    res.status(200).json({ weekfilter: weekfilter })
   } else {
     const weekfilter = await Betsummaries.find({ user: req.session.auth.user, state: req.params.weekdate, date: { $gte: req.params.start, $lte: req.params.end } }).sort({ _id: -1 })
-    res.json({ code: 200, weekfilter: weekfilter })
+    res.status(200).json({ weekfilter: weekfilter })
   }
 }))
 router.get('/bet-summary-single/:userbox/:statebox', tryCatch(async (req, res) => {
@@ -171,42 +171,42 @@ router.get('/bet-summary-single/:userbox/:statebox', tryCatch(async (req, res) =
       }
     })
   }
-  res.json({ betsummary })
+  res.status(200).json({ betsummary })
 }))
 router.get('/bet-summary-search/:sumid', tryCatch(async (req, res) => {
   const betsummary = await Betsummaries.find({ user: req.session.auth.user, sumid: req.params.sumid })
-  res.json({ betsummary })
+  res.status(200).json({ betsummary })
 }))
-router.put('/bet-state-update', tryCatch(async (req, res) => {
+router.patch('/bet-state-update', tryCatch(async (req, res) => {
   let rbb = req.body.betdetail
   const result = await Bets.findOne({ _id: rbb._id })
   await Bets.updateOne({ _id: rbb._id }, { $set: { state: rbb.state } })
   if (result.state == 'Aktif' && rbb.state == 'Kaybetti') {
     await Betsummaries.updateOne({ sumid: req.body.betsum.sumid }, { $inc: { betscountremain: + 1, lostcount: + 1 } })
-    res.json({ code: 200 })
+    res.status(204).send()
   } else if ((result.state == 'Aktif' && rbb.state == 'Kazandi') || (result.state == 'Aktif' && rbb.state == 'iade')) {
     await Betsummaries.updateOne({ sumid: req.body.betsum.sumid }, { $inc: { betscountremain: + 1, woncount: + 1 } })
-    res.json({ code: 200 })
+    res.status(204).send()
   } else if (result.state == 'Kaybetti' && rbb.state == 'Aktif') {
     await Betsummaries.updateOne({ sumid: req.body.betsum.sumid }, { $inc: { betscountremain: - 1, lostcount: - 1 } })
-    res.json({ code: 200 })
+    res.status(204).send()
   } else if ((result.state == 'Kazandi' && rbb.state == 'Aktif') || (result.state == 'iade' && rbb.state == 'Aktif')) {
     await Betsummaries.updateOne({ sumid: req.body.betsum.sumid }, { $inc: { betscountremain: - 1, woncount: - 1 } })
-    res.json({ code: 200 })
+    res.status(204).send()
   } else if (result.state == 'Kaybetti' && rbb.state == 'Kazandi') {
     await Betsummaries.updateOne({ sumid: req.body.betsum.sumid }, { $inc: { lostcount: - 1, woncount: + 1 } })
-    res.json({ code: 200 })
+    res.status(204).send()
   } else if ((result.state == 'Kazandi' && rbb.state == 'Kaybetti') || (result.state == 'iade' && rbb.state == 'Kaybetti')) {
     await Betsummaries.updateOne({ sumid: req.body.betsum.sumid }, { $inc: { lostcount: + 1, woncount: - 1 } })
-    res.json({ code: 200 })
+    res.status(204).send()
   } else if (result.state == 'iade' && rbb.state == 'Kazandi') {
     await Betsummaries.updateOne({ sumid: rbb._id, state: 'iade' })
-    res.json({ code: 200 })
+    res.status(204).send()
   } else {
-    res.json({ code: 200 })
+    res.status(204).send()
   }
 }))
-router.put('/bet-summary-state-update', tryCatch(async (req, res) => {
+router.patch('/bet-summary-state-update', tryCatch(async (req, res) => {
   const betsum = req.body.betsum
   const betstate = req.body.betstate
   let ope = ''
@@ -216,7 +216,7 @@ router.put('/bet-summary-state-update', tryCatch(async (req, res) => {
   await Betsummaries.updateOne({ sumid: betsum.sumid }, { $set: { state: betstate } })
 
   if (cbss.state == 'Aktif' && betstate == 'Kaybetti') {
-    res.json({ message: 'Kaybetti' })
+    res.status(200).json({ message: 'Kaybetti' })
   } else if (cbss.state == 'Aktif' && betstate == 'iade') {
     await Users.updateOne({ user: betsum.user }, { $inc: { creditremain: + betsum.amount } })
     await Betsummaries.updateOne({ sumid: betsum.sumid }, { $set: { rate: 1, earn: betsum.amount } })
@@ -224,7 +224,7 @@ router.put('/bet-summary-state-update', tryCatch(async (req, res) => {
     des = 'iade'
     insertGameLog(betsum.user, finduser.user, betsum.amount, ope, des)
   } else if (cbss.state == 'Kaybetti' && betstate == 'Aktif') {
-    res.json({ code: 200 })
+    res.status(204).send()
   } else if ((cbss.state == 'iade' && betstate == 'Aktif') || (cbss.state == 'iade' && betstate == 'Kaybetti')) {
     await Users.updateOne({ user: betsum.user }, { $inc: { creditremain: - betsum.amount } })
     ope = 'Eksilen'
@@ -251,7 +251,7 @@ router.put('/bet-summary-state-update', tryCatch(async (req, res) => {
         insertGameLog(betsum.user, finduser.user, newEarn, ope, des)
         return false
       }
-      res.json({code: 200})
+      res.status(204).send()
     } else {
         if(finduser.autopay == 1){
           await Betsummaries.updateOne({ sumid: betsum.sumid }, { $set: { adminpay: 'yes' } })
@@ -276,7 +276,7 @@ router.put('/bet-summary-state-update', tryCatch(async (req, res) => {
         des = 'Düzeltme'
         insertGameLog(betsum.user, finduser.user, oldearn.earn, ope, des)
       } else {
-        res.json({ code: 200 })
+        res.status(204).send()
       }
     }
   } else {
@@ -294,10 +294,10 @@ router.put('/bet-summary-state-update', tryCatch(async (req, res) => {
       des
     })
     await gamelog.save()
-    res.json({ code: 200 })
+    res.status(204).send()
   }
 }))
-router.put('/bet-payment', tryCatch(async (req, res) => {
+router.patch('/bet-payment', tryCatch(async (req, res) => {
   await Betsummaries.updateOne({ sumid: req.body.betsum.sumid }, { $set: { adminpay: 'yes' } })
   await Users.updateOne({ user: req.body.betsum.user }, { $inc: { creditremain: + req.body.betsum.earn } })
   const users = await Users.findOne({ user: req.body.betsum.user }, 'creditremain')
@@ -311,43 +311,43 @@ router.put('/bet-payment', tryCatch(async (req, res) => {
     des: 'Kazandi'
   })
   await gamelog.save()
-  res.json({code: 200})
+  res.status(204).send()
 }))
 router.get('/active-info/:userbox', tryCatch(async (req, res) => {
   const activeinfo = await Betsummaries.aggregate([
     { $match: { user: req.session.auth.user, state: 'Aktif' } },
     { $group: { _id: null, activeamount: { $sum: '$amount' }, activeearn: { $sum: '$earn' }, activecount: { $sum: 1 } } }])
-  res.json({ activeinfo: activeinfo[0] })
+  res.status(200).json({ activeinfo: activeinfo[0] })
 }))
 router.get('/won-info/:userbox', tryCatch(async (req, res) => {
   const woninfo = await Betsummaries.aggregate([
     { $match: { user: req.session.auth.user, state: 'Kazandi' } },
     { $group: { _id: null, wonamount: { $sum: '$amount' }, wonearn: { $sum: '$earn' }, woncount: { $sum: 1 } } }])
-  res.json({ woninfo: woninfo[0] })
+  res.status(200).json({ woninfo: woninfo[0] })
 }))
 router.get('/lost-info/:userbox', tryCatch(async (req, res) => {
   const lostinfo = await Betsummaries.aggregate([
     { $match: { user: req.session.auth.user, state: 'Kaybetti' } },
     { $group: { _id: null, lostamount: { $sum: '$amount' }, lostearn: { $sum: '$earn' }, lostcount: { $sum: 1 } } }])
-  res.json({ lostinfo: lostinfo[0] })
+  res.status(200).json({ lostinfo: lostinfo[0] })
 }))
 router.get('/total-info/:userbox', tryCatch(async (req, res) => {
   const totalinfo = await Betsummaries.aggregate([
     { $match: { user: req.session.auth.user, $or:[{state: 'Aktif'}, {state:'Kazandi'}, {state:'Kaybetti'}] }},
     { $group: { _id: null, totalamount: { $sum: '$amount' }, totalearn: { $sum: '$earn' }, totalcount: { $sum: 1 } } }])
-  res.json({ totalinfo: totalinfo[0] })
+  res.status(200).json({ totalinfo: totalinfo[0] })
 }))
 router.get('/game-logs/:userbox', tryCatch(async (req, res) => {
   const gamelog = await Gamelogs.find({ user: req.session.auth.user }).sort({ _id: -1 })
-  res.json({ gamelog: gamelog })
+  res.status(200).json({ gamelog: gamelog })
 }))
 router.get('/game-logs-search/:gameid', tryCatch(async (req, res) => {
   const gamelog = await Gamelogs.find({ gameid: req.params.gameid })
-  res.json({ gamelog: gamelog })
+  res.status(200).json({ gamelog: gamelog })
 }))
 router.get('/game-logs-date-filter/:userbox/:start/:end', tryCatch(async (req, res) => {
   const datefilter = await Gamelogs.find({ user: req.session.auth.user, date: { $gte: req.params.start, $lte: req.params.end } }).sort({ _id: -1 })
-  res.json({ datefilter: datefilter })
+  res.status(200).json({ datefilter: datefilter })
 }))
 
 export default router

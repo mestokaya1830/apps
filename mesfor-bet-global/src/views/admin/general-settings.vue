@@ -93,13 +93,13 @@ export default {
       })
     },
     async autopayUpdate () {
-      await axios.put('/api/admin/autopay-update', {autopay:this.user.autopay})
+      await axios.patch('/api/admin/autopay-update', {autopay:this.user.autopay})
     },
     async updateLoginCount (value) {
       if (value && value > -1) {
         this.isLoader = 'logincount'
-        await axios.put('/api/admin/login-count-update', {logincount:this.user.logincount}).then((result) => {
-          if (result.data.code == 200) {
+        await axios.patch('/api/admin/login-count-update', {logincount:this.user.logincount}).then((result) => {
+          if (result.status == 2004) {
             this.isLoader = ''
             this.getUser()
           }
@@ -115,8 +115,8 @@ export default {
           this.usererror = 'Komisyon 10 den fazla olamaz!'
         } else {
           this.customererror = ''
-          await axios.put('/api/admin/customer-comission-update', {customercomission:this.user.customercomission}).then((result) => {
-            if (result.data.code === 200) {
+          await axios.patch('/api/admin/customer-comission-update', {customercomission:this.user.customercomission}).then((result) => {
+            if (result.status === 204) {
               this.isLoader = ''
               this.getUser()
             }
@@ -129,8 +129,8 @@ export default {
     async updateUserCancelbet (value) {
       if (value == 0 || value > 0) {
         this.isLoader = 'usercancelbet'
-        await axios.put('/api/admin/user-cancel-bet-update', {usercancelbet:this.user.usercancelbet}).then((result) => {
-          if (result.data.code === 200) {
+        await axios.patch('/api/admin/user-cancel-bet-update', {usercancelbet:this.user.usercancelbet}).then((result) => {
+          if (result.status === 204) {
             this.isLoader = ''
             this.getUser()
           }

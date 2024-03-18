@@ -280,11 +280,11 @@ cron.schedule("*/15 * * * *", () => {
 })
 router.get("/soccer", tryCatch(async (req, res) => {
   const result = await SoccerFixtures.find({ Date: { $gt: moment(), $lt: moment().format('YYYY-MM-DD 24:00:00')}})
-  res.json({result})
+  res.status(200).json({result})
 }))
 router.get("/soccer-date-filter/:start/:end",  tryCatch(async (req, res) => {
   const result = await SoccerFixtures.find({ Date: { $gt: req.params.start, $lt: req.params.end}})
-  res.json({result})
+  res.status(200).json({result})
 }))
 router.get("/soccer-search/:id", cacheMiddleware(960) ,tryCatch(async (req, res) => {
   const result = await SoccerFixtures.find({
@@ -293,7 +293,7 @@ router.get("/soccer-search/:id", cacheMiddleware(960) ,tryCatch(async (req, res)
       {AwayTeam: new RegExp(req.params.id, 'i')}
     ]
   })
-  res.json({result})
+  res.status(200).json({result})
 }))
 router.get("/basket-search/:id", cacheMiddleware(960) ,tryCatch(async (req, res) => {
   const result = await BasketFixtures.find({
@@ -302,21 +302,21 @@ router.get("/basket-search/:id", cacheMiddleware(960) ,tryCatch(async (req, res)
       {AwayTeam: new RegExp(req.params.id, 'i')}
     ]
   })
-  res.json({result})
+  res.status(200).json({result})
 }))
 router.get("/basket", cacheMiddleware(960), tryCatch(async (req, res) => {
   const result = await BasketFixtures.find({ Date: { $gt: moment(), $lt: moment().format('YYYY-MM-DD 24:00:00')}})
-  res.json({result})
+  res.status(200).json({result})
 }))
 router.get("/basket-date-filter/:start/:end", cacheMiddleware(960), tryCatch(async (req, res) => {
   const result = await BasketFixtures.find({ Date: { $gt: req.params.start, $lt: req.params.end}})
-  res.json({result})
+  res.status(200).json({result})
 }))
 router.get("/odds/:id", cacheMiddleware(960), (req, res) => {
   try {
     const result = request('GET', `https://api.betsapi.com/v1/bwin/event?token=${process.env.API_KEY}&event_id=${req.params.id}`, { json: { results: 'results' } })
     const final = JSON.parse(result.getBody('utf8')).results
-    res.json(final)
+    res.status(200).json(final)
   } catch (error) {
     console.log(error)
   }
@@ -326,10 +326,10 @@ router.get("/soccer-live", cacheMiddleware(60), (req, res) => {
     const result = request('GET', `https://api.betsapi.com/v1/bwin/inplay?token=${process.env.API_KEY}&sport_id[]=4`, { json: { results: 'results' } })
     // const final =  JSON.parse(result.getBody('utf8')).results.filter(item => item.Scoreboard.started == true && item.Scoreboard.period !== 'Reg. Time Over')
     console.log(result.statusCode)
-    res.json(final)
+    res.status(200).json(final)
   } catch (error) {
     if(error){
-      res.json({code: 400})
+      res.status(400).send()
     }
   }
   
@@ -338,10 +338,10 @@ router.get("/basket-live", cacheMiddleware(30), (req, res) => {
   try {
     const result = request('GET', `https://api.betsapi.com/v1/bwin/inplay?token=${process.env.API_KEY}&sport_id[]=7`, { json: { results: 'results' } })
     const final =  JSON.parse(result.getBody('utf8')).results.filter(item => item.Scoreboard.started == true && item.Scoreboard.period !== 'Reg. Time Over')
-    res.json(final)
+    res.status(200).json(final)
   } catch (error) {
     if(error){
-      res.json({code: 400})
+      res.status(400).send()
     }
   }
 })
@@ -360,10 +360,10 @@ router.get(`/scores/:id`, cacheMiddleware(300), async(req, res) => {
     const final = JSON.parse(result.getBody('utf8')).results
     if(final[0].ss != null){
       await Bets.updateMany({betid: req.params.id}, {$set:{score:final[0].ss}})
-      res.json(final)
+      res.status(200).json(final)
       return false
     }
-    res.json(401)
+    res.status(400).send()
   } catch (error) {
     console.log(error)
   }

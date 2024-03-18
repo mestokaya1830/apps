@@ -53,7 +53,7 @@ export default {
       if (navigator.onLine === true) {
         this.isLoader = true
         await axios.post('/api/login', { user: this.user, pass: this.pass }).then((result) => {
-          if (result.data.code === 200) {
+          if (result.status === 200) {
             this.$store.commit('setAuth', result.data.auth)
             this.isLoader = false
             this.message = {

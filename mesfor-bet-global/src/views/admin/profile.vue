@@ -87,8 +87,8 @@ export default {
         alert('Nick alanı en az 4 karekter ve ilk karekter Harf yada Sayı olabilir!')
       } else {
         this.isLoader = 'nick'
-        await axios.put('/api/admin/profile-update', {nick: value}).then((result) => {
-          if (result.data.code === 200) {
+        await axios.patch('/api/admin/profile-update', {nick: value}).then((result) => {
+          if (result.status === 204) {
             this.isLoader = ''
             return false
           }

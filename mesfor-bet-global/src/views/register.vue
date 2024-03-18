@@ -82,7 +82,7 @@ export default {
         }
         this.isLoader = true
         await axios.post('/api/register', {newUser: this.newUser}).then((result) => {
-          if (result.data.code == 200) {
+          if (result.status == 200) {
             this.isLoader = false
             this.message = {
               state: 'success',

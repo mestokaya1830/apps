@@ -115,16 +115,16 @@ export default {
     },
     async updatePayment () {
       this.isLoader = 'payment'
-      await axios.put('/api/admin/payment-update/' + this.$route.params.id, {users: this.users}).then((result) => {
-        if (result.data.code === 200) {
+      await axios.patch('/api/admin/payment-update/' + this.$route.params.id, {users: this.users}).then((result) => {
+        if (result.status === 204) {
           this.isLoader = ''
         }
       })
     },
     async updateState () {
       this.isLoader = 'state'
-      await axios.put('/api/admin/state-update/' + this.$route.params.id, {state: this.users.state}).then((result) => {
-        if (result.data.code === 200) {
+      await axios.patch('/api/admin/state-update/' + this.$route.params.id, {state: this.users.state}).then((result) => {
+        if (result.status === 204) {
           this.isLoader = ''
         }
       })
@@ -134,7 +134,7 @@ export default {
       if(cfm){
         this.isLoader = 'delete'
         await axios.post('/api/admin/delete/' + id).then((result) => {
-          if (result.data.code === 204) {
+          if (result.status === 200) {
             this.$router.push('/admin/users')
             this.betInfoMix()
             this.isLoader = ''
@@ -148,8 +148,8 @@ export default {
     async updateUserLimit (value) {
       if(value && value > 0){
         this.isLoader = 'limit'
-        await axios.put('/api/admin/users-limit-update/' + this.$route.params.id, {newlimit:value}).then((result) => {
-          if (result.data.code === 200) {
+        await axios.patch('/api/admin/users-limit-update/' + this.$route.params.id, {newlimit:value}).then((result) => {
+          if (result.status === 204) {
             this.isLoader = ''
           }
         })
@@ -159,8 +159,8 @@ export default {
     },
     async creditRemainFunction (operate) {
       this.isLoader = 'credit'
-      await axios.put('/api/admin/credit-remain-update/' + this.$route.params.id, {operate:operate,creditremain:this.users.creditremain, updateamount: this.updateAmount}).then((result) => {
-        if (result.data.code === 200) {
+      await axios.patch('/api/admin/credit-remain-update/' + this.$route.params.id, {operate:operate,creditremain:this.users.creditremain, updateamount: this.updateAmount}).then((result) => {
+        if (result.status === 204) {
           this.updateAmount = null
           this.userDetails()
           this.betInfoMix()
