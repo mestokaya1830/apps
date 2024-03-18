@@ -79,6 +79,10 @@ export default {
         this.isLoader = true
         await axios.post('/api/admin/add-user', {newUser:this.newUser} ).then((result) => {
           if (result.data.code === 201) {
+            this.message = {
+              state:'success',
+              result: result.data.message
+            }
             this.isBtnReg = false
             this.isLoader = false
             this.betInfoMix()

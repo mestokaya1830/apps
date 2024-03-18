@@ -60,11 +60,11 @@ router.post('/add-user', tryCatch(async (req, res) => {
         await Soccermarkets.updateMany({}, { $set: { [newUser.user]: true } })
         await Soccerlivemarkets.updateMany({}, { $set: { [newUser.user]: true } })
         await newUsers.save()
-        res.json({ code: 200, message: 'Yeni kullanici eklendi' })
+        res.json({ code: 201, message: 'Yeni kullanıcı eklendi' })
       } else if (req.session.auth.role === 'Boss') {
         await Users.updateOne({ user: newUser.admin }, { $inc: { usedlimit: + 1 } })
         await newUsers.save()
-        res.json({ code: 200, message: 'Yeni kullanici eklendi' })
+        res.json({ code: 201, message: 'Yeni kullanıcı eklendi' })
       } else {
         newUsers.settings = {
           minms: 1,
