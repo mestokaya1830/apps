@@ -64,10 +64,10 @@ export default {
           this.$store.commit("removeSlips", '');
           this.$store.commit("setOpenChat", false);
           this.$store.commit("setAuth", '');
-          socket.disconnect();
           localStorage.clear();
           this.isLoader = false;
           this.$router.push("/");
+          socket.close();
         }
       })
     },

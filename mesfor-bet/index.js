@@ -12,7 +12,6 @@ import marketsRouters from './modules/routers/markets-routers.js'
 import chatRouters from './modules/routers/chat-routers.js'
 import bossRouters from './modules/routers/boss-routers.js'
 import path from 'path'
-import auth from './middleware/auth.js'
 import session from 'express-session'
 import MongoStore from 'connect-mongo'
 import http from 'http'
@@ -44,12 +43,12 @@ app.use(session({
 }))
 
 app.use('/api', authRouters)
-app.use('/api/chat', auth, chatRouters)
-app.use('/api/games', auth, apiRouters)
-app.use('/api/admin', auth, userRouters)
-app.use('/api/admin', auth, betRouters)
-app.use('/api/admin', auth, marketsRouters)
-app.use('/api/admin', auth, bossRouters)
+app.use('/api/chat', chatRouters)
+app.use('/api/games', apiRouters)
+app.use('/api/admin', userRouters)
+app.use('/api/admin', betRouters)
+app.use('/api/admin', marketsRouters)
+app.use('/api/admin', bossRouters)
 
 const server = http.createServer(app)
 const io = new Server(server)

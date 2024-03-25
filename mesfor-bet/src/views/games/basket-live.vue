@@ -206,25 +206,27 @@ export default {
   },
   methods: {
     async getLive () {
-      this.isLoader = true
       await axios.get("/api/games/basket-live").then((result) => {
         if(result.data.auth){
           window.location.reload()
           return false
         }
-        const final = result.data
-        this.liveList =  this.setGroupMix(final, 'LeagueId')
-        this.isLoader = false
-        
-        this.liveListLength = final.length
-        this.suspendBet = final.map(item => {
-          return {
-            id:String(item.Id).slice(-3),
-            score:item.HomeTeam +'-'+ item.AwayTeam
-          }
-        })
-        this.transCountriesMix(final)
-        this.searchMatches = result.data
+        if(result.data){
+          this.isLoader = true
+          const final = result.data
+          this.liveList =  this.setGroupMix(final, 'LeagueId')
+          this.isLoader = false
+          
+          this.liveListLength = final.length
+          this.suspendBet = final.map(item => {
+            return {
+              id:String(item.Id).slice(-3),
+              score:item.HomeTeam +'-'+ item.AwayTeam
+            }
+          })
+          this.transCountriesMix(final)
+          this.searchMatches = result.data
+        }
       })
     },
     getLiveOdds(value) {

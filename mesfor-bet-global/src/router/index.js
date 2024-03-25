@@ -8,25 +8,11 @@ const routes = [
     name:'categories',
     component: () => import('@/views/categories.vue'),
     meta:{title:'Mesfor- Kategoriler'},
-    // beforeEnter: (to, from, next) => {
-    //   if(!store.state.auth){
-    //     next({ path: '/' })
-    //   } else {
-    //     next()
-    //   }
-    // },
   },
   {
     path: "/games",
     name: "games",
     component: () => import('@/views/games.vue'),
-    // beforeEnter: (to, from, next) => {
-    //   if(!store.state.auth){
-    //     next({ path: '/' })
-    //   } else {
-    //     next()
-    //   }
-    // },
     children:[
       {
         path: "/games/soccer",

@@ -10,7 +10,6 @@ import Betsummaries from '../schemas/bet-summaries-schema.js'
 import moment from 'moment-timezone'
 import request from 'sync-request'
 import fetch from 'node-fetch'
-import { fork } from 'child_process'
 
 
 cron.schedule("*/5 * * * *", async () => {
@@ -325,11 +324,10 @@ router.get("/soccer-live", cacheMiddleware(60), (req, res) => {
   try {
     const result = request('GET', `https://api.betsapi.com/v1/bwin/inplay?token=${process.env.API_KEY}&sport_id[]=4`, { json: { results: 'results' } })
     // const final =  JSON.parse(result.getBody('utf8')).results.filter(item => item.Scoreboard.started == true && item.Scoreboard.period !== 'Reg. Time Over')
-    console.log(result.statusCode)
     res.status(200).json(final)
   } catch (error) {
     if(error){
-      res.status(400).send()
+      res.status(204).send()
     }
   }
   
@@ -341,7 +339,7 @@ router.get("/basket-live", cacheMiddleware(30), (req, res) => {
     res.status(200).json(final)
   } catch (error) {
     if(error){
-      res.status(400).send()
+      res.status(204).send()
     }
   }
 })

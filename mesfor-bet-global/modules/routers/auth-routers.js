@@ -7,6 +7,7 @@ import Users from "../schemas/users-schema.js"
 import Loginlogs from "../schemas/login-logs-schema.js"
 import Creditlogs from '../schemas/credit-logs-schema.js'
 
+
 router.post('/register', tryCatch(async (req, res) => {
   const newUser = req.body.newUser
   const user = await Users.find({email: newUser.email }, 'email')
@@ -57,6 +58,7 @@ router.post('/register', tryCatch(async (req, res) => {
     res.json({ code: 200, message: 'Kayıt Başarılı' })
   }
 }))
+
 router.post("/login", tryCatch(async (req, res) => {
   if (req.body.user) {
     const result = await Users.findOne({ user: req.body.user });
@@ -103,6 +105,7 @@ router.post("/login", tryCatch(async (req, res) => {
     }
   }
 }))
+
 router.post("/logout", tryCatch(async (req, res) => {
   const ip =
     req.headers["x-forwarded-for"] ||
@@ -123,6 +126,7 @@ router.post("/logout", tryCatch(async (req, res) => {
   delete req.session.auth
   res.status(204).send()
 }));
+
 router.post("/reset-password", tryCatch(async (req, res) => {
   const result = await Users.findOne({ user: req.body.user }, "user nick");
   if (result) {

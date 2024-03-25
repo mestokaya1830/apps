@@ -1,5 +1,5 @@
 {
-  "name": "test1",
+  "name": "mesfor",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -11,7 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "axios": "^1.6.7",
+    "axios": "^1.6.8",
     "connect-mongo": "^5.1.0",
     "cryptr": "^6.3.0",
     "dotenv": "^16.3.1",

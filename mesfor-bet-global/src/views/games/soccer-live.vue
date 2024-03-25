@@ -314,25 +314,27 @@ export default {
   },
   methods: {
     async getLive() {
-      this.isLoader = true
       await axios.get("/api/games/soccer-live").then((result) => {
         if(result.data.auth){
           window.location.reload()
           return false
         }
-        const final = result.data.filter(item =>  !item.LeagueName.includes('eSoccer') && !item.LeagueName.includes('Price Boost') && !item.LeagueName.includes('Enhanced Accas'))
-        this.liveList =  this.setGroupMix(final, 'LeagueId')
-        this.isLoader = false
-
-        this.searchMatches = final
-        this.liveListLength = final.length
-        this.transCountriesMix(result.data)
-
-        result.data.forEach(el => {
-          if( el.Scoreboard.period == 'Finished'){
-            socket.emit("Finished", el)
-          }
-        });
+        if(result.data){
+          this.isLoader = true
+          const final = result.data.filter(item =>  !item.LeagueName.includes('eSoccer') && !item.LeagueName.includes('Price Boost') && !item.LeagueName.includes('Enhanced Accas'))
+          this.liveList =  this.setGroupMix(final, 'LeagueId')
+          this.isLoader = false
+  
+          this.searchMatches = final
+          this.liveListLength = final.length
+          this.transCountriesMix(result.data)
+  
+          result.data.forEach(el => {
+            if( el.Scoreboard.period == 'Finished'){
+              socket.emit("Finished", el)
+            }
+          });
+        }
       })
     },
     getLiveOdds(value) {

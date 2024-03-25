@@ -8,6 +8,7 @@ import Betsummaries from '../schemas/bet-summaries-schema.js'
 import Gamelogs from '../schemas/game-logs-schema.js'
 import Ides from '../schemas/ides-schema.js'
 
+
 router.get('/ides', tryCatch(async(req, res) => {
   const ides = await Ides.findOne({})
   res.status(200).json({ides: ides})
