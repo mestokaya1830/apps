@@ -10,6 +10,24 @@ const routes = [
     meta:{title:'Mesfor- Kategoriler'},
   },
   {
+    path: "/register",
+    name:'register',
+    component: () => import('@/views/register.vue'),
+    meta:{title:'Mesfor-Kayıt'}
+  },
+  {
+    path: "/login",
+    name:'login',
+    component: () => import('@/views/login.vue'),
+    meta:{title:'Mesfor-Giriş'}
+  },
+  {
+    path: "/resetpassword",
+    name:'reset-password',
+    component: () => import('@/views/reset-password.vue'),
+    meta:{title:'Mesfor-Şifre Sıfırlama'}
+  },
+  {
     path: "/games",
     name: "games",
     component: () => import('@/views/games.vue'),
@@ -169,27 +187,10 @@ const routes = [
       }
     ]
   },
-  {
-    path: "/register",
-    name:'register',
-    component: () => import('@/views/register.vue'),
-    meta:{title:'Mesfor-Kayıt'}
-  },
-  {
-    path: "/login",
-    name:'login',
-    component: () => import('@/views/login.vue'),
-    meta:{title:'Mesfor-Giriş'}
-  },
-  {
-    path: "/resetpassword",
-    name:'reset-password',
-    component: () => import('@/views/reset-password.vue'),
-    meta:{title:'Mesfor-Şifre Sıfırlama'}
-  },
+  
   {
     path: "/:catchAll(.*)",
-    component: () => import('@/views/login.vue'),
+    component: () => import('@/views/categories.vue'),
     meta:{title:'Mesfor-Giriş'}
   }
 ];

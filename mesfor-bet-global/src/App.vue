@@ -62,10 +62,12 @@ export default {
   min-height: 100vh;
 }
 .login-form {
-  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30vw;
   min-height: 70vh;
-  background-color: #00000060;
-  border-radius: var(--radius);
+  background-color: #171c248a;
 }
 .login-header {
   align-items: center;
@@ -87,12 +89,13 @@ export default {
   color: #fff;
   font-size: calc(18px + 0.2vw);
   border: none;
-  background-color: #0c0c0c82;
+  background-color: #0c0c0c33;
 }
 .login-inputs:focus {
   outline: none;
   background-color: #00000090;
 }
+.login-inputs::placeholder{color: #ccc;}
 .login-button {
   width: 100%;
   height: calc(38px + 1vh);

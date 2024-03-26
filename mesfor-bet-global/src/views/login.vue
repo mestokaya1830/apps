@@ -1,5 +1,8 @@
 <template>
   <div class="login-page fjcac">
+    <a href="/" class="home-btn" title="Ana Sayfa">
+      <img src="@/assets/img/home-navbar.webp" alt="" width="40">
+    </a> 
     <form class="login-form" @submit.prevent="login()">
       <header class="login-header fjcac-col">
         <img src="@/assets/img/logo.webp" alt="" class="login-logo">

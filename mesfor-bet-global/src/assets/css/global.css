@@ -180,6 +180,11 @@ body::-webkit-scrollbar-thumb,
   margin: 0 5px;
   cursor: pointer;
 }
+.home-btn{
+  position: absolute;
+  top: 50px;
+  right: 40px;
+}
 .menu-1 {
   height: calc(50px + 0.5vw);
   min-height: calc(50px + 0.5vw);
@@ -229,7 +234,8 @@ body::-webkit-scrollbar-thumb,
 .social-icons:hover,
 .navbar-icons:hover,
 .categories-logout:hover,
-.scroll-top:hover{
+.scroll-top:hover,
+.home-btn:hover{
   transform: scale(1.1);
 } 
 .menu-icons{
