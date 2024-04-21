@@ -4,11 +4,10 @@ import helmet from 'helmet'
 import multer from 'multer'
 import sharp from 'sharp'
 import fs from 'fs'
-import dotenv from 'dotenv'
+import 'dotenv/config'
 import path from 'path'
 import zip from 'express-zip'
 
-dotenv.config({ debug: true })
 app.use(helmet())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true, limit: '3mb' }))
@@ -125,6 +124,6 @@ app.use((error, req, res, next) => {
   }
 })
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
   console.log('Server is running...')
 })
