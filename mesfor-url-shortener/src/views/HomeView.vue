@@ -4,7 +4,7 @@
       <img src="@/assets/logo.webp" alt="" class="logo">
       <h1 class="title">Mesfor Url Shortener</h1>
       <div class="wrapper">
-        <input type="text" id="url" class="inputs" placeholder="URL..."/>
+        <input type="text" v-model="url" class="inputs" placeholder="URL..."/>
         <button @click="createShortUrl()" class="input-btn">Create Short Url</button>
       </div>
       <table class="list">
@@ -15,9 +15,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in urlList" :key="item.id">
-            <td>{{ item.full }}</td>
-            <td><RouterLink :to="item.short" target="_blank">{{ item.short }}</RouterLink></td>
+          <tr>
+            <td>{{ urlList.full }}</td>
+            <td><RouterLink :to="urlList.short" target="_blank">{{ urlList.short }}</RouterLink></td>
           </tr>
         </tbody>
       </table>
@@ -32,7 +32,8 @@ export default {
   components:{Loader},
   data () {
     return {
-      urlList: {}
+      urlList: {},
+      url: ''
     }
   },
   mounted(){
@@ -43,17 +44,21 @@ export default {
       const result = await fetch('http://localhost:3000/api/get-urls')
       const final = await result.json()
       this.urlList = final
+      this.url = ''
     },
     async createShortUrl () {
-      const url = document.getElementById('url')
-      const result = await fetch('http://localhost:3000/api/addurl', {
-          method: 'POST',
-          headers: {'Content-type': "application/json; charset=UTF-8"},
-          body: JSON.stringify({
-              fullUrl: url.value
-          })
-      })
-      const returnData = await result.json()
+      if(this.url){
+        const result = await fetch('http://localhost:3000/api/addurl', {
+            method: 'POST',
+            headers: {'Content-type': "application/json; charset=UTF-8"},
+            body: JSON.stringify({
+                fullUrl: this.url
+            })
+        })
+        this.getUrls()
+        return false
+      }
+      alert('Please enter url!')
     }
   }
 }
@@ -92,6 +97,7 @@ export default {
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 17px;
+  cursor: pointer;
 }
 table, td, th {
   border: 1px solid #ccc;

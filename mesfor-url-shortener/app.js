@@ -12,27 +12,24 @@
 
 
   app.get('/api/get-urls', async (req, res) => {
-      const result = await Shortener.find();
+      const result = await Shortener.findOne().sort({created_at: -1})
       res.status(200).json(result);
   });
   app.post('/api/addurl', async (req, res) => {
       const fullUrl = req.body.fullUrl
       const newUrl = new Shortener({
-        full: fullUrl
+        full: fullUrl,
+        short: Math.random().toString(36).substring(2,18)
       })
       await newUrl.save()
       res.status(200).json(newUrl);
   });
 
   app.get('/:shortUrl', async (req, res) => {
-    const shortUrl = await Shortener.findOne({ short: req.params.shortUrl })
-    console.log(req.params.shortUrl)
-    console.log(shortUrl)
-    if (shortUrl == null) return res.sendStatus(404)
-  
-    shortUrl.clicks++
+    const shortUrl = await Shortener.findOne({ 
+      short: req.params.shortUrl 
+    })
     shortUrl.save()
-  
     res.redirect(shortUrl.full)
   })
 
