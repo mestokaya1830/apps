@@ -29,18 +29,24 @@
 <script>
 import axios from 'axios'
 
-  export default {
-    methods: {
-      async logoutUser() {
-        await axios.post('/api/logout').then(res => {
-          if(res.status == 204){
-            this.$store.commit('setAuth', '')
-            this.$router.push('/')
-          }
-        })
-      }
-    },
+export default {
+  name: 'Navbar',
+  data() {
+    return {
+    
+    }
+  },
+  methods: {
+    async logoutUser() {
+      await axios.post('/api/logout').then(res => {
+        if (res.status == 204) {
+          this.$store.commit('setAuth', '')
+          this.$router.push('/')
+        }
+      })
+    }
   }
+}
 </script>
 <style>
 .navbar {
@@ -62,5 +68,4 @@ import axios from 'axios'
 .active {
   color: green;
 }
-
 </style>
