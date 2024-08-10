@@ -20,6 +20,6 @@ const usersSC = new mongoose.Schema({
     maxlength:['255','Password must be less then 255']
   },
   token: {type: String}
-})
+},{timestamps: true})
 
 export default mongoose.model('users', usersSC)

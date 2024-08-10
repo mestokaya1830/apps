@@ -6,6 +6,6 @@ const settingsSC = new mongoose.Schema({
   type:{type: String, lovercase: true},
   marketId:{type: String},
   state:{type: Boolean}
-})
+},{timestamps: true})
 
 export default mongoose.model('settings', settingsSC)

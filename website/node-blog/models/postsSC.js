@@ -20,7 +20,6 @@ const postsSC = new mongoose.Schema({
     type: String,
     required:[true, 'Owner is required'],
   },
-  created_at: {type: Date, default: Date.now}
-})
+},{timestamps: true})
 
 export default mongoose.model('posts', postsSC)
