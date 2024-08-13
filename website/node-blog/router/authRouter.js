@@ -7,8 +7,9 @@ import Cryptr from "cryptr";
 const cryptr = new Cryptr("myTotalySecretKey");
 
 router.post('/login', tryCatch(async(req, res) => {
-  const checkEmail = await Users.findOne({email: req.body.user.email}).limit(1)
-  if(checkEmail && cryptr.decrypt(checkEmail.password) == req.body.user.password){
+  const {email, password} = req.body.user
+  const checkEmail = await Users.findOne({email: email}).limit(1)
+  if(checkEmail && cryptr.decrypt(checkEmail.password) == password){
     req.session.auth = checkEmail
     console.log(req.session)
     res.status(200).json(checkEmail)
@@ -19,15 +20,16 @@ router.post('/login', tryCatch(async(req, res) => {
 }))
 
 router.post('/register', tryCatch(async(req, res) => {
-  const checkEmail = await Users.findOne({email: req.body.user.email}).limit(1)
+  const {name, email, password} = req.body.user
+  const checkEmail = await Users.findOne({email: email}).limit(1)
   if(checkEmail){
     res.status(201).json('This email exists')
     return false
   }
   const newUser = new Users({
-    name: req.body.user.name,
-    email: req.body.user.email,
-    password: req.body.user.password != '' ? cryptr.encrypt(req.body.user.password) : req.body.user.password
+    name: name,
+    email: email,
+    password: password != '' ? cryptr.encrypt(password) : password
   })
   await newUser.save()
   req.session.auth = checkEmail
@@ -68,9 +70,10 @@ router.post('/emil-verification', tryCatch(async(req, res) => {
 }))
 
 router.post('/reset-password', tryCatch(async(req, res) => {
-  const checkUser = await Users.findOne({email: req.body.email}).limit(1)
+  const {email, password} = req.body
+  const checkUser = await Users.findOne({email: email}).limit(1)
   if(checkUser){
-    await Users.updateOne({email: req.body.email}, {$set:{password: req.body.password}})
+    await Users.updateOne({email: email}, {$set:{password: password}})
     res.status(200).json('Reset Password Successfully')
   } else {
     res.status(201).json('User not found!')
