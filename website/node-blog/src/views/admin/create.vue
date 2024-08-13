@@ -3,7 +3,7 @@
     <div class="container">
       <h1>Create New Post</h1>
       <h3 class="text text-success text-center">{{ message }}</h3>
-      <form @submit.prevent id="form" class="border rounded p-4" enctype="multipart/form-data">
+      <form @submit.prevent id="form" class="border rounded p-4">
         <div class="mb-3 row">
           <label for="title">Title</label>
           <div>
@@ -38,7 +38,6 @@ export default {
       post: {
         title: '',
         body: '',
-        imageName: ''
       },
       data: '',
       message: '',
@@ -48,7 +47,6 @@ export default {
   methods: {
     selectImage(event){
       this.data = new FormData()
-      this.post.imageName = `${this.$store.state.auth._id}.${event.target.files[0].name}`
       this.data.append('file', event.target.files[0])
       this.data.append('post', JSON.stringify(this.post))
     },

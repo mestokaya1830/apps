@@ -1,5 +1,7 @@
 import express from "express";
 import helmet from "helmet";
+import mongoSanitize from 'express-mongo-sanitize'
+import path from 'path'
 import 'dotenv/config'
 import './models/db.js'
 import usersRouter from './routers/usersRouter.js'
@@ -9,6 +11,7 @@ import productsRouter from './routers/productsRouter.js'
 const app = express()
 
 app.use(helmet())
+app.use(mongoSanitize())
 app.use(express.json())
 app.use(express.static('public'))
 
@@ -18,6 +21,12 @@ app.use('/api/carts', cartsRouter)
 app.use('/api/orders', ordersRouter)
 app.use('/api/products', productsRouter)
 
+if(process.env.NODE_ENV == 'production'){
+  app.use(express.static('dist'))
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve('disr/index.html'))
+  })
+}
 app.use((req, res) => {
   res.status(201).send('Page Not Found!')
 })

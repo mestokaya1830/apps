@@ -1,6 +1,7 @@
 import express from 'express'
 const app = express()
 import helmet from 'helmet'
+import mongoSanitize from 'express-mongo-sanitize'
 import 'dotenv/config'
 import Db from './modules/db.js'
 import Messages from './modules/schemas/messages-schema.js'
@@ -21,6 +22,7 @@ import Betsummaries from './modules/schemas/bet-summaries-schema.js'
 
 
 app.use(helmet())
+app.use(mongoSanitize())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true, limit: '3mb' }))
 app.use(express.static('public'))

@@ -28,17 +28,17 @@ router.post('/create', tryCatch(async(req, res) => {
         .replace(/^###### (.*$)/gim, '<h6>$1</h6>')
     return htmlText.trim() 
   }
-  const {title, body, imageName} = JSON.parse(req.body.post)
+  const {title, body} = JSON.parse(req.body.post)
   
   const newPost = new Posts({
     title: title,
     body: markdownParser(body),
-    imageName: imageName,
+    imageName: req.files.file.name,
     owner: req.session.auth.name
   })
   await newPost.save()
   const file = req.files.file
-  await file.mv(path.resolve('public/uploads', imageName))
+  await file.mv(path.resolve('public/uploads', req.files.file.name))
   res.status(200).json('New Post Created Successfully')
 }))
 

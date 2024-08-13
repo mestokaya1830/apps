@@ -11,7 +11,7 @@ router.post('/signup', Wrap(async(req, res) => {
   const { username, email, password } = req.body
   
   const newUser = new Users({
-    username: username,
+    username: '',
     email: email,
     password: cryptr.encrypt(password)
   })

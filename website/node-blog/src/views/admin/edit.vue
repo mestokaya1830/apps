@@ -4,7 +4,7 @@
       <h1>Create New Post</h1>
       <button class="btn btn-secondary" @click="getBack()">Return</button>
       <h3 class="text text-success text-center">{{ message }}</h3>
-      <form @submit.prevent id="form" class="border rounded p-4" enctype="multipart/form-data">
+      <form @submit.prevent id="form" class="border rounded p-4">
         <div class="mb-3 row">
           <label for="title">Title</label>
           <div>
