@@ -58,18 +58,15 @@ ul li{
   padding: 5px 0;
 }
 .delete{
-  border: none;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 15px;
-  font-weight: bold;
-  font-size: 16px;
-  color: #fff;
-  background-color: orange;
+ color: red;
+ border: 1px solid #ddd;
+ border-radius: 4px;
+ margin-left: 20px;
 }
-.done{
-  text-decoration: line-through;
+.check{
+  color: green;
+  font-weight: bold;
+}
+.material-symbols-outlined {
+  font-size: 36px;
 }
