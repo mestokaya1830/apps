@@ -2,7 +2,6 @@ import express from 'express'
 const router = express.Router()
 import fs from 'fs'
 import tryCatch from '../middleware/tryCatch.js'
-
 import path from 'path'
 import Posts from '../models/postsSC.js'
 
@@ -42,20 +41,23 @@ router.post('/create', tryCatch(async(req, res) => {
 }))
 
 router.post('/update', tryCatch(async(req, res) => {
-  const {_id, title, body, imageName} = JSON.parse(req.body.post)
   if(req.files != null){
-    const imagePath = './public/uploads/'+imageName
+    const {_id, title, body} = JSON.parse(req.body.post)
+    const imagePath = './public/uploads/'+req.files.file.name
     if (fs.existsSync(imagePath)){
       fs.rmSync(imagePath, { recursive: true }, () => {
         res.json({code:200})
       })
     }
     const file = req.files.file
-    await file.mv(path.resolve('public/uploads', imageName))
-    await Posts.updateOne({_id: _id}, {$set:{title: title, body: body, imageName: imageName}})
+    await file.mv(path.resolve('public/uploads', req.files.file.name))
+    await Posts.updateOne({_id: _id}, {$set:{title: title, body: body, imageName: req.files.file.name}})
+    res.status(200).json('New Post Updated Successfully')
+  } else {
+    const {_id, title, body} = req.body
+    await Posts.updateOne({_id: _id}, {$set:{title: title, body: body}})
+    res.status(200).json('New Post Updated Successfully')
   }
-  await Posts.updateOne({_id: _id}, {$set:{title: title, body: body}})
-  res.status(200).json('New Post Updated Successfully')
 }))
 
 router.post('/delete/:id', tryCatch(async(req, res) => {

@@ -1,12 +1,10 @@
 import { useState } from 'react'
 import axios from 'axios'
+import {useNavigate} from 'react-router-dom'
 
 export default function Create() {
-  const [post, setPost] = useState({
-    title:'',
-    body: '',
-    files: ''
-  })
+  const [post, setPost] = useState()
+  const navigate = useNavigate()
   const handleInput = (e) => {
     setPost(prev => ({...prev, [e.target.name]: e.target.value}))
   }
@@ -19,10 +17,9 @@ export default function Create() {
   
   const addPost = (e) => {
     e.preventDefault()
-    
     axios.post('http://localhost:3000/api/admin/create', post)
     .then((res) => {
-      console.log(res.data)
+      res.status === 200 ? navigate('/admin') : ""
     })
     .catch((err) => console.log(err))
   }
@@ -49,7 +46,7 @@ export default function Create() {
             <div className="text text-danger mt-2"></div>
           </div>
           <div className="d-grid mt-3">
-            <button className="btn btn-dark">Create</button>
+            <button type='submit' className="btn btn-dark">Create</button>
           </div>
         </div>
       </form>

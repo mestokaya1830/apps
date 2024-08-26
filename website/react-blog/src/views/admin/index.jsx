@@ -9,7 +9,6 @@ export default function Index() {
       .get("http://localhost:3000/api/client")
       .then((res) => {
         setData(res.data.posts);
-        console.log(res.data);
       })
       .catch((err) => console.log(err));
   }, []);

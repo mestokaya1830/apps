@@ -19,6 +19,7 @@ const Details  = React.lazy(() => import('../views/client/details.jsx'))
 const Dashboard  =  React.lazy(() => import('../views/admin/index.jsx'))
 const Create  = React.lazy(() => import('../views/admin/create.jsx'))
 const AdminDetails =  React.lazy(() => import('../views/admin/details.jsx'))
+const Edit =  React.lazy(() => import('../views/admin/edit.jsx'))
 
 //global
 const Notfound  =  React.lazy(() => import('../views/notfound.jsx'))
@@ -68,6 +69,10 @@ export default function index() {
         {
           path:'/admin/post/:id',
           element: <React.Suspense fallback="Loading..."><AdminDetails /></React.Suspense>
+        },
+        {
+          path:'/admin/post/edit/:id',
+          element: <React.Suspense fallback="Loading..."><Edit /></React.Suspense>
         },
         {
           path: '*',

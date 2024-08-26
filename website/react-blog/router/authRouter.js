@@ -7,12 +7,11 @@ import Cryptr from "cryptr";
 const cryptr = new Cryptr("myTotalySecretKey");
 
 router.post('/login', tryCatch(async(req, res) => {
-  const {email, password} = req.body.user
+  const {email, password} = req.body
   const checkEmail = await Users.findOne({email: email}).limit(1)
   if(checkEmail && cryptr.decrypt(checkEmail.password) == password){
-    req.session.auth = checkEmail
-    console.log(req.session)
-    res.status(200).json(checkEmail)
+    req.session.auth = checkEmail.name
+    res.status(200).json({auth: req.session.auth})
     return false
   } else {
     res.status(201).json('User not Exists!')
@@ -20,14 +19,14 @@ router.post('/login', tryCatch(async(req, res) => {
 }))
 
 router.post('/register', tryCatch(async(req, res) => {
-  const {name, email, password} = req.body.user
+  const {username, email, password} = req.body
   const checkEmail = await Users.findOne({email: email}).limit(1)
   if(checkEmail){
     res.status(201).json('This email exists')
     return false
   }
   const newUser = new Users({
-    name: name,
+    name: username,
     email: email,
     password: password != '' ? cryptr.encrypt(password) : password
   })
