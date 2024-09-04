@@ -81,7 +81,7 @@ router.post('/reset-password', tryCatch(async(req, res) => {
 
 router.post('/logout', tryCatch(async(req, res) => {
   delete req.session.auth
-  res.status(204).send()
+  res.status(200).send()
 }))
 
 export default router

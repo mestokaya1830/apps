@@ -39,8 +39,8 @@ body{
   border: 2px solid #ccc;
 }
 .dropdown-menu[data-bs-popper]{
-  left: 60px;
-  margin-top: 10px;
+  left: 60px !important;
+  margin-top: 10px !important;
 }
 .card{
   box-shadow: 2px 2px 5px #ddd, 2px 2px 5px #ddd;

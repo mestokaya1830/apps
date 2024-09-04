@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 
 export default function Create() {
   const {id} = useParams()
   const [post, setPost] = useState({})
+  const navigate = useNavigate()
 
   //get post
   useEffect(() => {
@@ -34,7 +35,7 @@ export default function Create() {
     }
     axios.post('http://localhost:3000/api/admin/update', post)
     .then((res) => {
-      console.log(res.data)
+      res.status === 200 ? navigate('/admin') : ""
     })
     .catch((err) => console.log(err))
   }
