@@ -1,14 +1,20 @@
 import { NavLink, Link, useNavigate } from "react-router-dom"
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
 import axios from "axios"
+import { setAuth } from '../store/authSlice.jsx'
 
 export default function Navbar() {
   const auth = useSelector(state => state.auth.value)
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const logout = () => {
-    axios.get('http://localhost:3000/auth/logout')
+    axios.post('http://localhost:3000/api/logout')
     .then((res) => {
+      if(localStorage.getItem('persist:root')){
+        localStorage.removeItem('persist:root')
+      }
+      dispatch(setAuth(""))
       res.status === 200 ? navigate('/login') : ""
     })
     .catch((err) => console.log(err))
