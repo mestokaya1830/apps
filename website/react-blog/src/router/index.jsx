@@ -1,8 +1,10 @@
 import React from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import RouteGuard from '../components/routeGuard.jsx'
 
 //layouts
 import DefaultLayout from '../layouts/default.jsx'
+import AdminLayout from '../layouts/admin.jsx'
 
 //auth
 const Register  = React.lazy(() => import('../views/auth/register.jsx'))
@@ -58,6 +60,12 @@ export default function index() {
           path: "/reset-password",
           element: <React.Suspense fallback="Loading..."><ResetPassword /></React.Suspense>
         },
+      ]
+    },
+    {
+      path: '/admin',
+      element : <RouteGuard><AdminLayout /></RouteGuard>,
+      children: [
         {
           path:'/admin',
           element: <React.Suspense fallback="Loading..."><Dashboard /></React.Suspense>
@@ -73,12 +81,12 @@ export default function index() {
         {
           path:'/admin/post/edit/:id',
           element: <React.Suspense fallback="Loading..."><Edit /></React.Suspense>
-        },
-        {
-          path: '*',
-          element: <React.Suspense fallback="Loading..."><Notfound /></React.Suspense>
         }
       ]
+    },
+    {
+      path: '*',
+      element: <React.Suspense fallback="Loading..."><Notfound /></React.Suspense>
     }
   ])
   return (
