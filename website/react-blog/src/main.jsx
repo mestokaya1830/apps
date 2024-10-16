@@ -1,4 +1,4 @@
-import { StrictMode } from 'react'
+import { HelmetProvider } from 'react-helmet-async'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import Router from './router/index.jsx'
@@ -11,11 +11,11 @@ import 'bootstrap/dist/js/bootstrap.min.js'
 
 const persistor = persistStore(store)
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  <HelmetProvider>
     <Provider store={store}>
       <PersistGate persistor={persistor}>
         <Router />
       </PersistGate>
     </Provider>
-  </StrictMode>,
+  </HelmetProvider>,
 )

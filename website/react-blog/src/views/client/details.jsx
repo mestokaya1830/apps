@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import {useParams} from 'react-router-dom'
 import axios from "axios";
+import { Helmet } from 'react-helmet'
 
 export default function Details() {
   const [data, setData] = useState({})
@@ -19,6 +20,12 @@ export default function Details() {
   }
   return (
     <>
+     <Helmet>
+      <title>User Details</title>
+      <meta name="description" content="User Details content" />
+      <meta name="keywords" content="react, meta tags, seo" />
+      <meta name="author" content="Your Name" />
+    </Helmet>
       <div className="container">
         <div className="d-flex justify-content-between">
           <h2> Posts</h2>

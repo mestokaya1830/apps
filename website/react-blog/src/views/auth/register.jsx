@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Helmet } from 'react-helmet'
 
 export default function Register() {
   const [user, setUser] = useState({
@@ -41,6 +42,12 @@ export default function Register() {
   }
   return (
     <>
+     <Helmet>
+      <title>Register</title>
+      <meta name="description" content="Register content" />
+      <meta name="keywords" content="react, meta tags, seo" />
+      <meta name="author" content="Your Name" />
+    </Helmet>
       <form onSubmit={registerUser} className="container border rounded p-5">
         <h3 style={{marginBottom: "30px"}}>Register</h3>
         <div className="mb-3 row">

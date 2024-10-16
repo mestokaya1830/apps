@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import { Helmet } from 'react-helmet'
 
 export default function Index() {
   const [data, setData] = useState([]);
@@ -15,6 +15,12 @@ export default function Index() {
   }, []);
   return (
     <>
+     <Helmet>
+      <title>Home</title>
+      <meta name="description" content="Home content" />
+      <meta name="keywords" content="react, meta tags, seo" />
+      <meta name="author" content="Your Name" />
+    </Helmet>
       <div className="container">
         <div className="row">
           {data.map((item) => (

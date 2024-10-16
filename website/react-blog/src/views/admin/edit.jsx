@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useParams, useNavigate } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 
 export default function Create() {
   const {id} = useParams()
@@ -42,6 +43,12 @@ export default function Create() {
 
   return (
     <>
+     <Helmet>
+      <title>Post Edit</title>
+      <meta name="description" content="Post Edit content" />
+      <meta name="keywords" content="react, meta tags, seo" />
+      <meta name="author" content="Your Name" />
+    </Helmet>
       <div className="container">
       <h3>Edit Post</h3>
       <h3 className="text text-success text-center"></h3>

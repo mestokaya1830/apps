@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { setAuth } from '../../store/authSlice.jsx'
 import { useDispatch } from 'react-redux'
+import { Helmet } from 'react-helmet'
 
 export default function Login() {
 
@@ -32,6 +33,12 @@ export default function Login() {
   }
   return (
     <>
+     <Helmet>
+      <title>Login</title>
+      <meta name="description" content="Login content" />
+      <meta name="keywords" content="react, meta tags, seo" />
+      <meta name="author" content="Your Name" />
+    </Helmet>
       <form onSubmit={loginUser} className="container border rounded p-5">
         <h3 style={{ marginBottom: "30px" }}>Login</h3>
         <div className="mb-3 row">

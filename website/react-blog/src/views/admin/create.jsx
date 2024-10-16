@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 
 export default function Create() {
   const [post, setPost] = useState()
@@ -25,6 +26,12 @@ export default function Create() {
   }
   return (
     <>
+     <Helmet>
+      <title>Create Post</title>
+      <meta name="description" content="Create Post content" />
+      <meta name="keywords" content="react, meta tags, seo" />
+      <meta name="author" content="Your Name" />
+    </Helmet>
       <div className="container">
       <h3>Create New Post</h3>
       <h3 className="text text-success text-center"></h3>
