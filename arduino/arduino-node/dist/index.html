@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Home Page</h1>
+
+  <button onclick="ledOn()">Led On</button>
+  <button onclick="ledOff()">Led Off</button>
+  <button onclick="pulseOn()">Pulse On</button>
+  <button onclick="pulseOff()">Pulse Off</button>
+ 
+  <script>
+    const ledOn = async() => {
+      await fetch('http://localhost:3000/led-on')
+    }
+    const ledOff = async() => {
+      await fetch('http://localhost:3000/led-off')
+    }
+    const pulseOn = async() => {
+      await fetch('http://localhost:3000/pulse-on')
+    }
+    const pulseOff = async() => {
+      await fetch('http://localhost:3000/pulse-off')
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+   <link rel="stylesheet" href="main.css">
+  </head>
+  <body>
+    <img src="/logo.webp" alt="" class="logo" />
+    <div class="container">
+      <h1 class="title">Mesfor Age Calculator</h1>
+      <div class="wrapper">
+        <input type="date" id="age" />
+        <button id="btn">Calculate</button>
+      </div>
+      <h2 id="result"></h2>
+    </div>
+
+    <script>
+      
+      btn.addEventListener('click', () => {
+        const $ = (par) => document.querySelector(par)
+        const inputDate = document.getElementById("age");
+        const btn = document.getElementById("btn");
+        inputDate.focus();
+
+        const current = new Date()
+        let birthDate = new Date(inputDate.value)
+    
+        if( birthDate.getTime() > current){
+          alert('BirthDate can\'t be small than today!')
+          return false
+        }
+
+        let days, months, years
+        years = current.getFullYear() - birthDate.getFullYear()
+
+        if(current.getMonth() >= birthDate.getMonth()){
+          months = current.getMonth() - birthDate.getMonth()
+        } else {
+          years--;
+          months = 12 + current.getMonth() - birthDate.getMonth()
+        }
+        
+        if(current.getDate() >= birthDate.getDate()){
+          days = current.getDate() - birthDate.getDate()
+        } else {
+          months--
+          days = getDaysInMonth(birthDate.getFullYear(), birthDate.getMonth()) + current.getDate() - birthDate.getDate()
+        }
+
+        if(months < 0){
+          months = 11
+          years--
+        }
+        function getDaysInMonth(year, month){
+          return new Date(year, month, 0).getDate()
+        }
+        $('#result').innerText = `${years} Years - ${months} Months - ${days} Days`
+      })
+    </script>
+  </body>
+</html>

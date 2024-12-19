@@ -1,0 +1,1 @@
+import{_ as e,c as o,o as t,a as c}from"./index-BmKoKCMF.js";const n={},s=c("h2",null,"Page Not Found",-1),a=[s];function _(r,d){return t(),o("div",null,a)}const u=e(n,[["render",_]]);export{u as default};
