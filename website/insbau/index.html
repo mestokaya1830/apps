@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ins-Bau</title>
   <link rel="stylesheet" href="index.css">
-
+  
 </head>
 <body>
   <header class="menu-section">
@@ -25,22 +25,26 @@
         <img src="./images/logo-2.png" alt="">
       </div>
       <ul class="menu">
-        <li>Startsite</li>
-        <li>Baustelle</li>
+        <li><a href="#startseite" class="links">START SEITE</a></li>
+        <li><a href="#services" class="links">SERVICES</a></li>
+        <li><a href="#uberuns" class="links"> ÜBER UNS</a></li>
+        <li><a href="#kontakt" class="links">CONTAKT</a></li>
       </ul>
     </nav>
   </header>
   <main class="main-container">
-    <div class="banner">
+    <div class="banner" id="home">
       
     </div>
-    <div class="services">
+
+    <div class="services" id="services">
   
     </div>
-    <div class="experince">
+
+    <div class="experince" id="experince">
   
     </div>
-    <nav class="contact">
+    <div class="contact" id="contact">
       <div class="contact-container"></div>
       <form>
         <input type="text" name="name" id="name" placeholder="Name">
@@ -49,10 +53,13 @@
         <textarea name="" id=""></textarea>
         <input type="submit" name="submit" id="submit" value="Schicken">
       </form>
-    </nav>
+    </div>
     <footer>
 
     </footer>
+    <img src="./images/go-top.png" alt="" class="go-top" id="go-top">
   </main>
+
+  <script src="./index.js"></script>
 </body>
 </html>
