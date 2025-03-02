@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ins-Bau</title>
   <link rel="stylesheet" href="index.css">
-  
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 </head>
 <body>
   <header class="menu-section">
@@ -20,7 +20,7 @@
         <img src="./images/instagram.png" alt="">
         <i class="fas fa-facebook"></i>
       </div>
-      <div class="mobil-menu">
+      <div class="mobil-navigation-icon">
         <div></div>
         <div></div>
         <div></div>
@@ -35,10 +35,10 @@
         </div>
       </div>
       <ul class="menu">
-        <li><a href="#startseite" class="links">START SEITE</a></li>
-        <li><a href="#services" class="links">SERVICES</a></li>
-        <li><a href="#uberuns" class="links"> ÜBER UNS</a></li>
-        <li><a href="#kontakt" class="links">CONTAKT</a></li>
+        <li><a href="#startseite" class="links">Startseite</a></li>
+        <li><a href="#services" class="links">Services</a></li>
+        <li><a href="#uberuns" class="links"> Über Uns</a></li>
+        <li><a href="#kontakt" class="links">Kontakt</a></li>
       </ul>
     </nav>
   </header>
@@ -65,8 +65,54 @@
       </form>
     </div> -->
     <footer>
-
+      <div class="logo-footer">
+        <img src="./images/logo.png" alt="">
+        <div class="logo-text">
+          <h3 class="logo-text-big" #fff;">INS-BAU-PROFIS</h3>
+          <h5 class="logo-text-small-footer">Qualitet ist alles</h5>
+          <div class="navbar-top-right footer-social-icons">
+            <img src="./images/facebook.png" alt="">
+            <img src="./images/twitter.png" alt="">
+            <img src="./images/instagram.png" alt="">
+            <i class="fas fa-facebook"></i>
+          </div>
+        </div>
+      </div>
+      <div class="footer-info-container">
+        <h2 class="footer-text">Info</h2>
+        <ul>
+          <li>
+            <a href="tel:+49 163 4814438"><img src="./images/call.png" alt=""> +49 163 4814438</a>
+            <a href="mailto:info@insbau.de"><img src="./images/email.png" alt=""> info@insbau.de</a>
+          </li>
+          <li>
+            <box-icon name='target-lock' color="yellow" size="md" style="margin-top: 5px;"></box-icon>
+          </li>
+        </ul>
+      </div>
+      <div class="standort-container">
+        <div>
+          <h2 class="footer-text">Standort</h2>
+        </div>
+        <div class="standort">
+          <iframe class="standort-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5264.456641618857!2d9.220164949262115!3d48.72022878525479!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4799c3b1a5c53813%3A0x5c22ef1e0aa59740!2s73760%20Ostfildern-Kemnat!5e0!3m2!1sen!2sde!4v1740929899248!5m2!1sen!2sde" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
     </footer>
+    <nav class="mobil-navigation">
+      <div class="mobil-logo-container-mobil">
+        <div class="logo-text">
+          <h3 class="logo-text-big-mobil" #fff;>INS-BAU-PROFIS</h3>
+          <h5 class="logo-text-small-mobil">Qualitet ist alles</h5>
+        </div>
+      </div>
+      <ul>
+        <li><box-icon name='home' class="mobil-icons"></box-icon> <a href="#startseite" class="mobil-links"> Sartseite</a></li>
+        <li><box-icon name='cog' class="mobil-icons"></box-icon> <a href="#services" class="mobil-links">Services</a></li>
+        <li><box-icon name='user-voice' class="mobil-icons"></box-icon><a href="#uberuns" class="mobil-links"> Über Uns</a></li>
+        <li><box-icon name='user' class="mobil-icons"></box-icon><a href="#kontakt" class="mobil-links">Kontakt</a></li>
+      </ul>
+    </nav>
     <img src="./images/go-top.png" alt="" class="go-top" id="go-top">
   </main>
 
