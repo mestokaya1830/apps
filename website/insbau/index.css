@@ -319,3 +319,10 @@ footer {
   color:#fff;
   font-size: 18px;
 }
+hr{
+  height: 2px;
+  margin: 4px 0;
+}
+.errors{
+  color: red;
+}

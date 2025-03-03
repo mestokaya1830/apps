@@ -55,22 +55,32 @@
     <div class="uberuns sections" id="uberuns">
   
     </div>
+    
     <div class="contact sections" id="kontakt">
       <div class="contact-container"></div>
-      <form action="#">
-        <input type="text" name="name" id="name" placeholder="Name">
-        <input type="email" name="email" id="email" placeholder="E-Mail">
-        <input type="text" name="subject" id="subject" placeholder="Subject">
-        <textarea name="" id=""></textarea>
+      <form action="#" id="email-form">
+        <input type="text" class="inputs"  id="username" placeholder="Name">
+        <div id="error-username" class="errors"></div>
+
+        <input type="email"  class="inputs"  id="email" placeholder="E-Mail">
+        <div id="error-email" class="errors"></div>
+
+        <input type="text"  class="inputs"  id="subject" placeholder="Subject">
+        <div id="error-subject" class="errors"></div>
+
+        <textarea class="inputs" id="message"></textarea>
+        <div id="error-message" class="errors"></div>
+
         <input type="submit" name="submit" id="submit" value="Schicken">
       </form>
     </div>
+    <hr>
     <footer>
       <div class="footer-container">
         <div class="logo-footer">
           <img src="./images/logo.png" alt="">
           <div class="logo-text logo-text-footer">
-            <h3 class="logo-text-big logo-text-big" #fff;">INS-BAU-PROFIS</h3>
+            <h3 class="logo-text-big logo-text-big" #fff;>INS-BAU-PROFIS</h3>
             <h5 class="logo-text-small-footer">Qualitet ist alles</h5>
             <div class="navbar-top-right footer-social-icons">
               <img src="./images/facebook.png" alt="">
