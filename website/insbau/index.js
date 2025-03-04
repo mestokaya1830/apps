@@ -1,5 +1,11 @@
+
+document.getElementById('home').style.color = '#fddf85'
 document.getElementById("go-top").addEventListener("click", (e) => {
   window.scrollTo(0, 0);
+  document.querySelectorAll('.links').forEach(item2 => {
+    item2.style.color = "#fff"
+  })
+  document.getElementById('home').style.color = '#fddf85'
 });
 
 document.querySelectorAll('.links').forEach(item => {
@@ -58,3 +64,19 @@ document.getElementById('submit').addEventListener('click' , (e) => {
     document.getElementById("email-form").reset();
   }
 })
+
+const sr = ScrollReveal ({
+  distance: '60px',
+  duration: 2500,
+  delay: 400,
+  reset: true
+})
+
+sr.reveal('.text', { delay: 200, origin: 'top'})
+sr.reveal('.form-container form', { delay: 400, origin: 'left'})
+sr.reveal('.heading', { delay: 400, origin: 'top'})
+sr.reveal('.ride-container .box', { delay: 200, origin: 'top'})
+sr.reveal('.services-container .box', { delay: 200, origin: 'top'})
+sr.reveal('.about-container', { delay: 200, origin: 'top'})
+sr.reveal('.reviews-container', { delay: 200, origin: 'top'})
+sr.reveal('.newsletter .box', { delay: 400, origin: 'bottom'})
