@@ -90,6 +90,7 @@ a:visited {
 }
 .logo-container > img {
   margin-left: 100px;
+  width: 150px;
 }
 .logo-container::before {
   background-color: #f8ba00;
