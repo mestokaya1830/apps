@@ -57,7 +57,7 @@ a:visited {
   flex: 1;
 }
 .navbar-top-left > a > img,
-.navbar-top-right > img {
+.navbar-top-right > a >  img {
   width: 20px;
   margin: 0 16px;
 }
@@ -290,10 +290,7 @@ footer {
   height: 34px;
   margin: 5px 0;
 }
-.mobil-navigation > ul > li .mobil-icons {
-  margin-bottom: 5px;
-  margin-right: 5px;
-}
+
 .mobil-logo-container-mobil {
   display: flex;
   align-items: center;
@@ -339,7 +336,7 @@ footer {
 .footer-social-icons{
   margin-top: 50px;
 }
-.footer-social-icons > img{
+.footer-social-icons > a > img{
   width: 40px;
 }
 .logo-text-footer{

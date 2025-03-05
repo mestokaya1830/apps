@@ -15,6 +15,10 @@ document.querySelectorAll('.links').forEach(item => {
     })
     item.style.color = '#fddf85'
     document.querySelector('.mobil-navigation').style.display = "none"
+   
+    setTimeout(() => {
+      history.replaceState('', document.title, window.location.origin + window.location.pathname + window.location.search);
+    }, 0);
   })
 })
 document.querySelectorAll('.mobil-links').forEach(item => {

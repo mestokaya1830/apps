@@ -6,6 +6,7 @@
     top: 20px;
     right: 20px;
     cursor: pointer;
+    z-index: 3;
   }
   .mobil-navigation-icon > div {
     width: 100%;
@@ -14,20 +15,27 @@
     background-color: #fff;
     margin: 3px 0;
   }
-  .menu-section {
-    position: static;
+  .mobil-logo-container-mobil{
+    background-color: red;
   }
-  .main-container {
-    margin-top: 0;
+  .mobil-icons{
+    margin-right: 10px;
+    margin-top: 5px;
+    color: red;
+  }
+  .logo-text-small-mobil{
+    text-shadow: 0.5px 0px #fff;
+    font-size: 16px;
   }
   .navbar {
-    height: auto;
+    position: static;
   }
-  .navbar-top {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 100px 0;
+  .navbar-top, .navigation-bar {
+    display: none;
+  }
+  .navbar-bottom{
+    height: auto;
+    position: relative;
   }
   .navbar-top-left {
     flex-direction: column;
@@ -85,9 +93,7 @@
   input[type="submit"] {
     width: 100% !important;
   }
-  .menu {
-    display: none;
-  }
+
   .go-top {
     width: 40px;
   }
@@ -108,6 +114,9 @@
   }
   .standort{
     width: 100%;
+  }
+  .sections {
+    padding: 180px 50px !important;
   }
 }
 @media only screen and (min-width: 1044px) and (max-width: 1460px) {
