@@ -356,3 +356,7 @@ hr{
 .errors{
   color: red;
 }
+.copy{
+  margin-right: 10px;
+  font-size: 30px;
+}
