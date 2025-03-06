@@ -76,11 +76,15 @@ const sr = ScrollReveal ({
   reset: true
 })
 
-sr.reveal('.text', { delay: 200, origin: 'top'})
-sr.reveal('.form-container form', { delay: 400, origin: 'left'})
-sr.reveal('.heading', { delay: 400, origin: 'top'})
-sr.reveal('.ride-container .box', { delay: 200, origin: 'top'})
-sr.reveal('.services-container .box', { delay: 200, origin: 'top'})
-sr.reveal('.about-container', { delay: 200, origin: 'top'})
-sr.reveal('.reviews-container', { delay: 200, origin: 'top'})
-sr.reveal('.newsletter .box', { delay: 400, origin: 'bottom'})
+sr.reveal('.home', { delay: 200, origin: 'top'})
+sr.reveal('.services', { delay: 400, origin: 'left'})
+sr.reveal('.uberuns', { delay: 400, origin: 'top'})
+sr.reveal('.contact', { delay: 200, origin: 'top'})
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js').then(res => {
+      console.log(res)
+  }).catch((err) => {
+      console.log(err)
+  })
+}
