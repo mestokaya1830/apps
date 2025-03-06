@@ -81,10 +81,10 @@ sr.reveal('.services', { delay: 400, origin: 'left'})
 sr.reveal('.uberuns', { delay: 400, origin: 'top'})
 sr.reveal('.contact', { delay: 200, origin: 'top'})
 
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js').then(res => {
-      console.log(res)
-  }).catch((err) => {
-      console.log(err)
-  })
-}
+// if ('serviceWorker' in navigator) {
+//   navigator.serviceWorker.register('sw.js').then(res => {
+//       console.log(res)
+//   }).catch((err) => {
+//       console.log(err)
+//   })
+// }
