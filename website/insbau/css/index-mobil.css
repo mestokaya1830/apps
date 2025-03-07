@@ -83,7 +83,7 @@
     padding: 0 !important;
   }
   .contact-container::before{
-    right: 100% !important;
+    right: 100vw !important;
   }
   .contact > form {
     width: 90vw !important;
@@ -134,7 +134,7 @@
   }
   .contact-container::before{
     right: 100% !important;
-    width: 400px !important;
+    width: 300px !important;
   }
   .contact > form {
     position: static !important;

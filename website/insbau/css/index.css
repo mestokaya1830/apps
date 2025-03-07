@@ -89,8 +89,8 @@ a:visited {
   z-index: 2;
 }
 .logo-container > img {
-  margin-left: 100px;
-  width: 150px;
+  width: 256px;
+  margin-bottom: 10px;
 }
 .logo-container::before {
   background-color: #f8ba00;
