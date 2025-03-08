@@ -21,9 +21,10 @@ html::-webkit-scrollbar-track {
   background: transparent;
 }
 html::-webkit-scrollbar-thumb {
-  background: #f8ba00;
+  background: var(--main-color);
   border-radius: 5rem;
 }
+
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }
@@ -46,6 +47,8 @@ a:visited {
   align-items: center;
   justify-content: flex-end;
   height: 60px;
+  padding-right: 50px;
+  padding-top: 30px;
 }
 .navbar-top {
   display: flex;
@@ -76,6 +79,28 @@ a:visited {
   transform: scale(1.1);
   cursor: pointer;
 }
+.navbar > .links{
+  font-size: 20px;
+  color: #f1f1f1;
+  margin: 0 20px;
+  font-family: 'monospace';
+  font-weight: bold;
+  padding: 10px;
+  position: relative;
+}
+.navbar .links::after {
+  content: "";
+  width: 0;
+  height: 3px;
+  background: #d5a353;
+  bottom: -4px;
+  left: 0;
+  transition: 0.5s;
+  position: absolute;
+}
+.navbar .links:hover::after {
+  width: 100%;
+}
 .logo-container{
   display: flex;
   align-items: center;
@@ -102,7 +127,9 @@ a:visited {
 .artical-container{
   display: flex;
   align-items: center;
+  margin-bottom: 20px;
 }
+
 .artical-container > span{
   margin: 0 16px;
   color: #fff;
@@ -110,8 +137,13 @@ a:visited {
   text-shadow: 1px 1px #000;
 }
 .artical-container + p{
-  width: 200px;
+  color: #f1f1f1;
+  line-height: 25px;
+  font-size: 20px;
+  font-weight: bold;
+  width: 320px;
   text-align: center;
+  font-family: 'cambria';
 }
 .info{
   display: flex;
@@ -130,6 +162,32 @@ a:visited {
 .info > .info-center{
   border-left: 1px solid #999;
   border-right: 1px solid #999;
+}
+.info-titles{
+  color: #d5a353;
+  text-shadow: 1px 1px #000;
+}
+.info-text{
+  color: #f1f1f1;
+  margin-top: 20px;
+  width: 200px;
+  text-align: center;
+  font-weight: 600;
+}
+.info-contact{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding-left: 50px;
+}
+.info-contact > a{
+  display: flex;
+  height: 20px;
+
+align-items: center;}
+.info-contact > a > img{
+  width: 40px;
+  margin-right: 20px;
 }
 .logo-container-center span {
   font-size: 24px;

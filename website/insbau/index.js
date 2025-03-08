@@ -76,7 +76,7 @@ const sr = ScrollReveal ({
   reset: true
 })
 
-sr.reveal('.home', { delay: 200, origin: 'top'})
+sr.reveal('.banner-text', { delay: 200, origin: 'top'})
 sr.reveal('.services', { delay: 400, origin: 'left'})
 sr.reveal('.uberuns', { delay: 400, origin: 'top'})
 sr.reveal('.contact', { delay: 200, origin: 'top'})
