@@ -77,8 +77,9 @@ const sr = ScrollReveal ({
 })
 
 sr.reveal('.banner-text', { delay: 200, origin: 'top'})
-sr.reveal('.services', { delay: 400, origin: 'left'})
-sr.reveal('.uberuns', { delay: 400, origin: 'top'})
+sr.reveal('.help-left', { delay: 200, origin: 'left'})
+sr.reveal('.services', { delay: 400, origin: 'top'})
+sr.reveal('.uberuns', { delay: 400, origin: 'left'})
 sr.reveal('.contact', { delay: 200, origin: 'top'})
 
 // if ('serviceWorker' in navigator) {
