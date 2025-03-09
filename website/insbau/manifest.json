@@ -8,37 +8,37 @@
   "oriantation":"portrait-primary",
   "icons":[
     {
-      "src":"./images/icon_48.png",
+      "src":"./ins-bau-icons/icon_48.png",
       "sizes":"48X48",
       "type":"image/png"
     },
     {
-      "src":"./images/icon_64.png",
+      "src":"./ins-bau-icons/icon_64.png",
       "sizes":"64X64",
       "type":"image/png"
     },
     {
-      "src":"./images/icon_72.png",
+      "src":"./ins-bau-icons/icon_72.png",
       "sizes":"72X72",
       "type":"image/png"
     },
     {
-      "src":"./images/icon_96.png",
+      "src":"./ins-bau-icons/icon_96.png",
       "sizes":"96X96",
       "type":"image/png"
     },
     {
-      "src":"./images/icon_128.png",
+      "src":"./ins-bau-icons/icon_128.png",
       "sizes":"128X128",
       "type":"image/png"
     },
     {
-      "src":"./images/icon_256.png",
+      "src":"./ins-bau-icons/icon_256.png",
       "sizes":"192X192",
       "type":"image/png"
     },
     {
-      "src":"./images/icon_512.png",
+      "src":"./ins-bau-icons/icon_512.png",
       "sizes":"512X512",
       "type":"image/png"
     }
