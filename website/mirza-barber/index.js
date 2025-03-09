@@ -97,4 +97,26 @@ document.addEventListener('DOMContentLoaded',() => {
   //       console.log(err)
   //   })
   // }
+
+  document.getElementById("submit").addEventListener("click", (e) => {
+    e.preventDefault();
+    emailjs.init({
+      publicKey: "dfViWTkCiA7tGvXSm",
+    });
+    const data = {
+      email: document.getElementById("email").value,
+      subject: document.getElementById("subject").value,
+      message: document.getElementById("message").value,
+    };
+    emailjs
+      .send("service_18hr2f9", "template_nr7p6b2", data)
+      .then(
+        (response) => {
+          console.log("SUCCESS!", response.status, response.text);
+        },
+        (error) => {
+          console.log("FAILED...", error);
+        }
+      );
+  });
 })
