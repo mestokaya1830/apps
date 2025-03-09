@@ -7,12 +7,12 @@
     <meta name="description" content="Free Web tutorials" />
     <meta name="keywords" content="HTML, CSS, JavaScript" />
     <meta name="author" content="Roni Sakli" />
-    <link rel="icon" type="image/svg+xml" href="./images/icon_64.png" />
+    <!-- <link rel="icon" type="image/svg+xml" href="./images/icon_64.png" /> -->
     <meta name="theme-color" content="red" />
     <meta name="apple-mobile-web-app-status-bar" content="#ddd" />
     <!-- <link rel="manifest" href="./manifest.json"> -->
-    <link rel="stylesheet" href="./images/icon_64.png" />
-    <link rel="apple-touch-icon" href="./images/iconx64.png" />
+    <!-- <link rel="stylesheet" href="./images/icon_64.png" /> -->
+    <!-- <link rel="apple-touch-icon" href="./images/iconx64.png" /> -->
     <title>Mirza-Barber</title>
     <link rel="stylesheet" href="./css/index.css" />
     <link rel="stylesheet" href="./css/index-mobil.css" />
@@ -24,7 +24,7 @@
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
   </head>
   <body>
-    <div class="banner">
+    <div class="banner selections">
       <div>
         <nav class="navbar">
           <a href="" class="links">Startseite</a>
@@ -76,6 +76,137 @@
       </div>
     </div>
 
+    <div class="section1 sections">
+      <div class="section1-left">
+        <img src="./images/1.jpeg" alt="">
+      </div>
+      <div class="section1-right">
+        <h1 class="section1-right-title">Willkommen bei Mirza</h1>
+        <p class="section1-right-text">
+          Mr.Mirza ist ein erstaunlicher Friseursalon im Herzen in in RORSCHACH
+        </p>
+        <a href="#"><input type="button" value="Uber Uns" class="section1-right-btn"></a>
+      </div>
+    </div>
+    <div class="section2 sections">
+      <h1 class="section2-title">Unser Services</h1>
+      <img src="./images/separator_bottom.png" alt="" class="separator">
+      <h5>
+        Mr.Mirza Barbershop ist ein erstaunlicher Friseursalon im Herzen in RORSCHACH
+      </h5>
+      <div class="section2-container">
+        <div>
+          <img src="./images/schere.png" alt="">
+          <h3>Haareschneiden</h3>
+          <p>Lorem ipsum dolor sit amet, te duo labitur dolores.</p>
+        </div>
+        <div>
+          <img src="./images/rasiermesser.png" alt="">
+          <h3>Rasieren</h3>
+          <p>Lorem ipsum dolor sit amet, te duo labitur dolores.</p>
+        </div>
+        <div>
+          <img src="./images/haarbursten.png" alt="">
+          <h3>Styling</h3>
+          <p>Lorem ipsum dolor sit amet, te duo labitur dolores.</p>
+        </div>
+        <div>
+          <img src="./images/rasierapparat.png" alt="">
+          <h3>Trimmen</h3>
+          <p>Lorem ipsum dolor sit amet, te duo labitur dolores.</p>
+        </div>
+      </div>
+    </div>
+    <div class="section3 sections">
+      <div class="section3-left">
+        <img src="./images/price-site-img.jpg" alt="">
+      </div>
+      <div class="section3-right">
+        <h1 class="section3-right-title">Preisliste</h1>
+        <img src="./images/separator_bottom.png" alt="" class="separator">
+        <ul class="pricelist">
+          <li>
+            <h2>Haarschnitt</h2>
+            <h2 class="price-unit">	&#8364; 40</h2>
+          </li>
+          <li>
+            <h2>Rasieren</h2>
+            <h2 class="price-unit">	&#8364; 50</h2>
+          </li>
+          <li>
+            <h2>Haarschnitt Und Rasieren</h2>
+            <h2 class="price-unit">	&#8364; 70</h2>
+          </li>
+          <li>
+            <h2>Besatz (Rückseite und Seiten)</h2>
+            <h2 class="price-unit">	&#8364; 40</h2>
+          </li>
+          <li>
+            <h2>Bart trimmen</h2>
+            <h2 class="price-unit">	&#8364; 40</h2>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="section4 sections">
+      <h1>KONTAKT FORM</h1>
+      <img src="./images/separator_bottom.png" alt="">
+      <form action="#" id="email-form">
+        <input type="text" class="inputs"  id="username" placeholder="Name">
+        <div id="error-username" class="errors"></div>
+
+        <input type="email"  class="inputs"  id="email" placeholder="E-Mail">
+        <div id="error-email" class="errors"></div>
+
+        <input type="text"  class="inputs"  id="subject" placeholder="Subject">
+        <div id="error-subject" class="errors"></div>
+
+        <textarea class="inputs" id="message"></textarea>
+        <div id="error-message" class="errors"></div>
+
+        <input type="submit" name="submit" id="submit" value="Schicken">
+      </form>
+    </div>
+    <footer>
+      <div class="footer-container">
+        <div class="logo-footer">
+          <img src="./images/logo.png" alt="">
+          <div class="logo-text logo-text-footer">
+            <div class="navbar-top-right footer-social-icons">
+              <a href=""><img src="./images/facebook.png" alt=""></a>
+              <a href=""><img src="./images/twitter.png" alt=""></a>
+              <a href=""><img src="./images/instagram.png" alt=""></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-info-container">
+          <h2 class="footer-text">Info</h2>
+          <ul>
+            <li>
+              <a href="tel:++41 78 242 38 88"><img src="./images/call.png" alt=""> +41 78 242 38 88</a>
+              <a href="mailto:mirzaherrenwelt@hotmail.com"><img src="./images/email.png" alt=""> mirzaherrenwelt@hotmail.com</a>
+            </li>
+            <li class="footer-standort">
+              <box-icon name='target-lock' color="yellow" size="md" style="margin-top: 5px; margin-right: 12px;"></box-icon>
+              <div>
+                <span>St.Gallerstr.16</span>
+                <div> 9400 Rorschach-CH</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="standort-container">
+          <div>
+            <h2 class="footer-text">Standort</h2>
+          </div>
+          <div class="standort">
+            <iframe class="standort-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2696.567079854583!2d9.484025376930083!3d47.47886517117833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479b1bbd5a51049d%3A0x5c94036891e679e4!2sSt.%20Gallerstrasse%2016%2C%209400%20Rorschach%2C%20Switzerland!5e0!3m2!1sen!2sde!4v1741535347148!5m2!1sen!2sde" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="copyright"><span class="copy">&copy;</span>Copyright 2025 BY Mr.Mirza</div>
+    </footer>
+    <img src="./images/go-top.png" alt="" class="go-top" id="go-top">
     <script src="./index.js"></script>
   </body>
 </html>

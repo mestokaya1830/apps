@@ -1,4 +1,11 @@
 
+window.onscroll = () => {
+  if(document.body.scrollTop > 500 || document.documentElement.scrollTop > 500){
+   document.getElementById('go-top').style.display = 'block'
+  } else {
+    document.getElementById('go-top').style.display = 'none'
+  }
+}
 document.getElementById('home').style.color = '#fddf85'
 document.getElementById("go-top").addEventListener("click", (e) => {
   window.scrollTo(0, 0);
@@ -57,13 +64,13 @@ document.getElementById('submit').addEventListener('click' , (e) => {
   e.preventDefault()
   if(!username.value.match(pattern.username)){
     username.focus()
-    errorUsername.innerText = 'Username must be more 2 letter!'
+    errorUsername.innerText = 'Der Benutzername muss mehr als 2 Buchstaben haben!'
   } else if(!email.value.match(pattern.email)){
-    errorEmail.innerText = 'Email is invalid format!'
+    errorEmail.innerText = 'E-Mail hat ein ungültiges Format!'
   } else if(!subject.value.match(pattern.subject)){
-    errorSubject.innerText = 'Subject must be more 5 letter!'
+    errorSubject.innerText = 'Der Betreff muss mehr als 5 Buchstaben haben!'
   } else if(!message.value.match(pattern.message)){
-    errorMessage.innerText = 'Message must be more 10 letter!'
+    errorMessage.innerText = 'Die Nachricht muss mehr als 10 Buchstaben haben!'
   } else {
     document.getElementById("email-form").reset();
   }
