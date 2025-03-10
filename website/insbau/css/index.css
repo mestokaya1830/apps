@@ -199,6 +199,12 @@ a:visited {
   padding: 50px 18%;
   padding-top: 150px;
 }
+.services-container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
 .services-text{
   font-size: 40px;
 }
@@ -240,12 +246,13 @@ a:visited {
 }
 .services-images > article > p{
   display: none;
+  overflow: hidden;
 }
 .services-images:hover > article > .services-images-title{
   color: #222;
 }
 
-.services-images:hover  article{
+.services-images > article:hover{
   height: 100%;
   background-color: #f8ba00;
   transition: all 0.3s ease-in;
@@ -254,7 +261,6 @@ a:visited {
   display: block;
   color: #222;
 }
-
 .help{
   display: flex;
   padding: 0;
