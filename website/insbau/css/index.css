@@ -131,7 +131,7 @@ a:visited {
 }
 .navigation-bar .links {
   color: #fff;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 400;
   margin: 0 24px;
 }
@@ -275,7 +275,7 @@ a:visited {
   padding: 10% 20%;
 }
 .help-text{
-  width: 50%;
+  width: 85%;
   font-size: 30px;
   margin-bottom: 30px;
   color: #f1f1f1;
@@ -299,7 +299,7 @@ a:visited {
   display: flex;
   justify-content: space-between;
   background-color: #f1f1f1;
-  padding: 0 10%;
+  padding: 5% 10%;
 }
 .uberuns-left{
   display: flex;
@@ -421,10 +421,11 @@ footer {
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
   overflow: hidden;
-  display: none;
+  margin-left: -2000px;
 }
 .mobil-menu-handle {
-  display: block;
+  margin-left: 0;
+  transition: all 0.5s ease;
 }
 .mobil-navigation ul {
   list-style: none;
