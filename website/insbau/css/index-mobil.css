@@ -115,7 +115,7 @@
   }
   .services{
     display: flex;
-    padding: 20px !important;
+    padding: 60px !important;
   }
   .service-center{
     flex-direction: column;
@@ -134,6 +134,9 @@
   .help, .uberuns{
     position: relative;
     height: 100vh;
+  }
+  .uberuns{
+    padding-top: 30px;
   }
   .help-left, .uberuns-right{
     width: 100vw;
@@ -178,7 +181,7 @@
   }
   .contact{
     width: 100% !important;
-    height: 600px !important;
+    padding-top: 80px;
   }
   .contact-container {
     width: 100% !important;
