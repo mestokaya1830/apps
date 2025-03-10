@@ -1,4 +1,4 @@
-@media only screen and (max-width: 1040px) {
+@media only screen and (max-width: 1024px) {
   .mobil-navigation-icon {
     display: block;
     width: 26px;
@@ -47,9 +47,7 @@
     justify-content: center;
     margin: 5px 0;
   }
-  .navbar-top-right {
-    margin-top: 20px;
-  }
+  
   .navbar-top-right > img {
     width: 30px;
     height: 30px;
@@ -61,7 +59,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 200px;
+    height: 240px;
     width: 100%;
   }
   .logo-container > img {
@@ -115,11 +113,66 @@
   .standort{
     width: 100%;
   }
-  .sections {
-    padding: 180px 50px !important;
+  .services{
+    display: flex;
+    padding: 20px !important;
+  }
+  .service-center{
+    flex-direction: column;
+    width: 100%;
+  }
+  .services-images{
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .services-text{font-size: 30px;}
+  .services-images-title > h2{
+    width: 100%;
+    font-size: 20px;
+  }
+  .help, .uberuns{
+    position: relative;
+    height: 100vh;
+  }
+  .help-left, .uberuns-right{
+    width: 100vw;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 30px !important;
+  }
+  .help-text{
+    width: 100vw;
+    padding: 10px 30px;
+    font-size: 18px;
+    text-align: center;
+  }
+  .help-img{
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 1;
+    width: 200px;
+  }
+  .uberuns-left{
+    width: fit-content;
+    position: absolute;
+    top: 240px;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 1;
+    padding: 30px;
+  }
+  .uberuns-img{
+    width: 200px;
+  }
+  .uberuns-right h2{
+    text-align: center;
+    margin: 10px 0;
   }
 }
-@media only screen and (min-width: 1044px) and (max-width: 1460px) {
+@media only screen and (min-width: 1024px) and (max-width: 1460px) {
   .logo-container {
     width: 510px !important;
   }
@@ -145,5 +198,8 @@
   .links {
     margin: 0 10px !important;
     font-size: 16px !important;
+  }
+  .help-img{
+    width: 30vw;
   }
 }
