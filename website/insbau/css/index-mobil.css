@@ -1,31 +1,10 @@
 @media only screen and (max-width: 1024px) {
-  .mobil-navigation-icon {
-    display: block;
-    width: 26px;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    cursor: pointer;
-    z-index: 3;
-  }
-  .mobil-navigation-icon > div {
-    width: 100%;
-    height: 4px;
-    border-radius: 4px;
-    background-color: #fff;
-    margin: 3px 0;
-  }
-  .mobil-logo-container-mobil{
-    background-color: red;
-  }
-  .mobil-icons{
-    margin-right: 10px;
-    margin-top: 5px;
-    color: red;
+  .logo-text-big-mobil{
+    color: #f8ba00 !important;
   }
   .logo-text-small-mobil{
-    text-shadow: 0.5px 0px #fff;
     font-size: 16px;
+    color: #fff;
   }
   .navbar {
     position: static;
@@ -72,29 +51,6 @@
     transform: skewX(0) !important;
     width: 100% !important;
   }
-  .contact{
-    height: 600px !important;
-  }
-  .contact-container {
-    width: 100% !important;
-    background-color: #f8ba00;
-    padding: 0 !important;
-  }
-  .contact-container::before{
-    right: 100vw !important;
-  }
-  .contact > form {
-    width: 90vw !important;
-    margin: 0 !important;
-    transform: translate(50%,-50%);
-  }
-  input[type="submit"] {
-    width: 100% !important;
-  }
-
-  .go-top {
-    width: 40px;
-  }
   footer{
     padding: 5px;
     height: auto;
@@ -113,9 +69,93 @@
   .standort{
     width: 100%;
   }
+  /* .mobil-navigation {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 100vh;
+    background-color: #fff;
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    overflow: hidden;
+    margin-left: -2000px;
+  }
+  .mobil-menu-handle {
+    margin-left: 0;
+    transition: all 0.5s ease;
+  }
+  .mobil-navigation ul {
+    list-style: none;
+    padding: 20px;
+  }
+  .mobil-navigation > ul > li {
+    display: flex;
+    align-items: center;
+    height: 34px;
+    margin: 5px 0;
+  }
+  .mobil-logo-container-mobil {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    background-color: #f8ba00;
+  }
+  .mobil-logo-container-mobil > .logo-text > .logo-text-big-mobil {
+    color: #fff;
+  } */
+
+  /* .mobil-navigation-icon {
+    display: block;
+    width: 26px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 3;
+  }
+  .mobil-navigation-icon > div {
+    width: 100%;
+    height: 4px;
+    border-radius: 4px;
+    background-color: #fff;
+    margin: 3px 0;
+  }
+  .mobil-logo-container-mobil{
+    background-color: #202340;
+  }
+  .mobil-icons{
+    margin-right: 10px;
+    margin-top: 5px;
+    color: red;
+  }
+  
+  .contact-container {
+    width: 100% !important;
+    background-color: #f8ba00;
+    padding: 0 !important;
+  }
+  .contact-container::before{
+    right: 100vw !important;
+  }
+  .contact > form {
+    width: 90vw !important;
+    margin: 0 !important;
+    transform: translate(50%,-50%);
+  }
+  input[type="submit"] {
+    width: 100% !important;
+  }
+
+
+  
   .services{
     display: flex;
-    padding: 60px !important;
+    padding: 2em !important;
   }
   .service-center{
     flex-direction: column;
@@ -136,7 +176,7 @@
     height: 100vh;
   }
   .uberuns{
-    padding-top: 30px;
+    padding-top: 10px;
   }
   .help-left, .uberuns-right{
     width: 100vw;
@@ -152,7 +192,7 @@
   }
   .help-img{
     position: absolute;
-    top: 200px;
+    top: 170px;
     left: 50%;
     transform: translate(-50%);
     z-index: 1;
@@ -173,13 +213,20 @@
   .uberuns-right h2{
     text-align: center;
     margin: 10px 0;
+  } */
+  .go-top {
+    width: 40px;
   }
 }
 @media only screen and (min-width: 1024px) and (max-width: 1460px) {
-  .logo-container {
-    width: 510px !important;
+  .links {
+    margin: 0 10px !important;
+    font-size: 1.2em !important;
   }
-  .contact{
+   .logo-container {
+    width: 33em !important;
+  }
+  /*.contact{
     width: 100% !important;
     padding-top: 80px;
   }
@@ -198,10 +245,8 @@
     margin: 0 !important;
     transform: translate(-10%,0);
   }
-  .links {
-    margin: 0 10px !important;
-  }
+
   .help-img{
     width: 30vw;
-  }
+  } */
 }
