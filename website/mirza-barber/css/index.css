@@ -23,6 +23,14 @@ html::-webkit-scrollbar-thumb {
   background: var(--main-color);
   border-radius: 5rem;
 }
+body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100dvw;
+  height: 100dvh;
+  overflow-x: hidden;
+}
 
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
@@ -120,8 +128,9 @@ a:visited {
 }
 .sections{
   display: flex;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+  padding: 170px 0;
 }
 .banner-center{
   display: flex;
@@ -320,21 +329,34 @@ align-items: center;}
   margin-top: 20px;
   font-size: 14px;
 }
-.section3-left{
-  width: 80% !important;
+.section3{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
-.section3-right{
+
+.section3 > .section3-container{
+  display: flex;
+  width: 100%;
+}
+.section3-left, .section3-right{
   display: flex;
   flex-direction: column;
   justify-content: flex-start !important;
-  padding: 50px 100px;
+  align-items: center;
+  flex: 1;
+  padding: 50px;
 }
-.section3-right-title{
-  font-family: 'Teko';
-  font-size: 50px;
-  letter-spacing: 3px;
+.section3-left > img, .section3-right > img{
+  width: 50px;
 }
-.section3-right > .pricelist > li{
+.section3-container > .section3-left > .pricelist,
+.section3-container > .section3-right > .pricelist{
+  width: 80%;
+}
+.section3-container > .section3-left > .pricelist > li,
+.section3-container > .section3-right > .pricelist > li{
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -347,15 +369,12 @@ align-items: center;}
 .price-unit{
   color: #d5a353;
 }
-.section4{
-  padding: 100px;
-}
+
 .section4 {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height:100vh;
   background-color: red;
 }
 .section4 > h1{
