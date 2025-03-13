@@ -119,10 +119,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   sr.reveal(".banner-text", { delay: 100, origin: "top" });
   sr.reveal(".help-left", { delay: 100, origin: "left" });
-  sr.reveal(".help-img", { delay: 200, origin: "right" });
+  sr.reveal(".help-img", { delay: 200, origin: "bottom" });
   sr.reveal(".services-container", { delay: 100, origin: "top" });
   sr.reveal(".uberuns", { delay: 100, origin: "left" });
-  sr.reveal(".uberuns-img", { delay: 100, origin: "right" });
+  sr.reveal(".uberuns-left", { delay: 200, origin: "top" });
   sr.reveal(".contact", { delay: 100, origin: "top" });
 
   // if ('serviceWorker' in navigator) {
