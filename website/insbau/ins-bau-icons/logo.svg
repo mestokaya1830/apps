@@ -9,9 +9,6 @@
    id="svg5"
    inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
    sodipodi:docname="logo.svg"
-   inkscape:export-filename="/media/mesto-linux/Store/myworks/apps/website/insbau/images/logo.png"
-   inkscape:export-xdpi="26.065454"
-   inkscape:export-ydpi="26.065454"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -26,17 +23,15 @@
      inkscape:pagecheckerboard="0"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="0.75187991"
-     inkscape:cx="285.94992"
-     inkscape:cy="447.54487"
+     inkscape:zoom="1.0633188"
+     inkscape:cx="269.90965"
+     inkscape:cy="565.68173"
      inkscape:window-width="1920"
      inkscape:window-height="1016"
      inkscape:window-x="0"
      inkscape:window-y="27"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1"
-     inkscape:showpageshadow="2"
-     inkscape:deskcolor="#d1d1d1" />
+     inkscape:current-layer="layer1" />
   <defs
      id="defs2">
     <filter
@@ -5377,44 +5372,217 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
-    <path
-       id="rect1480-5-6-1"
-       style="fill:#ff0000;stroke:#241c1c;stroke-opacity:0.244623;filter:url(#filter3553)"
-       d="m 30.151293,49.217217 33.985362,-13.78643 33.88976,15.0622 35.163555,-14.65262 37.54475,13.37685 V 110.33369 H 30.151293 Z"
-       sodipodi:nodetypes="cccccccc"
-       inkscape:export-filename="/home/mesto-linux/Downloads/logo.png"
-       inkscape:export-xdpi="30.225975"
-       inkscape:export-ydpi="30.225975" />
-    <g
-       id="g2575-9-4-1"
-       transform="translate(-88.668527,-77.892803)"
-       style="filter:url(#filter2549)"
-       inkscape:export-filename="/home/mesto-linux/Downloads/logo.png"
-       inkscape:export-xdpi="30.225975"
-       inkscape:export-ydpi="30.225975">
-      <path
-         id="path2553-8-3-0"
-         style="fill:#280b0b;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         d="m 267.73518,123.59795 -10.27683,7.70563 -34.40796,-16.51207 -35.16355,14.65262 -33.88976,-15.0622 -32.54527,16.92485 -10.96212,-8.51787 m 0,0 43.11508,-21.78632 34.55903,16.37947 35.24519,-16.31289 44.32619,22.52878" />
-      <path
-         id="path327-4-0-8"
-         style="fill:#ff0000;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         d="m 267.73518,122.53961 -10.27683,7.70563 -34.40796,-16.51207 -35.16355,14.65262 -33.88976,-15.0622 -32.54527,16.92485 -10.96212,-8.51787 m 0,0 43.11508,-21.786313 34.55903,16.379463 35.24519,-16.31289 44.32619,22.52878" />
-    </g>
+    <rect
+       style="fill:#28170b;fill-opacity:1;stroke:#ff7f2a;stroke-width:0;stroke-opacity:0.244623"
+       id="rect31-6"
+       width="157.74001"
+       height="104.96642"
+       x="23.972649"
+       y="87.039085"
+       ry="7.0464625" />
+    <rect
+       style="fill:#e9ddaf;fill-opacity:1;stroke:#ff7f2a;stroke-width:0;stroke-opacity:0.244623"
+       id="rect31"
+       width="152.48079"
+       height="99.215492"
+       x="26.602257"
+       y="89.794144"
+       ry="4.0105181" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.3333px;line-height:1.25;font-family:Z003;-inkscape-font-specification:Z003;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.74069;filter:url(#filter38690)"
-       x="36.90506"
-       y="94.562294"
-       id="text39202"
-       transform="matrix(1.0823564,0,0,0.92391009,-1.2089861,-3.4410174)"
-       inkscape:export-filename="/home/mesto-linux/Downloads/logo.png"
-       inkscape:export-xdpi="30.225975"
-       inkscape:export-ydpi="30.225975"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.77512px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:0.169379"
+       x="30.093672"
+       y="134.89575"
+       id="text2525"
+       transform="scale(1.0159955,0.98425632)"><tspan
          sodipodi:role="line"
-         id="tspan39200"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.3333px;font-family:Z003;-inkscape-font-specification:Z003;fill:#ffffff;stroke-width:1.74069"
+         id="tspan2523"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#ff0000;stroke-width:0.169379"
+         x="30.093672"
+         y="134.89575">INS-BAU-PROFIS</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.51677px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.169379"
+       x="43.92281"
+       y="141.1301"
+       id="text37655"
+       transform="scale(1.0159955,0.98425632)"><tspan
+         sodipodi:role="line"
+         id="tspan37653"
+         style="font-size:4.51677px;stroke-width:0.169379"
+         x="43.92281"
+         y="141.1301">Quality ist alles</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.7824px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.404339"
+       x="95.046799"
+       y="111.45705"
+       id="text54156"
+       transform="scale(0.96576984,1.0354434)"><tspan
+         sodipodi:role="line"
+         id="tspan54154"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.7824px;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:0.404339"
+         x="95.046799"
+         y="111.45705">Nurullah Sakli</tspan></text>
+    <rect
+       style="fill:#280b0b;fill-opacity:1;stroke:#ff7f2a;stroke-width:0;stroke-opacity:0.244623"
+       id="rect120191"
+       width="143.7509"
+       height="0.42690876"
+       x="30.795593"
+       y="144.54887" />
+    <g
+       inkscape:label="Layer 1"
+       id="layer1-2"
+       transform="matrix(0.3097429,0,0,0.3097429,31.208927,87.358237)">
+      <path
+         id="rect1480-5-6-1"
+         style="fill:#ff0000;stroke:#241c1c;stroke-opacity:0.244623;filter:url(#filter3553)"
+         d="m 30.151293,49.217217 33.985362,-13.78643 33.88976,15.0622 35.163555,-14.65262 37.54475,13.37685 V 110.33369 H 30.151293 Z"
+         sodipodi:nodetypes="cccccccc"
+         inkscape:export-filename="/home/mesto-linux/Downloads/logo.png"
+         inkscape:export-xdpi="30.225975"
+         inkscape:export-ydpi="30.225975" />
+      <g
+         id="g2575-9-4-1"
+         transform="translate(-88.668527,-77.892803)"
+         style="filter:url(#filter2549)"
+         inkscape:export-filename="/home/mesto-linux/Downloads/logo.png"
+         inkscape:export-xdpi="30.225975"
+         inkscape:export-ydpi="30.225975">
+        <path
+           id="path2553-8-3-0"
+           style="fill:#280b0b;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m 267.73518,123.59795 -10.27683,7.70563 -34.40796,-16.51207 -35.16355,14.65262 -33.88976,-15.0622 -32.54527,16.92485 -10.96212,-8.51787 m 0,0 43.11508,-21.78632 34.55903,16.37947 35.24519,-16.31289 44.32619,22.52878" />
+        <path
+           id="path327-4-0-8"
+           style="fill:#ff0000;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m 267.73518,122.53961 -10.27683,7.70563 -34.40796,-16.51207 -35.16355,14.65262 -33.88976,-15.0622 -32.54527,16.92485 -10.96212,-8.51787 m 0,0 43.11508,-21.786313 34.55903,16.379463 35.24519,-16.31289 44.32619,22.52878" />
+      </g>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.3333px;line-height:1.25;font-family:Z003;-inkscape-font-specification:Z003;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.74069;filter:url(#filter38690)"
          x="36.90506"
-         y="94.562294">ins-bau</tspan></text>
+         y="94.562294"
+         id="text39202"
+         transform="matrix(1.0823564,0,0,0.92391009,-1.2089861,-3.4410174)"
+         inkscape:export-filename="/home/mesto-linux/Downloads/logo.png"
+         inkscape:export-xdpi="30.225975"
+         inkscape:export-ydpi="30.225975"><tspan
+           sodipodi:role="line"
+           id="tspan39200"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.3333px;font-family:Z003;-inkscape-font-specification:Z003;fill:#ffffff;stroke-width:1.74069"
+           x="36.90506"
+           y="94.562294">ins-bau</tspan></text>
+    </g>
+    <g
+       id="g136412"
+       transform="translate(-0.29613886)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:5.29166668px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.225144"
+         x="26.17317"
+         y="181.83212"
+         id="text54156-6"
+         transform="scale(1.1753819,0.8507873)"><tspan
+           sodipodi:role="line"
+           id="tspan54154-3"
+           style="stroke-width:0.225144;font-size:5.29166668px"
+           x="26.17317"
+           y="181.83212"><tspan
+   style="stroke-width:0.225144;font-size:5.29166668px"
+   id="tspan88763">Mobil</tspan>: </tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:5.29166668px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.225144"
+         x="56.609352"
+         y="181.66763"
+         id="text70531"
+         transform="scale(1.1753819,0.8507873)"><tspan
+           sodipodi:role="line"
+           id="tspan70529"
+           style="stroke-width:0.225144;font-size:5.29166668px"
+           x="56.609352"
+           y="181.66763"><tspan
+             style="stroke-width:0.225144;font-size:5.29166668px"
+             id="tspan79545">+49 1634814438</tspan></tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:5.29166665px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.221269"
+         x="26.238623"
+         y="215.1799"
+         id="text54156-6-9-3-8"
+         transform="scale(1.1959682,0.83614264)"><tspan
+           sodipodi:role="line"
+           id="tspan54154-3-4-9-5"
+           style="stroke-width:0.221269;font-size:5.29166665px"
+           x="26.238623"
+           y="215.1799">Address: </tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:5.29166668px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.225144"
+         x="56.842411"
+         y="211.9924"
+         id="text70531-1-0-0"
+         transform="scale(1.1753819,0.8507873)"><tspan
+           sodipodi:role="line"
+           id="tspan70529-2-8-9"
+           style="stroke-width:0.225144;font-size:5.29166668px"
+           x="56.842411"
+           y="211.9924">Schmidener Str. 62</tspan><tspan
+           sodipodi:role="line"
+           style="stroke-width:0.225144;font-size:5.29166668px"
+           x="56.842411"
+           y="219.26843"
+           id="tspan38390">70372 Stuttgart</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:5.29166668px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.225144"
+         x="26.551184"
+         y="202.04501"
+         id="text54156-6-9-3"
+         transform="scale(1.1753819,0.8507873)"><tspan
+           sodipodi:role="line"
+           id="tspan54154-3-4-9"
+           style="stroke-width:0.225144;font-size:5.29166668px"
+           x="26.551184"
+           y="202.04501">Web: </tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:5.29166668px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.225144"
+         x="56.677567"
+         y="201.88052"
+         id="text70531-1-0"
+         transform="scale(1.1753819,0.8507873)"><tspan
+           sodipodi:role="line"
+           id="tspan70529-2-8"
+           style="stroke-width:0.225144;font-size:5.29166668px"
+           x="56.677567"
+           y="201.88052">ins-bau.de</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:5.29166668px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.225144"
+         x="26.17317"
+         y="191.76807"
+         id="text54156-6-9"
+         transform="scale(1.1753819,0.8507873)"><tspan
+           sodipodi:role="line"
+           id="tspan54154-3-4"
+           style="stroke-width:0.225144;font-size:5.29166668px"
+           x="26.17317"
+           y="191.76807">Email: </tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:5.29166668px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.225144"
+         x="56.677567"
+         y="191.60358"
+         id="text70531-1"
+         transform="scale(1.1753819,0.8507873)"><tspan
+           sodipodi:role="line"
+           id="tspan70529-2"
+           style="stroke-width:0.225144;font-size:5.29166668px"
+           x="56.677567"
+           y="191.60358">info@ins-bau.de</tspan></text>
+    </g>
   </g>
 </svg>

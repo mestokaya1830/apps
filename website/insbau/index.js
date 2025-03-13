@@ -75,40 +75,40 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // document.getElementById("submit").addEventListener("click", (e) => {
-  //   e.preventDefault();
-  //   if (!username.value.match(pattern.username)) {
-  //     username.focus();
-  //     errorUsername.innerText =
-  //       "Der Benutzername muss mehr als 2 Buchstaben haben!";
-  //   } else if (!email.value.match(pattern.email)) {
-  //     errorEmail.innerText = "E-Mail hat ein ungültiges Format!";
-  //   } else if (!subject.value.match(pattern.subject)) {
-  //     errorSubject.innerText = "Der Betreff muss mehr als 5 Buchstaben haben!";
-  //   } else if (!message.value.match(pattern.message)) {
-  //     errorMessage.innerText =
-  //       "Die Nachricht muss mehr als 10 Buchstaben haben!";
-  //   } else {
-  //     e.preventDefault();
-  //     emailjs.init({
-  //       publicKey: "dfViWTkCiA7tGvXSm",
-  //     });
-  //     const data = {
-  //       email: document.getElementById("email").value,
-  //       subject: document.getElementById("subject").value,
-  //       message: document.getElementById("message").value,
-  //     };
-  //     emailjs.send("service_18hr2f9", "template_nr7p6b2", data).then(
-  //       (response) => {
-  //         console.log("SUCCESS!", response.status, response.text);
-  //       },
-  //       (error) => {
-  //         console.log("FAILED...", error);
-  //       }
-  //     );
-  //     document.getElementById("email-form").reset();
-  //   }
-  // });
+  document.getElementById("submit").addEventListener("click", (e) => {
+    e.preventDefault();
+    if (!username.value.match(pattern.username)) {
+      username.focus();
+      errorUsername.innerText =
+        "Der Benutzername muss mehr als 2 Buchstaben haben!";
+    } else if (!email.value.match(pattern.email)) {
+      errorEmail.innerText = "E-Mail hat ein ungültiges Format!";
+    } else if (!subject.value.match(pattern.subject)) {
+      errorSubject.innerText = "Der Betreff muss mehr als 5 Buchstaben haben!";
+    } else if (!message.value.match(pattern.message)) {
+      errorMessage.innerText =
+        "Die Nachricht muss mehr als 10 Buchstaben haben!";
+    } else {
+      e.preventDefault();
+      emailjs.init({
+        publicKey: "dfViWTkCiA7tGvXSm",
+      });
+      const data = {
+        email: document.getElementById("email").value,
+        subject: document.getElementById("subject").value,
+        message: document.getElementById("message").value,
+      };
+      emailjs.send("service_18hr2f9", "template_nr7p6b2", data).then(
+        (response) => {
+          console.log("SUCCESS!", response.status, response.text);
+        },
+        (error) => {
+          console.log("FAILED...", error);
+        }
+      );
+      document.getElementById("email-form").reset();
+    }
+  });
 
   const sr = ScrollReveal({
     distance: "60px",
