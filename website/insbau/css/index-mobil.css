@@ -75,15 +75,15 @@
   .sections{
     padding: 60px 0;
   }
-  .help{
+  .help, .uberuns{
     flex-direction: column;
     justify-content: flex-start;
   }
-  .help-text{
+  .help-text, .uberuns-text{
     font-size: 140%;
     text-align: center;
   }
-  .help-img{
+  .help-img, .uberuns-img{
     width: 200px;
     position: absolute;
     right: 2em;
@@ -102,7 +102,7 @@
     width: 100%;
     font-size: 20px;
   }
-  /* .mobil-navigation {
+  .mobil-navigation {
     display: flex;
     flex-direction: column;
     width: 80%;
@@ -140,9 +140,8 @@
   }
   .mobil-logo-container-mobil > .logo-text > .logo-text-big-mobil {
     color: #fff;
-  } */
-
-  /* .mobil-navigation-icon {
+  }
+  .mobil-navigation-icon {
     display: block;
     width: 26px;
     position: absolute;
@@ -166,72 +165,32 @@
     margin-top: 5px;
     color: red;
   }
-  
+ 
   .contact-container {
     width: 100% !important;
     background-color: #f8ba00;
     padding: 0 !important;
   }
-  .contact-container::before{
-    right: 100vw !important;
+  .contact-container::before {
+    right: 500px;
+    width: 2000px;
   }
   .contact > form {
     width: 90vw !important;
     margin: 0 !important;
     transform: translate(50%,-50%);
   }
+  .contact > form input {
+   margin: 1.2em 0;
+  }
   input[type="submit"] {
     width: 100% !important;
   }
-
-
-  
-  
-  
-  .uberuns{
-    padding-top: 10px;
-  }
-  .help-left, .uberuns-right{
-    width: 100vw;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 30px !important;
-  }
-  .help-text{
-    width: 100vw;
-    padding: 10px 30px;
-    font-size: 18px;
-    text-align: center;
-  }
-  .help-img{
-    position: absolute;
-    top: 170px;
-    left: 50%;
-    transform: translate(-50%);
-    z-index: 1;
-    width: 200px;
-  }
-  .uberuns-left{
-    width: fit-content;
-    position: absolute;
-    top: 240px;
-    left: 50%;
-    transform: translate(-50%);
-    z-index: 1;
-    padding: 30px;
-  }
-  .uberuns-img{
-    width: 200px;
-  }
-  .uberuns-right h2{
-    text-align: center;
-    margin: 10px 0;
-  } */
   .go-top {
     width: 40px;
   }
 }
-@media only screen and (min-width: 1024px) and (max-width: 1460px) {
+@media only screen and (min-width: 1024px) and (max-width: 1465px) {
   .navigation-bar-links {
     margin: 0 10px !important;
     font-size: 1.2em !important;
@@ -239,27 +198,29 @@
    .navbar-logo-container {
     width: 33em !important;
   }
-  /*.contact{
-    width: 100% !important;
-    padding-top: 80px;
+  .services-container{
+    padding: 0 10em !important;
+  }
+  .services-images{
+    min-width: 50% !important;
   }
   .contact-container {
-    width: 100% !important;
-    background-color: #f8ba00;
+    display: none;
+  }
+  .contact{
+    width: 100%;
+    align-items: center !important;
+    justify-content: center !important;
     padding: 0 !important;
   }
-  .contact-container::before{
-    right: 100% !important;
-    width: 300px !important;
-  }
   .contact > form {
-    position: static !important;
-    width: 100% !important;
-    margin: 0 !important;
-    transform: translate(-10%,0);
+    width: 80%;
+    top: 0 !important;
+    right: 0 !important;
+    transform: translate(0,0) !important;
+    position: static;
   }
-
-  .help-img{
+  .help-img , .uberuns-img{
     width: 30vw;
-  } */
+  } 
 }
