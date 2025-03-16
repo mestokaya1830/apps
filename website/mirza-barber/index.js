@@ -84,10 +84,10 @@ document.addEventListener('DOMContentLoaded',() => {
     reset: true
   })
   
-  sr.reveal('.banner-text', { delay: 200, origin: 'top'})
-  sr.reveal('.help-left', { delay: 200, origin: 'left'})
-  sr.reveal('.services', { delay: 400, origin: 'top'})
-  sr.reveal('.uberuns', { delay: 400, origin: 'left'})
+  sr.reveal('.logo-container', { delay: 200, origin: 'top'})
+  sr.reveal('.banner-center', { delay: 200, origin: 'bottom'})
+  sr.reveal('.section2-title', { delay: 400, origin: 'top'})
+  sr.reveal('.section2-text', { delay: 400, origin: 'bottom'})
   sr.reveal('.contact', { delay: 200, origin: 'top'})
   
   // if ('serviceWorker' in navigator) {
