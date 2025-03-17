@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded',() => {
       document.getElementById('go-top').style.display = 'none'
     }
   }
-  // document.getElementById('home').style.color = '#fddf85'
+  document.getElementById('home').style.color = '#fddf85'
   document.getElementById("go-top").addEventListener("click", (e) => {
     window.scrollTo(0, 0);
     document.querySelectorAll('.links').forEach(item2 => {
@@ -29,15 +29,15 @@ document.addEventListener('DOMContentLoaded',() => {
       }, 0);
     })
   })
-  // document.querySelectorAll('.mobil-links').forEach(item => {
-  //   item.addEventListener('click', () => {
-  //     document.querySelector('.mobil-navigation').classList.toggle('mobil-menu-handle')
-  //   })
-  // })
+  document.querySelectorAll('.mobil-links').forEach(item => {
+    item.addEventListener('click', () => {
+      document.querySelector('.mobil-navigation').classList.toggle('mobil-menu-handle')
+    })
+  })
   
-  // document.querySelector('.mobil-navigation-icon').addEventListener('click', (e) => {
-  //   document.querySelector('.mobil-navigation').classList.toggle('mobil-menu-handle')
-  // })
+  document.querySelector('.mobil-navigation-icon').addEventListener('click', (e) => {
+    document.querySelector('.mobil-navigation').classList.toggle('mobil-menu-handle')
+  })
   
   const username = document.getElementById('username')
   const email = document.getElementById('email')

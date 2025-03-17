@@ -72,23 +72,27 @@
   .standort{
     width: 100%;
   }
-  .sections{
-    padding: 60px 0;
+.sections{
+  padding: 60px 0 !important;
+}
+  .services-text{font-size: 30px;}
+  .services-images-title > h2{
+    width: 100%;
+    font-size: 20px;
   }
-  .help, .uberuns{
-    flex-direction: column;
-    justify-content: flex-start;
+  .aboutus-container{
+    width: 100%;
   }
-  .help-text, .uberuns-text{
-    font-size: 140%;
-    text-align: center;
+  .aboutus-title{
+     text-align: center;
   }
-  .help-img, .uberuns-img{
-    width: 200px;
-    position: absolute;
-    right: 2em;
-    bottom:0;
+  .aboutus-text{
+      padding: 30px;
   }
+  .aboutus-img{
+    width: 300px !important;
+  }
+ 
   .services-container{
     padding: 0 2em;
   }
@@ -96,11 +100,6 @@
     width: 100%;
     border-radius: 10px;
     overflow: hidden;
-  }
-  .services-text{font-size: 30px;}
-  .services-images-title > h2{
-    width: 100%;
-    font-size: 20px;
   }
   .mobil-navigation {
     display: flex;
@@ -169,7 +168,6 @@
   .contact-container {
     width: 100% !important;
     background-color: #f8ba00;
-    padding: 0 !important;
   }
   .contact-container::before {
     right: 500px;
@@ -178,7 +176,8 @@
   .contact > form {
     width: 90vw !important;
     margin: 0 !important;
-    transform: translate(50%,-50%);
+    height: 100%;
+    transform: translate(50%,-30%);
   }
   .contact > form input {
    margin: 1.2em 0;
@@ -220,7 +219,7 @@
     transform: translate(0,0) !important;
     position: static;
   }
-  .help-img , .uberuns-img{
+ .aboutus-img{
     width: 30vw;
   } 
 }

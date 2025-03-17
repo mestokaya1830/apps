@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function() {
   window.onscroll = () => {
     if (
       document.body.scrollTop > 500 ||
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  document.getElementById("submit").addEventListener("click", (e) => {
+  document.getElementById("submit").addEventListener("click", function(e) {
     e.preventDefault();
     if (!username.value.match(pattern.username)) {
       username.focus();
@@ -107,6 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       );
       document.getElementById("email-form").reset();
+      alert('Message sent')
     }
   });
 
@@ -118,12 +119,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   sr.reveal(".banner-text", { delay: 100, origin: "top" });
-  sr.reveal(".help-text-container", { delay: 100, origin: "left" });
-  sr.reveal(".help-img", { delay: 200, origin: "bottom" });
   sr.reveal(".services-container", { delay: 100, origin: "top" });
-  sr.reveal(".uberuns", { delay: 100, origin: "left" });
-  sr.reveal(".uberuns-text-container", { delay: 200, origin: "top" });
-  sr.reveal(".contact", { delay: 100, origin: "top" });
+  sr.reveal(".aboutus", { delay: 100, origin: "left" });
+  sr.reveal(".aboutus-text-container", { delay: 200, origin: "top" });
+  sr.reveal(".contact-container", { delay: 100, origin: "top" });
 
   // if ('serviceWorker' in navigator) {
   //   navigator.serviceWorker.register('sw.js').then(res => {

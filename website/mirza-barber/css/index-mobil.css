@@ -1,0 +1,39 @@
+@media only screen and (max-width: 1024px){
+.sections{
+  padding: 60px 0 !important;
+}
+.banner-overlay{
+  height: auto;
+}
+.navbar-navigation-menu{
+  display: none;
+}
+.navbar-overlay-info li{
+  flex-direction: column;
+}
+.navbar-info-links{
+  margin-top: 5px;
+  font-size: 0.8rem;
+}
+.navbar-info-img{
+  width: 16px !important;
+}
+.logo-container-center > img{
+ display: none !important;
+}
+.logo-container{
+  flex-direction: column;
+  height: auto;
+  width: 100%;
+  padding: 0;
+}
+.logo-container-center span{
+  margin:0 10px !important;
+}
+.banner-title{
+  font-size: 2.4rem;
+}
+.info{
+  display: none;
+}
+}

@@ -7,14 +7,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  scroll-padding-top: 2rem;
   scroll-behavior: smooth;
   list-style: none;
   text-decoration: none;
 }
 
 html::-webkit-scrollbar {
-  width: 0.5rem;
+  width: 0.7rem;
 }
 html::-webkit-scrollbar-track {
   background: transparent;
@@ -184,8 +183,6 @@ a:visited {
   flex: 1;
   justify-content: flex-start;
 }
-
-
 .banner-center{
   display: flex;
   flex-direction: column;
@@ -268,7 +265,7 @@ align-items: center;}
 .logo-container-center img {
   width: 100px;
 }
-.banner-center h1{
+.banner-title{
   font-family: 'Emblema One', serif;
   font-size: 120px;
   color: #d5a353;
