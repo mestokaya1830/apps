@@ -3,8 +3,9 @@
   padding: 60px 0 !important;
 }
 .banner-overlay{
-  height: auto;
+  padding: 0 !important;
 }
+
 .navbar-navigation-menu{
   display: none;
 }
@@ -25,7 +26,89 @@
   flex-direction: column;
   height: auto;
   width: 100%;
-  padding: 0;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  padding: 20px;
+  background-color: darkred;
+  box-shadow: -2px 4px 5px #000;
+  position: relative;
+}
+
+.logo-text-big-mobil{
+  color: #f8ba00 !important;
+}
+.logo-text-small-mobil{
+  font-size: 16px;
+  color: #fff;
+}
+.mobil-navigation {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  height: 100vh;
+  background-color: #fff;
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  overflow: hidden;
+  margin-left: -2000px;
+}
+.mobil-menu-handle {
+  margin-left: 0;
+  transition: all 0.5s ease;
+}
+.mobil-navigation ul {
+  list-style: none;
+  padding: 20px;
+}
+.mobil-navigation > ul > li {
+  display: flex;
+  align-items: center;
+  height: 34px;
+  margin: 5px 0;
+}
+.mobil-logo-container-mobil {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  background-color: #f8ba00;
+}
+.mobil-logo-container-mobil > .logo-text > .logo-text-big-mobil {
+  color: #fff;
+}
+.mobil-navigation-icon {
+  display: block;
+  width: 26px;
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  cursor: pointer;
+  z-index: 3;
+}
+.mobil-navigation-icon > div {
+  width: 100%;
+  height: 4px;
+  border-radius: 4px;
+  background-color: #fff;
+  margin: 3px 0;
+}
+.mobil-logo-container-mobil{
+  background-color: #202340;
+}
+.mobil-icons{
+  margin-right: 10px;
+  margin-top: 5px;
+  color: red;
+}
+.banner-center{
+  margin-top: 100px;
+}
+.banner-sub-title{
+  font-size: 1.4rem;
 }
 .logo-container-center span{
   margin:0 10px !important;
@@ -33,7 +116,17 @@
 .banner-title{
   font-size: 2.4rem;
 }
-.info{
+.banner-text{
+  width: 100%;
+  padding: 20px;
+}
+.info, .navbar{
   display: none;
+}
+.aboutus{
+  position: relative;
+}
+.aboutus-right{
+  position: absolute;
 }
 }
