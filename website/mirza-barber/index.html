@@ -27,9 +27,20 @@
   <body>
     <nav class="navbar">
       <div class="navbar-overlay">
-        <a href="#home" class="links">Startseite</a>
-      <a href="" class="links">Uber Uns</a>
-      <a href="" class="links">Kontakt</a>
+        <ul class="navbar-overlay-info">
+          <li>
+            <a href="tel:++41 78 242 38 88"><img src="./images/call.png" alt=""> +41 78 242 38 88</a>
+            <a href="mailto:info@mr-mirza-ch"><img src="./images/email.png" alt=""> info@mr-mirza-ch</a>
+          </li>
+        </ul>
+        <nav>
+          <a href="#home" class="links">Startseite</a>
+          <a href="#aboutus" class="links">Uber Uns</a>
+          <a href="#services" class="links">Services</a>
+          <a href="#price" class="links">Prices</a>
+          <a href="#products" class="links">Products</a>
+          <a href="#contact" class="links">Kontakt</a>
+        </nav>
       </div>
       
     </nav>
@@ -46,7 +57,7 @@
             <div></div>
           </div>
           <header class="banner-center">
-            <h1>MIRZA</h1>
+            <h1>MR-MIRZA</h1>
             <div class="artical-container">
               <span>VON</span>
               <h2>BARBERSHOP</h2>
@@ -57,7 +68,7 @@
         </div>
         <div class="info">
           <div>
-           <h2 class="info-titles">ADDRESS</h2>
+           <h2 class="info-titles">ADRESS</h2>
            <p class="info-text">ST.GALLERSTR.16
             9400 RORSCHACH-CH</p>
           </div>
@@ -67,7 +78,7 @@
            </h2>
            <div class="info-contact">
             <a href="tel:+41 78 242 38 88" class="info-text"><img src="./images/call.png" alt=""> +41 78 242 38 88</a>
-            <a href="mailto:mr.mirzaherrenwelt@hotmail.com" class="info-text"><img src="./images/email.png" alt=""> mr.mirzaherrenwelt@hotmail.com</a>
+            <a href="mailto:info@mr-mirza.ch" class="info-text"><img src="./images/email.png" alt=""> info@mr-mirza-ch</a>
            </div>
           </div>
           <div>
@@ -83,7 +94,7 @@
      
     </div>
 
-    <div class="aboutus sections">
+    <div class="aboutus sections" id="aboutus">
       <div class="aboutus-left">
         <img src="./images/1.jpeg" alt="">
       </div>
@@ -95,7 +106,7 @@
         <a href="#"><input type="button" value="Uber Uns" class="aboutus-right-btn"></a>
       </div>
     </div>
-    <div class="services sections">
+    <div class="services sections" id="services">
       <h1 class="services-title">Unser Services</h1>
       <img src="./images/seprator2.png" alt="" class="separator">
       <h5 class="services-text">
@@ -124,7 +135,7 @@
         </div>
       </div>
     </div>
-    <div class="price sections">
+    <div class="price sections" id="price">
       <h1 class="price-right-title">Unsere Dienstlaeistungen Kosten(CHF)</h1>
       <div class="price-container">
         <div class="price-left">
@@ -172,9 +183,6 @@
               <h2 class="price-unit">20</h2>
             </li>
           </ul>
-        </div>
-        
-        <div class="price-right">
           <h2>Kinder</h2>
           <img src="./images/separator_bottom.png" alt="" class="separator">
           <ul class="pricelist">
@@ -187,6 +195,10 @@
               <h2 class="price-unit">30</h2>
             </li>
           </ul>
+        </div>
+        
+        <div class="price-right">
+          
           <h2>Zupfen</h2>
           <img src="./images/separator_bottom.png" alt="" class="separator">
           <ul class="pricelist">
@@ -200,7 +212,7 @@
             </li>
             <li>
               <h2>Ohren & Nacken(beflamen & scheniden)</h2>
-              <li class="price-unit">6</li>
+              <h2 class="price-unit">6</h2>
             </li>
             <li>
               <h2>Augenbrauen(resiert beformt)</h2>
@@ -235,8 +247,8 @@
         </div>
       </div>
     </div>
-    <div class="products sections"></div>
-    <div class="contact sections">
+    <div class="products sections" id="products"></div>
+    <div class="contact sections" id="contact">
       <h1>KONTAKT FORM</h1>
       <img src="./images/separator_bottom.png" alt="">
       <form action="#" id="email-form">
@@ -272,7 +284,7 @@
           <ul>
             <li>
               <a href="tel:++41 78 242 38 88"><img src="./images/call.png" alt=""> +41 78 242 38 88</a>
-              <a href="mailto:mirzaherrenwelt@hotmail.com"><img src="./images/email.png" alt=""> mirzaherrenwelt@hotmail.com</a>
+              <a href="mailto:info@mr-mirza-ch"><img src="./images/email.png" alt=""> info@mr-mirza-ch</a>
             </li>
             <li class="footer-standort">
               <box-icon name='target-lock' color="yellow" size="md" style="margin-top: 5px; margin-right: 12px;"></box-icon>
@@ -292,7 +304,7 @@
           </div>
         </div>
       </div>
-      <div class="copyright"><span class="copy">&copy;</span>Copyright 2025 BY Mr.Mirza</div>
+      <div class="copyright"><span class="copy">&copy;</span>Copyright 2025 BY Mr-Mirza</div>
     </footer>
     <img src="./images/go-top.png" alt="" class="go-top" id="go-top">
     <script src="./index.js"></script>

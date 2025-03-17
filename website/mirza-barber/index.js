@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded',() => {
   document.querySelectorAll('.links').forEach(item => {
     item.addEventListener('click', () => {
       document.querySelectorAll('.links').forEach(item2 => {
-        item2.style.color = "#fff"
+        item2.style.color = "darkgray"
       })
       item.style.color = '#fddf85'
       document.querySelector('.mobil-navigation').style.display = "none"
@@ -84,11 +84,13 @@ document.addEventListener('DOMContentLoaded',() => {
     reset: true
   })
   
-  sr.reveal('.logo-container', { delay: 200, origin: 'top'})
-  sr.reveal('.banner-center', { delay: 200, origin: 'bottom'})
-  sr.reveal('.section2-title', { delay: 400, origin: 'top'})
-  sr.reveal('.section2-text', { delay: 400, origin: 'bottom'})
-  sr.reveal('.contact', { delay: 200, origin: 'top'})
+  sr.reveal('.logo-container', { delay: 100, origin: 'top'})
+  sr.reveal('.banner-center', { delay: 100, origin: 'bottom'})
+  sr.reveal('.aboutus-right-title', { delay: 100, origin: 'top'})
+  sr.reveal('.aboutus-right-btn', { delay: 100, origin: 'bottom'})
+  sr.reveal('.services-title', { delay: 100, origin: 'top'})
+  sr.reveal('.services-text', { delay: 100, origin: 'bottom'})
+  sr.reveal('.contact', { delay: 100, origin: 'top'})
   
   // if ('serviceWorker' in navigator) {
   //   navigator.serviceWorker.register('sw.js').then(res => {
