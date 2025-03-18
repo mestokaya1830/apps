@@ -1,5 +1,12 @@
 @media only screen and (max-width: 1024px) {
+  .logo-text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
   .logo-text-big-mobil{
+    font-size: 1.5rem;
     color: #f8ba00 !important;
   }
   .logo-text-small-mobil{
@@ -130,16 +137,7 @@
     height: 34px;
     margin: 5px 0;
   }
-  .mobil-logo-container-mobil {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100px;
-    background-color: #f8ba00;
-  }
-  .mobil-logo-container-mobil > .logo-text > .logo-text-big-mobil {
-    color: #fff;
-  }
+
   .mobil-navigation-icon {
     display: block;
     width: 26px;
@@ -156,7 +154,11 @@
     background-color: #fff;
     margin: 3px 0;
   }
-  .mobil-logo-container-mobil{
+  .mobil-logo-container-mobil {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
     background-color: #202340;
   }
   .mobil-icons{
@@ -164,7 +166,6 @@
     margin-top: 5px;
     color: red;
   }
- 
   .contact-container {
     width: 100% !important;
     background-color: #f8ba00;
