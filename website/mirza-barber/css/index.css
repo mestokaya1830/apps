@@ -74,7 +74,7 @@ a:visited {
 .navbar-overlay{
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 0 40px;
   position: absolute;
   width: 100%;
@@ -85,53 +85,6 @@ a:visited {
   z-index: 6;
   background: rgba(0,0,0, 0.8);
   box-shadow: -5px 5px 5px #000;
-}
-.navbar-top {
-  display: flex;
-  align-items: center;
-  width: 100vw;
-  height: 40px;
-  background-color: #181b24;
-  color: #fff;
-}
-.navbar-top-left,
-.navbar-top-right {
-  display: flex;
-  justify-content: center;
-  flex: 1;
-}
-.navbar-top-left > a > img,
-.navbar-top-right > a >  img {
-  width: 20px;
-  margin: 0 16px;
-}
-.navbar-top-left > a {
-  display: flex;
-  align-items: center;
-  color: #fff;
-  margin: 0 40px;
-}
-.navbar-top-right > img:hover {
-  transform: scale(1.1);
-  cursor: pointer;
-}
-.navbar-overlay-info{
-  display: flex;
-  width: 400px;
-}
-.navbar-overlay-info > li{
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-.navbar-overlay-info li a{
-  display: flex;
-  align-items: center;
-  color: #fff;
-}
-.navbar-overlay-info li a img{
-  width: 30px;
-  margin-right: 14px;
 }
 .navbar-overlay  > nav > .links{
   font-size: 20px;
@@ -158,19 +111,18 @@ a:visited {
 .logo-container{
   display: flex;
   align-items: center;
+  justify-content: space-between;
   height: 200px;
-  padding-left: 40px;
 }
-
-.logo-container div{
+.logo-container > div{
+  display: flex;
   flex: 1;
   justify-content: center;
+  align-items: center;
 }
 .logo-container > div:nth-child(1){
-  align-items: center;
-  height: 200px;
-  flex: 1;
   justify-content: flex-start;
+  margin-left: 40px;
 }
 .banner-center{
   display: flex;
@@ -213,9 +165,14 @@ a:visited {
   flex: 1;
   height: 100%;
 }
-.info > .info-center{
+.info-center{
   border-left: 1px solid #999;
   border-right: 1px solid #999;
+}
+.info-contact{
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
 }
 .info-titles{
   color: #d5a353;
@@ -227,12 +184,6 @@ a:visited {
   width: 200px;
   text-align: center;
   font-weight: 600;
-}
-.info-contact{
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  padding-left: 50px;
 }
 .info-contact > a{
   display: flex;
