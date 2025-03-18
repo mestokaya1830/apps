@@ -435,6 +435,7 @@ hr{
   cursor: pointer;
   width: 50px;
   z-index: 5;
+  display: none;
 }
 
 .mobil-navigation{

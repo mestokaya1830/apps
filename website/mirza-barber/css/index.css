@@ -34,7 +34,6 @@ a:visited {
 }
 .sections{
   display: flex;
-  width: 100dvw;
   height: 100dvh;
   padding: 170px 0;
 }
@@ -221,6 +220,9 @@ align-items: center;}
 .banner-text{
   font-size: 1rem !important;
 }
+.aboutus{
+  padding: 0 0 !important;
+}
 .aboutus > .aboutus-left,
 .aboutus > .aboutus-right,
 .price > .price-left,
@@ -229,6 +231,11 @@ align-items: center;}
   justify-content: center;
   width: 100%;
   height: 100%;
+}
+
+.aboutus-left{
+  background-image: url(../images/1.jpeg);
+  background-size: cover;
 }
 .price{
   height: auto;
@@ -240,12 +247,15 @@ align-items: center;}
 .aboutus > .aboutus-right{
   display: flex;
   flex-direction: column;
-  padding: 150px 100px;
+  align-items: center;
+  justify-content: space-around;
+  padding: 30px 0;
 }
 .aboutus-right-title{
   font-size: 50px;
   font-family:'Teko', serif;
   letter-spacing: 4px;
+  color: #000;
 }
 .aboutus-right-text{
   width: 60%;
@@ -258,7 +268,7 @@ align-items: center;}
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 30px;
-  padding: 15px 40px;
+  padding: 10px 40px;
   background-color: #d5a353;
   color: #000;
   margin-top: 70px;
@@ -276,7 +286,7 @@ align-items: center;}
 .services-title{
   font-family:'Teko', serif;
   letter-spacing: 4px;
-  font-size: 70px;
+  font-size: 4rem;
   color: #fff;
   text-shadow: 1px 2px #000;
 }
@@ -285,16 +295,15 @@ align-items: center;}
   height: 15px;
   margin-bottom: 30px;
 }
-.services > h5{
-  font-family: "Merriweather",serif;
+.services-top-text{
+  display: flex;
   text-align: center;
-  line-height: 1.429em;
+  flex-wrap: wrap;
+  font-family: "Merriweather",serif;
   font-weight: 400;
   font-style: italic;
-  text-transform: none;
-  letter-spacing: 0;
   margin-top: 1.5em;
-  width:600px;
+  width:40%;
   font-size: 1.3em;
   color: #42403f;
 }
@@ -305,7 +314,7 @@ align-items: center;}
   margin-top: 50px;
   padding: 0 150px;
 }
-.services-container > div{
+.services-items{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -320,14 +329,17 @@ align-items: center;}
 .services-container > div > img{
  width: 50px;
 }
-.services-container > div > h3{
+.services-sub-title{
   margin-top: 20px;
+  color: #000;
+  font-size: 1.5rem;
 }
-.services-container > div > p{
+.services-text{
   text-align: center;
   width: 80%;
   margin-top: 20px;
   font-size: 14px;
+  color: coral
 }
 .price{
   display: flex;
@@ -486,7 +498,7 @@ footer {
 .go-top {
   position: fixed;
   bottom: 30px;
-  right: 30px;
+  right: 0.5em;
   cursor: pointer;
   width: 80px;
   z-index: 5;

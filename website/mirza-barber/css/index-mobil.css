@@ -125,8 +125,39 @@
 }
 .aboutus{
   position: relative;
+  padding: 0 0 !important;
 }
 .aboutus-right{
   position: absolute;
+}
+.aboutus-right-btn{
+  box-shadow: 2px 4px 5px #000;
+}
+.aboutus-right-title{
+  color: #f1f1f1;
+  font-size: 2.5rem;
+  text-shadow: 1px 1px #000;
+}
+.aboutus-right-text{
+  color: #000;
+  font-size: 1.5rem;
+}
+.services-title{
+  font-size: 3rem;
+}
+.services{
+  height: auto;
+}
+.services-container{
+  padding: 0 30px !important;
+}
+.services-top-text{
+  width: 90%;
+}
+
+.services-items{
+  width: 100%;
+  flex: unset;
+  margin: 20px 0 !important;
 }
 }
