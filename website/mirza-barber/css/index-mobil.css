@@ -154,10 +154,26 @@
 .services-top-text{
   width: 90%;
 }
-
+.price-container{
+  flex-direction: column;
+  height: auto;
+}
+.price-title{
+  text-align: center;
+  font-size: 2.5rem !important;
+}
 .services-items{
   width: 100%;
   flex: unset;
   margin: 20px 0 !important;
+}
+.price-left, .price-right{
+  padding: 50px 0 !important;
+}
+.pricelist{
+  width: 100%;
+}
+.price-items{
+  font-size: 1.2rem;
 }
 }
