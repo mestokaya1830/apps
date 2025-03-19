@@ -161,10 +161,21 @@
     height: 200px;
     background-color: #202340;
   }
+  .mobil-nav-list{
+    height: 46px !important;
+    border-top: 1px solid #ccc !important;
+  }
+  .mobil-links{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    font-size: 1.2rem;
+    color: #333;
+  }
   .mobil-icons{
+    margin-bottom: 5px;
     margin-right: 10px;
-    margin-top: 5px;
-    color: red;
   }
   .contact-container {
     width: 100% !important;
