@@ -197,6 +197,21 @@ footer{
 .standort{
   width: 100% !important;
 }
+.mobil-nav-list{
+  height: 46px !important;
+  border-top: 1px solid #ccc !important;
+}
+.mobil-links{
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  font-size: 1.2rem;
+  color: #333;
+}
+.mobil-icons{
+  margin-bottom: 5px;
+}
 }
 @media only screen and (min-width: 1024px) and (max-width: 1860px){
   .services, .products{
