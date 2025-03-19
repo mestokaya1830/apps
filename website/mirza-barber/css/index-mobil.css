@@ -198,3 +198,18 @@ footer{
   width: 100% !important;
 }
 }
+@media only screen and (min-width: 1024px) and (max-width: 1860px){
+  .services, .products{
+    padding: 100px 50px !important;
+  }
+  .services-container, .products-container{
+    padding: 0 50px !important;
+    justify-content: center;
+  }
+  .services-items, .products-items{
+    margin: 0 10px !important;
+  }
+  .services-sub-title{
+    font-size: 1.3rem !important;
+  }
+}
