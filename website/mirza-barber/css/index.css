@@ -274,14 +274,14 @@ align-items: center;}
   font-family:'Teko', serif;
   letter-spacing: 2px;
 }
-.services{
+.services, .products{
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 100px;
   background-color: #d5a353;
 }
-.services-title{
+.services-title, .products-title, .contact-title{
   font-family:'Teko', serif;
   letter-spacing: 4px;
   font-size: 4rem;
@@ -293,7 +293,7 @@ align-items: center;}
   height: 15px;
   margin-bottom: 30px;
 }
-.services-top-text{
+.services-top-text, .products-top-text{
   display: flex;
   text-align: center;
   flex-wrap: wrap;
@@ -305,18 +305,18 @@ align-items: center;}
   font-size: 1.3em;
   color: #42403f;
 }
-.services-container{
+.services-container, .products-container{
   display: flex;
   flex-wrap: wrap;
   width: 100%;
   margin-top: 50px;
   padding: 0 150px;
 }
-.services-items{
+.services-items, .products-items{
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex: 1;
+  width: 22%;
   height: 300px;
   margin: 0 20px;
   padding: 50px 20px;
@@ -324,7 +324,7 @@ align-items: center;}
   border-radius: 5px;
   background-color: #fff;
 }
-.services-container > div > img{
+.services-img{
  width: 50px;
 }
 .services-sub-title{
@@ -336,7 +336,7 @@ align-items: center;}
   text-align: center;
   width: 80%;
   margin-top: 20px;
-  font-size: 14px;
+  font-size: 1.1rem;
   color: coral
 }
 .price{
@@ -393,7 +393,27 @@ align-items: center;}
 .price-unit{
   color: #d5a353;
 }
-
+.products{
+  height: auto;
+}
+.products-items{
+  height: auto;
+  border: none;
+  border-radius: 5px;
+  padding: 5px !important;
+}
+.products-info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100px;
+  width: 100%;
+  background-color: #333;
+}
+.products-img{
+ width: 100%;
+}
 .contact {
   display: flex;
   flex-direction: column;
@@ -450,7 +470,7 @@ footer {
   flex-direction: column;
   width: 100%;
   height: 500px;
-  background-color: red;
+  background-color: #333;
   padding: 50px;
   color: #fff;
 }
@@ -502,6 +522,9 @@ footer {
 }
 .footer-social-icons{
   margin-top: 50px;
+}
+.footer-social-icons > a{
+  margin-right: 20px;
 }
 .footer-social-icons > a > img{
   width: 40px;

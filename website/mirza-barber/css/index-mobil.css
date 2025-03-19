@@ -15,7 +15,7 @@
 }
 .logo-container{
   flex-direction: column;
-  height: auto;
+  height: 300px;
   width: 100%;
   border-bottom-left-radius: 40px;
   border-bottom-right-radius: 40px;
@@ -123,6 +123,9 @@
 .info, .navbar{
   display: none;
 }
+.aboutus-left{
+  background-position: center;
+}
 .aboutus{
   position: relative;
   padding: 0 0 !important;
@@ -148,10 +151,10 @@
 .services{
   height: auto;
 }
-.services-container{
+.services-container, .products-container{
   padding: 0 30px !important;
 }
-.services-top-text{
+.services-top-text, .products-top-text{
   width: 90%;
 }
 .price-container{
@@ -160,11 +163,10 @@
 }
 .price-title{
   text-align: center;
-  font-size: 2.5rem !important;
+  font-size: 2.7rem !important;
 }
-.services-items{
+.services-items, .products-items{
   width: 100%;
-  flex: unset;
   margin: 20px 0 !important;
 }
 .price-left, .price-right{
@@ -175,5 +177,24 @@
 }
 .price-items{
   font-size: 1.2rem;
+}
+.contact-form{
+  width: 80% !important;
+}
+.submit{
+  width: 100% !important;
+}
+footer{
+  height: auto;
+  padding: 20px !important;
+}
+.footer-container{
+  flex-direction: column;
+}
+.footer-text{
+  display: none;
+}
+.standort{
+  width: 100% !important;
 }
 }
