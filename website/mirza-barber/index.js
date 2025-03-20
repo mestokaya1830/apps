@@ -2,12 +2,12 @@
 document.addEventListener('DOMContentLoaded',() => {
   document.getElementById('loading-container').style.display = 'none'
   document.getElementById('home').style.display = 'block'
+
   window.onscroll = () => {
     if(document.body.scrollTop > 500 || document.documentElement.scrollTop > 500){
      document.getElementById('go-top').style.display = 'block'
      document.getElementById('startseite').style.color = 'none'
     } else {
-      document.getElementById('startseite').style.color = '#fddf85'
       document.getElementById('go-top').style.display = 'none'
     }
   }
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded',() => {
     document.querySelectorAll('.links').forEach(item2 => {
       item2.style.color = "#fff"
     })
-    document.getElementById('home').style.color = '#fddf85'
+    document.getElementById('startseite').style.color = '#fddf85'
   });
   
   document.querySelectorAll('.links').forEach(item => {
@@ -30,9 +30,10 @@ document.addEventListener('DOMContentLoaded',() => {
      
       setTimeout(() => {
         history.replaceState('', document.title, window.location.origin + window.location.pathname + window.location.search);
-      }, 0);
+      }, 100);
     })
   })
+
   document.querySelectorAll('.mobil-links').forEach(item => {
     item.addEventListener('click', () => {
       document.querySelector('.mobil-navigation').classList.toggle('mobil-menu-handle')
