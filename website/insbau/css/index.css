@@ -441,15 +441,24 @@ hr{
 .mobil-navigation{
   display: none;
 }
-#loading{
+#home{
+  display: none;
+}
+#loading-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
-  margin: auto;
   top: 0;
-  bottom: 0;
   left: 0;
-  right: 0;
-  animation: loading 2s infinite linear;
   z-index: 10;
+  background: #202340;
+  width: 100dvw;
+  height: 100dvh;
+  overflow: hidden;
+}
+#loading{
+  animation: loading 2s infinite linear;
 }
 
 @keyframes loading {
