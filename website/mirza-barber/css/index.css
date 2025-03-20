@@ -541,3 +541,23 @@ footer {
 .mobil-navigation{
   display: none;
 }
+
+#loading{
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  animation: loading 2s infinite linear;
+}
+
+@keyframes loading{
+  0%{
+    transform: rotate(-360deg);
+  }
+  100%{
+    transform: rotate(0);
+  }
+}

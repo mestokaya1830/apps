@@ -443,8 +443,11 @@ hr{
 }
 #loading{
   position: absolute;
-  top: 40%;
-  left: 46%;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   animation: loading 2s infinite linear;
   z-index: 10;
 }
