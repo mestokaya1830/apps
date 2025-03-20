@@ -2,6 +2,7 @@
 document.addEventListener("DOMContentLoaded", function() {
   document.getElementById('loading-container').style.display = 'none'
   document.getElementById('home').style.display = 'block'
+
   window.onscroll = () => {
     if (
       document.body.scrollTop > 500 ||
@@ -12,19 +13,21 @@ document.addEventListener("DOMContentLoaded", function() {
       document.getElementById("go-top").style.display = "none";
     }
   };
-  document.getElementById("home").style.color = "#fddf85";
+
+  document.querySelector(".startseite").style.color = "#fddf85";
+
   document.getElementById("go-top").addEventListener("click", (e) => {
     window.scrollTo(0, 0);
-    document.querySelectorAll(".links").forEach((item2) => {
+    document.querySelectorAll(".navigation-bar-links").forEach((item2) => {
       item2.style.color = "#fff";
     });
-    document.getElementById("home").style.color = "#fddf85";
+    document.querySelector(".startseite").style.color = "#fddf85";
   });
   
-  document.querySelectorAll(".links").forEach((item) => {
+  document.querySelectorAll(".navigation-bar-links").forEach((item) => {
     item.addEventListener("click", () => {
-      document.querySelectorAll(".links").forEach((item2) => {
-        item2.style.color = "#fff";
+      document.querySelectorAll(".navigation-bar-links").forEach((item2) => {
+        item2.style.color = "#fff" ;
       });
       item.style.color = "#fddf85";
       document.querySelector(".mobil-navigation").style.display = "none";
@@ -37,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function() {
             window.location.pathname +
             window.location.search
         );
-      }, 0);
+      }, 100);
     });
   });
   document.querySelectorAll(".mobil-links").forEach((item) => {
