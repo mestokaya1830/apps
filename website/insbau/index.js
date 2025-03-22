@@ -126,8 +126,10 @@ document.addEventListener("DOMContentLoaded", function() {
   
   sr.reveal(".banner-text", { delay: 100, origin: "top" });
   sr.reveal(".services-container", { delay: 100, origin: "top" });
-  sr.reveal(".aboutus-text", { delay: 100, origin: "left" });
-  sr.reveal(".aboutus-img", { delay: 200, origin: "top" });
+  sr.reveal(".galerie-title", { delay: 100, origin: "left" });
+  sr.reveal(".abouts-title", { delay: 100, origin: "top" });
+  sr.reveal(".abouts-text", { delay: 100, origin: "left" });
+  sr.reveal(".abouts-img", { delay: 200, origin: "top" });
   sr.reveal(".contact-container", { delay: 100, origin: "top" });
   
   // if ('serviceWorker' in navigator) {

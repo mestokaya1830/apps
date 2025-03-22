@@ -87,17 +87,43 @@
     width: 100%;
     font-size: 20px;
   }
-  .aboutus-container{
+  .galerie{
+    padding: 0 !important;
+    height: auto;
+  }
+  .galerie-container{
+    align-items: center;
+  }
+  .galerie-center{
+    flex-direction: column;
+    padding: 0;
+    align-items: center;
+  }
+  .galerie-images-container{
     width: 100%;
+    margin-top: 30px;
   }
-  .aboutus-title{
+  .galerie-warnung-text{
+    width: 60%;
+  }
+  .abouts-container{
+    width: 100%;
+    background-image: url(../images/roni.webp);
+    background-position: center;
+    background-size: cover;
+  }
+  .abouts-title{
      text-align: center;
+     font-size: 2.5rem;
   }
-  .aboutus-text{
+  .abouts-text{
       padding: 30px;
+      mix-blend-mode: difference;
+      font-size: 1.3rem;
+      text-align: center;
   }
-  .aboutus-img{
-    width: 300px !important;
+  .abouts-img{
+    display: none;
   }
  
   .services-container{
@@ -215,6 +241,15 @@
   .services-images{
     min-width: 50% !important;
   }
+  .galerie-images-container{
+    min-width: 380px;
+  }
+  .galerie-center{
+    flex-wrap: wrap;
+  }
+  .galerie-img{
+    height: 480px !important;
+  }
   .contact-container {
     display: none;
   }
@@ -231,7 +266,7 @@
     transform: translate(0,0) !important;
     position: static;
   }
- .aboutus-img{
+ .abouts-img{
     width: 30vw;
   } 
 }
