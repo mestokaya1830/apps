@@ -86,7 +86,7 @@ export default {
       let files = this.$refs.file.files
       const imageSize = Array.from(files).reduce((a, b) => a + b.size, 0)
       try {
-        if(files.length > 20){
+        if(files.length > 40){
           alert('File length must be 20')
         } else if(imageSize > 5e+7){
           alert('Toatal File size must be less 50 MB')

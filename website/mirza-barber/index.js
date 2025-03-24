@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded',() => {
   sr.reveal('.products-title', { delay: 100, origin: 'top'})
   sr.reveal('.products-top-text', { delay: 100, origin: 'bottom'})
   sr.reveal('.price-title', { delay: 100, origin: 'top'})
-  sr.reveal('.contact-container', { delay: 100, origin: 'top'})
+  sr.reveal('.contact-title', { delay: 100, origin: 'top'})
   
   // if ('serviceWorker' in navigator) {
   //   navigator.serviceWorker.register('sw.js').then(res => {
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded',() => {
       errorMessage.innerText = 'Die Nachricht muss mehr als 10 Buchstaben haben!'
     } else {
       emailjs.init({
-        publicKey: "dfViWTkCiA7tGvXSm",
+        publicKey: "pvpLz1XCQL_clu1Cr",
       });
       const data = {
         email: document.getElementById("email").value,
@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded',() => {
         message: document.getElementById("message").value,
       };
       emailjs
-        .send("service_18hr2f9", "template_nr7p6b2", data)
+        .send("service_haih1te", "template_qxyo28p", data)
         .then(
           (response) => {
             console.log("SUCCESS!", response.status, response.text);

@@ -184,7 +184,7 @@
 .submit{
   width: 100% !important;
 }
-footer{
+.footer-overlay{
   height: auto;
   padding: 20px !important;
 }
