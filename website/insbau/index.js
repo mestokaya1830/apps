@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function() {
       };
       emailjs.send("service_87pljbv", "template_ost5nnu", data).then(
         (response) => {
-          console.log("SUCCESS!", response.status, response.text);
+          alert('Ihre Nachricht wurde erfolgreich gesendet');
         },
         (error) => {
           console.log("FAILED...", error);
