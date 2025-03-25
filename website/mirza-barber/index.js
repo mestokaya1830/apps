@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded',() => {
   document.getElementById("go-top").addEventListener("click", (e) => {
     window.scrollTo(0, 0);
     document.querySelectorAll('.links').forEach(item2 => {
-      item2.style.color = "#fff"
+      item2.style.color = "darkgray"
     })
     document.getElementById('startseite').style.color = '#fddf85'
   });
