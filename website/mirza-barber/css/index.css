@@ -323,7 +323,7 @@ a:visited {
   margin: 0 20px;
   padding: 50px 20px;
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 20px;
   background-color: #fff;
 }
 .services-img {
@@ -338,8 +338,8 @@ a:visited {
   text-align: center;
   width: 80%;
   margin-top: 20px;
-  font-size: 1.1rem;
-  color: coral;
+  font-size: 0.9rem;
+  color: gray;
 }
 .price {
   display: flex;

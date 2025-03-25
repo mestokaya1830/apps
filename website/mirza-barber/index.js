@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded',() => {
         .send("service_haih1te", "template_qxyo28p", data)
         .then(
           (response) => {
-            console.log("SUCCESS!", response.status, response.text);
+            alert('Ihre Nachricht wurde erfolgreich gesendet');
           },
           (error) => {
             console.log("FAILED...", error);
