@@ -84,6 +84,7 @@ document.addEventListener('DOMContentLoaded',() => {
   sr.reveal('.products-top-text', { delay: 100, origin: 'bottom'})
   sr.reveal('.price-title', { delay: 100, origin: 'top'})
   sr.reveal('.contact-title', { delay: 100, origin: 'top'})
+  sr.reveal('.galerie-title', { delay: 100, origin: 'top'})
   
   // if ('serviceWorker' in navigator) {
   //   navigator.serviceWorker.register('sw.js').then(res => {

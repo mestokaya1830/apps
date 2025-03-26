@@ -37,8 +37,6 @@ a:visited {
   padding: 170px 0;
 }
 .banner {
-  width: 100%;
-  height: 100vh;
   background-image: url(../images/banner2.jpg);
   background-size: cover;
   background-repeat: no-repeat;
@@ -217,62 +215,43 @@ a:visited {
 .banner-text {
   font-size: 1rem !important;
 }
-.aboutus {
-  background-color: #fff;
-  padding: 0 0 !important;
-}
-.aboutus > .aboutus-left,
-.aboutus > .aboutus-right,
-.price > .price-left,
-.price > .price-right {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-}
-
-.aboutus-left {
-  background-image: url(../images/1.jpeg);
-  background-size: cover;
-}
 .price {
   height: auto;
 }
-.aboutus-left > img,
-.price-left > img {
-  width: 100%;
+.galerie{
+  position: relative;
+  background-image: url(../images/banner.jpg);
+  background-size: cover;
+  background-position: center;
 }
-.aboutus > .aboutus-right {
+.galerie-overlay{
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
-  padding: 30px 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  padding-top: 100px;
 }
-.aboutus-right-title {
-  font-size: 50px;
-  font-family: "Teko", serif;
-  letter-spacing: 4px;
-  color: #000;
+.galerie-container{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+
 }
-.aboutus-right-text {
-  width: 60%;
-  font-size: 20px;
-  color: #d5a353;
-  margin-top: 20px;
-  height: 30px;
+.galerie-img-container{
+  background-color: #d5a3538f;
+  padding: 10px;
+  margin: 0 10px;
+  border-radius: 20px;
+  overflow: hidden;
 }
-.aboutus-right-btn {
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 30px;
-  padding: 10px 40px;
-  background-color: #d5a353;
-  color: #000;
-  margin-top: 70px;
-  cursor: pointer;
-  font-family: "Teko", serif;
-  letter-spacing: 2px;
+.galerie-img{
+  width: 100%;
 }
 .services,
 .products {
@@ -285,7 +264,7 @@ a:visited {
 
 .services-title,
 .products-title,
-.contact-title {
+.contact-title, .galerie-title {
   font-family: "Teko", serif;
   letter-spacing: 4px;
   font-size: 4rem;
@@ -488,11 +467,13 @@ footer {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100vh;
+  height: 600px;
   padding: 50px;
   color: #fff;
   position: relative;
-  background-image: url(../images/banner3.jpg);
+  background-position: center;
+  background-size: cover;
+  background-image: url(../images/banner.jpg);
 }
 .footer-overlay {
   display: flex;
@@ -504,7 +485,7 @@ footer {
   left: 0;
   z-index: 2;
   padding: 40px 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.8);
 }
 .footer-container {
   display: flex;
