@@ -126,7 +126,7 @@
 .services-title{
   font-size: 3rem;
 }
-.services{
+.services, .galerie{
   height: auto;
 }
 .services-container, .products-container{
@@ -134,6 +134,19 @@
 }
 .services-top-text, .products-top-text{
   width: 90%;
+}
+.galerie-overlay{
+  position: relative !important;
+  margin-top: -60px;
+}
+.galerie-container{
+  flex-direction: column;
+}
+.galerie-img-container{
+  margin: 15px;
+}
+.galerie-title{
+  font-size: 3rem;
 }
 .price-container{
   flex-direction: column;
@@ -190,6 +203,7 @@
 .mobil-icons{
   margin-bottom: 5px;
 }
+
 }
 @media only screen and (min-width: 1024px) and (max-width: 1860px){
   .services, .products{

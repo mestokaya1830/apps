@@ -76,15 +76,13 @@ document.addEventListener('DOMContentLoaded',() => {
   
   sr.reveal('.logo-container', { delay: 100, origin: 'top'})
   sr.reveal('.banner-center', { delay: 100, origin: 'bottom'})
-  sr.reveal('.aboutus-right-title', { delay: 100, origin: 'top'})
-  sr.reveal('.aboutus-right-btn', { delay: 100, origin: 'bottom'})
   sr.reveal('.services-title', { delay: 100, origin: 'top'})
   sr.reveal('.services-top-text', { delay: 100, origin: 'bottom'})
   sr.reveal('.products-title', { delay: 100, origin: 'top'})
   sr.reveal('.products-top-text', { delay: 100, origin: 'bottom'})
+  sr.reveal('.galerie-title', { delay: 100, origin: 'top'})
   sr.reveal('.price-title', { delay: 100, origin: 'top'})
   sr.reveal('.contact-title', { delay: 100, origin: 'top'})
-  sr.reveal('.galerie-title', { delay: 100, origin: 'top'})
   
   // if ('serviceWorker' in navigator) {
   //   navigator.serviceWorker.register('sw.js').then(res => {
