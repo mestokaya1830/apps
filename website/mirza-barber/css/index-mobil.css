@@ -60,7 +60,7 @@
   color: #fff;
 }
 .slider{
-  width: 80% !important;
+  width: 90% !important;
 }
 .mobil-navigation {
   display: flex;
@@ -173,10 +173,6 @@
 .products-title{
   font-size: 3rem;
 }
-.price-container{
-  flex-direction: column;
-  height: auto;
-}
 .price-title{
   text-align: center;
   font-size: 2.4rem !important;
@@ -185,14 +181,11 @@
   width: 100%;
   margin: 20px 0 !important;
 }
-.price-left, .price-right{
-  padding: 50px 0 !important;
+.price-list{
+  width: 90%;
 }
-.pricelist{
-  width: 100%;
-}
-.price-items{
-  font-size: 1.2rem;
+.price-items, .price-unit{
+  font-size: 1rem;
 }
 .contact-form{
   width: 80% !important;

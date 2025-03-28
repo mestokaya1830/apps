@@ -232,7 +232,29 @@ a:visited {
   font-size: 1rem !important;
 }
 .price {
+  padding: 0 !important;
+  position: relative;
   height: auto;
+  background-image: url(../images/banner3.jpg);
+  background-size: cover;
+  background-position: center;
+}
+.price-overlay{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  padding: 100px 0;
+}
+.price-list{
+  width: 60%;
+  margin: 30px 0;
+}
+.price-list > li {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
 }
 .galerie{
   position: relative;
@@ -336,47 +358,7 @@ a:visited {
   font-size: 0.9rem;
   color: gray;
 }
-.price {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
 
-.price > .price-container {
-  display: flex;
-  width: 100%;
-}
-.price-left,
-.price-right {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start !important;
-  align-items: center;
-  flex: 1;
-  padding: 50px;
-}
-.price-left > img,
-.price-right > img {
-  width: 50px;
-  margin: 10px 0;
-}
-.price-container > .price-left > .pricelist,
-.price-container > .price-right > .pricelist {
-  width: 80%;
-}
-.price-container > .price-left > .pricelist > li,
-.price-container > .price-right > .pricelist > li {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 60px;
-  padding: 0 5px;
-  border-top: 1px solid #f1f1f1;
-  border-bottom: 1px solid #f1f1f1;
-  font-family: "Teko";
-  font-size: 0.8rem;
-}
 .price-title {
   font-family: "Teko";
   color: #d5a353;
@@ -386,12 +368,18 @@ a:visited {
 }
 .price-category-title {
   color: #d5a353;
+  margin: 10px 0;
 }
-.price-items {
-  color: #333;
+.price-unit, .price-items {
+  font-weight: 100;
+  color: #d8b884;
+  font-size: 1.4rem;
+  font-family: sans-serif;
 }
-.price-unit {
-  color: #d5a353;
+.price-line{
+  height: 1px;
+  width: 100%;
+  background-image: linear-gradient(to right, #000, #d5a353, #000);
 }
 .products {
   height: auto;
@@ -615,6 +603,9 @@ footer {
   width: 60%;
   height: 80%;
   margin-top: 20px;
+  border: 24px solid rgba(0, 0, 0, 0.5);
+  border-radius: 2px;
+  box-shadow: 2px 2px 2px #000, -2px -2px 2px #000;
 }
 .swiper {
   width: 100%;
