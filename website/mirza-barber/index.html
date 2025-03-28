@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Mr.Mirza Barbershop ist ein erstaunlicher Friseursalon im Herzen in
+    <meta name="description" content="Mr.Mirza Coiffeur ist ein erstaunlicher Friseursalon im Herzen in
     RORSCHACH" />
-    <meta name="keywords" content="Haarschnitt, Rasieren, Styling, Trimmen,Herren, Maschieniel, Scherren Schnitt, Kopfrasur, Bartrasur, Waschen & Styling, Augenbrauen, Ohren & Nacken, Kopfmessage, Gesichtflege " />
+    <meta name="keywords" content="coiffeur,Haarschnitt, Rasieren, Styling, Trimmen,Herren, Maschieniel, Scherren Schnitt, Kopfrasur, Bartrasur, Waschen & Styling, Augenbrauen, Ohren & Nacken, Kopfmessage, Gesichtflege " />
     <meta name="author" content="Muslum Gunduz" />
     <link rel="icon" type="image/svg+xml" href="./icons/icon_64.webp" />
     <meta name="theme-color" content="red" />
@@ -14,7 +14,7 @@
     <!-- <link rel="manifest" href="./manifest.json"> -->
     <!-- <link rel="stylesheet" href="./images/icon_64.webp" /> -->
     <!-- <link rel="apple-touch-icon" href="./images/iconx64.webp" /> -->
-    <title>Mirza-Barber</title>
+    <title>Mirza-Coiffeur</title>
     <link rel="stylesheet" href="./css/index.css" />
     <link rel="stylesheet" href="./css/index-mobil.css" />
     <link
@@ -23,70 +23,78 @@
     />
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-
+    <link rel="stylesheet" href="./swiper/swiper-bundle.min.css" />
+    <script src="./swiper/swiper-bundle.min.js"></script>
     <script src="./email.js"></script>
   </head>
   <body>
-    <div id="home">
+    <main id="main-container">
           <!-- navbar -->
     <nav class="navbar">
       <div class="navbar-overlay">
+        <a href="tel:+41 0782607440" class="info-text-navbar"><img src="./images/call.webp" alt="" class="info-img" /> +41 0782607440</a>
         <nav class="navbar-navigation-menu">
-          <a href="#home" class="links" id="startseite">Startseite</a>
-          <a href="#services" class="links">Services</a>
-          <a href="#galerie" class="links">Galerie</a>
-          <a href="#price" class="links">Prices</a>
-          <a href="#products" class="links">Products</a>
-          <a href="#kontakt" class="links">Kontakt</a>
+          <a href="#startseite" class="links" id="startseite-link">Startseite</a>
+          <a href="#services" class="links" id="services-link">Services</a>
+          <a href="#galerie" class="links" id="galerie-link">Galerie</a>
+          <a href="#price" class="links" id="price-link">Prices</a>
+          <a href="#products" class="links" id="products-link">Products</a>
+          <a href="#kontakt" class="links" id="kontakt-link">Kontakt</a>
         </nav>
       </div>
     </nav>
     <!-- banner -->
-    <div class="banner sections">
+    <div class="banner sections" id="startseite">
       <div class="banner-overlay">
         <div>
-          <div class="logo-container">
+          <a href="#startseite" class="logo-container">
             <div class="navbar-logo">
-              <img src="./images/logo.webp" alt="" />
+              <img src="./images/logo4.png" alt="" />
             </div>
             <div class="logo-container-center">
-              <span>NUR</span>
-              <img src="./images/logo.webp" alt="" />
-              <span>MANNER</span>
+              <h1>Wir appellieren an das Auge</h1>
             </div>
             <div class="mobil-navigation-icon">
               <div></div>
               <div></div>
               <div></div>
             </div>
-          </div>
+          </a>
           <header class="banner-center">
-            <h1 class="banner-title">MR-MIRZA</h1>
+            <h1 class="banner-title">MR.MIRZA</h1>
             <div class="artical-container">
               <span>VON</span>
-              <h2 class="banner-sub-title">BARBERSHOP</h2>
+              <h2 class="banner-sub-title">Coiffeur</h2>
               <span>30 JAHRE</span>
             </div>
             <p class="banner-text">
-              Premium Barbershop ist der erste Ort für Ihre
+              Premium Coiffeur ist der erste Ort für Ihre
               Haarpflegebedürfnisse in Ihrer Stadt
             </p>
           </header>
         </div>
         <div class="info">
           <div>
-            <h2 class="info-titles">ADRESS</h2>
-            <p class="info-text">ST.GALLERSTR.16 9400 RORSCHACH-CH</p>
+            <a href="https://www.google.com/maps?ll=47.478866,9.48657&z=16&t=m&hl=en&gl=DE&mapclient=embed&q=St.+Gallerstrasse+16+9400+Rorschach+Switzerland" target="_blank">
+              <h2 class="info-titles">ADRESS</h2>
+              <p class="info-text">ST.GALLERSTR.16 9400 RORSCHACH-CH</p>
+            </a>
           </div>
           <div class="info-center">
-            <h2 class="info-titles">ANRUFEN UND EMAIL</h2>
+            <h2 class="info-titles">ANRUFEN</h2>
             <div class="info-contact">
-              <a href="tel:+41 78 242 38 88" class="info-text"
-                ><img src="./images/call.webp" alt="" /> +41 78 242 38 88</a
+              <a href="tel:+41 0782607440" class="info-text"
+                ><img src="./images/call.webp" alt="" class="info-img"/> +41 0782607440</a
               >
-              <a href="mailto:info@mr-mirza.ch" class="info-text"
-                ><img src="./images/email.webp" alt="" /> info@mr-mirza-ch</a
-              >
+            </div>
+          </div>
+          <div class="info-center">
+            <h2 class="info-titles">SOZTIALEN MEDIEN</h2>
+            <div class="banner-social-icons">
+              <a href=""><img src="./images/facebook.webp" alt=""></a>
+              <a href=""><img src="./images/instagram.webp" alt=""></a>
+              <a href="https://x.com/mrmirza98210" target="_blank"><img src="./images/twitter.webp" alt=""></a>
+              <a href="https://api.whatsapp.com/send?text=YourShareTextHere&phone=+410782607440" target="_blank"><img src="./images/whatsapp.png" alt=""></a>
             </div>
           </div>
           <div>
@@ -95,6 +103,12 @@
               <p>Di.Fr. 09:00 - 19:00 Uhr</p>
               <p>Sa. 09:00 - 17:00 Uhr</p>
               <p>So. Mo.esch osser</p>
+            </div>
+          </div>
+          <div>
+            <h2 class="info-titles">STANDORT</h2>
+            <div class="standort-banner">
+              <iframe class="standort-frame-banner" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2696.567079854583!2d9.484025376930083!3d47.47886517117833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479b1bbd5a51049d%3A0x5c94036891e679e4!2sSt.%20Gallerstrasse%2016%2C%209400%20Rorschach%2C%20Switzerland!5e0!3m2!1sen!2sde!4v1741535347148!5m2!1sen!2sde" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
           </div>
         </div>
@@ -109,8 +123,7 @@
       <h1 class="services-title">Unsere Services</h1>
       <img src="./images/separator3.webp" alt="" class="separator" />
       <p class="services-top-text">
-        Mr.Mirza Barbershop ist ein erstaunlicher Friseursalon im Herzen in
-        RORSCHACH
+        Mr.Mirza Coiffeur ist erstaunlich einladende Friseur Salon im Herzen Rorschach.
       </p>
       <div class="services-container">
         <div class="services-items">
@@ -146,30 +159,60 @@
     <!-- galerie -->
     <div class="galerie sections" id="galerie">
       <div class="galerie-overlay">
-        <h1 class="galerie-title">Galerie Von Mr-Mirza</h1>
+        <h1 class="galerie-title">Galerie Von Mr.Mirza</h1>
         <img src="./images/separator3.webp" alt="" class="separator" />
-        <div class="galerie-container">
-          <div class="galerie-img-container">
-            <img src="./images/mirza0.jpeg" class="galerie-img" alt="">
+       
+        <div class="slider">
+          <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img src="./images/mirza0.jpeg" />
+              </div>
+              <div class="swiper-slide">
+                <img src="./images/mirza1.jpeg" />
+              </div>
+              <div class="swiper-slide">
+                <img src="./images/mirza2.jpeg" />
+              </div>
+              <div class="swiper-slide">
+                <img src="./images/mirza3.jpeg" />
+              </div>
+              <div class="swiper-slide">
+                <img src="./images/mirza4.jpeg" />
+              </div>
+              
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
           </div>
-          <div class="galerie-img-container">
-            <img src="./images/mirza1.jpeg" class="galerie-img" alt="">
+          <div thumbsSlider="" class="swiper mySwiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img src="./images/mirza0.jpeg" />
+              </div>
+              <div class="swiper-slide">
+                <img src="./images/mirza1.jpeg" />
+              </div>
+              <div class="swiper-slide">
+                <img src="./images/mirza2.jpeg" />
+              </div>
+              <div class="swiper-slide">
+                <img src="./images/mirza3.jpeg" />
+              </div>
+              <div class="swiper-slide">
+                <img src="./images/mirza4.jpeg" />
+              </div>
+             
+            </div>
           </div>
-           <div class="galerie-img-container">
-            <img src="./images/mirza2.jpeg" class="galerie-img" alt="">
-          </div>
-          <div class="galerie-img-container">
-            <img src="./images/mirza3.jpeg" class="galerie-img" alt="">
-          </div>
-          <div class="galerie-img-container">
-            <img src="./images/mirza4.jpeg" class="galerie-img" alt="">
-          </div>
+
         </div>
+    
       </div>
     </div>
     <!-- pricelist -->
     <div class="price sections" id="price">
-      <h1 class="price-title">Unsere Dienstlaeistungen Kosten(CHF)</h1>
+      <h1 class="price-title">Unsere Dienstlaeistungen Kosten(in CHF)</h1>
       <img src="./images/separator3.webp" alt="" class="separator" />
       <div class="price-container">
         <div class="price-left">
@@ -185,7 +228,7 @@
               <h2 class="price-unit">34</h2>
             </li>
             <li>
-              <h2 class="price-items">Haarschnitt Und Rasieren</h2>
+              <h2 class="price-items">Combi</h2>
               <h2 class="price-unit">70</h2>
             </li>
             <li>
@@ -193,11 +236,11 @@
               <h2 class="price-unit">32</h2>
             </li>
             <li>
-              <h2 class="price-items">Messer & Scherren Schnitt(mitellang)</h2>
+              <h2 class="price-items">Messer & Scheren Schnitt(mitellang)</h2>
               <h2 class="price-unit">37</h2>
             </li>
             <li>
-              <h2 class="price-items">Messer & Scherren Schnitt(lang)</h2>
+              <h2 class="price-items">Messer & Scheren Schnitt(lang)</h2>
               <h2 class="price-unit">40</h2>
             </li>
             <li>
@@ -209,12 +252,16 @@
               <h2 class="price-unit">25</h2>
             </li>
             <li>
-              <h2 class="price-items">Bartkultura(Nass & Trocken)</h2>
+              <h2 class="price-items">Bartkultur(Nass & Trocken)</h2>
               <h2 class="price-unit">25</h2>
             </li>
             <li>
               <h2 class="price-items">Waschen & Styling</h2>
               <h2 class="price-unit">20</h2>
+            </li>
+            <li>
+              <h2 class="price-items">Haare färben nach Anfrage</h2>
+              <h2 class="price-unit">-</h2>
             </li>
           </ul>
           <h2 class="price-category-title">Kinder</h2>
@@ -285,7 +332,7 @@
       <h1 class="products-title">Unsere Produkte</h1>
       <img src="./images/separator3.webp" alt="" class="separator" />
       <p class="products-top-text">
-        Mr.Mirza Barbershop ist ein erstaunlicher Friseursalon im Herzen in
+        Mr.Mirza Coiffeur ist ein erstaunlicher Friseursalon im Herzen in
         RORSCHACH
       </p>
       <div class="products-container">
@@ -560,12 +607,13 @@
       <div class="footer-overlay">
         <div class="footer-container">
           <div class="logo-footer">
-            <img src="./images/logo.webp" alt="">
+            <img src="./images/logo4.png" alt="">
             <div class="logo-text logo-text-footer">
               <div class="navbar-top-right footer-social-icons">
                 <a href=""><img src="./images/facebook.webp" alt=""></a>
                 <a href=""><img src="./images/instagram.webp" alt=""></a>
                 <a href="https://x.com/mrmirza98210" target="_blank"><img src="./images/twitter.webp" alt=""></a>
+                <a href="https://api.whatsapp.com/send?text=YourShareTextHere&phone=+410782607440" target="_blank"><img src="./images/whatsapp.png" alt=""></a>
               </div>
             </div>
           </div>
@@ -573,15 +621,15 @@
             <h2 class="footer-text">Info</h2>
             <ul>
               <li>
-                <a href="tel:++41 78 242 38 88"><img src="./images/call.webp" alt=""> +41 78 242 38 88</a>
-                <a href="mailto:info@mr-mirza-ch"><img src="./images/email.webp" alt=""> info@mr-mirza-ch</a>
+                <a href="tel:++41 0782607440"><img src="./images/call.webp" alt="" class="info-img"> +41 0782607440</a>
+                <a href="mailto:info@mr-mirza-ch"><img src="./images/email.webp" alt="" class="info-img"> info@mr-mirza-ch</a>
               </li>
               <li class="footer-standort">
                 <box-icon name='target-lock' color="yellow" size="md" style="margin-top: 5px; margin-right: 12px;"></box-icon>
-                <div>
+                <a href="https://www.google.com/maps?ll=47.478866,9.48657&z=16&t=m&hl=en&gl=DE&mapclient=embed&q=St.+Gallerstrasse+16+9400+Rorschach+Switzerland">
                   <span>St.Gallerstr.16</span>
                   <div> 9400 Rorschach-CH</div>
-                </div>
+                </a>
               </li>
             </ul>
           </div>
@@ -628,7 +676,7 @@
       </ul>
     </nav>
     <img src="./images/go-top.webp" alt="" class="go-top" id="go-top" />
-    </div>
+    </main>
 
     <div id="loading-container">
       <img src="./images/loading.webp" alt="" id="loading">
