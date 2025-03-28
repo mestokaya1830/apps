@@ -1,42 +1,45 @@
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".links")[0].style.color = "#fddf85";
-  document
-    .querySelectorAll(".links")[0]
-    .style.setProperty("--afterWidth", "100%");
+  if(document.querySelector('.banner-overlay').offsetWidth > 1024){
+    document.querySelectorAll(".links")[0].style.color = "#fddf85";
+    document.querySelectorAll(".links")[0].style.setProperty("--afterWidth", "100%");
+  }
   document.getElementById("loading-container").style.display = "none";
   document.getElementById("main-container").style.display = "block";
 
   window.onscroll = () => {
-    if (
-      document.body.scrollTop > 500 ||
-      document.documentElement.scrollTop > 500
-    ) {
-      document.getElementById("go-top").style.display = "block";
-    } else {
-      document.getElementById("go-top").style.display = "none";
+    
+    
+    if(document.querySelector('.banner-overlay').offsetWidth > 1024){
+      if (
+        document.body.scrollTop > 500 ||
+        document.documentElement.scrollTop > 500
+      ) {
+        document.getElementById("go-top").style.display = "block";
+      } else {
+        document.getElementById("go-top").style.display = "none";
+      }
+      const sections = document.querySelectorAll(".sections");
+      let current = "";
+      sections.forEach((item) => {
+        const sectionTop = item.offsetTop;
+        if (scrollY >= sectionTop - 60) {
+          current = item.getAttribute("id");
+        }
+      });
+  
+      document.querySelectorAll(".links").forEach((item) => {
+        item.style.setProperty("--afterWidth", 0);
+        item.style.color = "darkgray";
+        if (item.getAttribute("id") == current + "-link") {
+          item.style.color = "#fddf85";
+          item.style.setProperty("--afterWidth", "100%");
+        }
+      });
     }
-
-    const sections = document.querySelectorAll(".sections");
-    let current = "";
-    sections.forEach((item) => {
-      const sectionTop = item.offsetTop;
-      if (scrollY >= sectionTop - 60) {
-        current = item.getAttribute("id");
-      }
-    });
-
-    document.querySelectorAll(".links").forEach((item) => {
-      item.style.setProperty("--afterWidth", 0);
-      item.style.color = "darkgray";
-      if (item.getAttribute("id") == current + "-link") {
-        item.style.color = "#fddf85";
-        item.style.setProperty("--afterWidth", "100%");
-      }
-    });
   };
 
   document.getElementById("go-top").addEventListener("click", (e) => {
-    window.scrollTo(0, -300);
+    window.scrollTo(0, 0);
     document.querySelectorAll(".links").forEach((item2) => {
       item2.style.color = "darkgray";
     });
@@ -49,27 +52,24 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 100);
   });
 
-  document.querySelectorAll(".links").forEach((item) => {
-    item.addEventListener("click", () => {
-      // document.querySelectorAll('.links').forEach(item2 => {
-      //   item2.style.color = "darkgray"
-      //   item2.style.setProperty("--afterWidth", 0)
-      // })
-      // item.style.color = '#fddf85'
-      // item.style.setProperty("--afterWidth", '100%')
-      document.querySelector(".mobil-navigation").style.display = "none";
-
-      setTimeout(() => {
-        history.replaceState(
-          "",
-          document.title,
-          window.location.origin +
-            window.location.pathname +
-            window.location.search
-        );
-      }, 100);
+  if(document.querySelector('.banner-overlay').offsetWidth > 1024){
+    console.log('links')
+    document.querySelectorAll(".links").forEach((item) => {
+      item.addEventListener("click", () => {
+        document.querySelector(".mobil-navigation").style.display = "none";
+  
+        setTimeout(() => {
+          history.replaceState(
+            "",
+            document.title,
+            window.location.origin +
+              window.location.pathname +
+              window.location.search
+          );
+        }, 100);
+      });
     });
-  });
+  }
 
   document.querySelectorAll(".mobil-links").forEach((item) => {
     item.addEventListener("click", () => {

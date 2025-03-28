@@ -1,8 +1,8 @@
 @media only screen and (max-width: 1024px){
+.go-top{display: none;}
 .sections{
   padding: 60px 0 !important;
 }
-
 .banner-overlay{
   padding: 0 !important;
   overflow: auto;
