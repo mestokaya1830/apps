@@ -147,7 +147,7 @@
 .services-title{
   font-size: 3rem;
 }
-.services, .galerie{
+.services{
   height: auto;
 }
 .services-container, .products-container{
@@ -155,11 +155,6 @@
 }
 .services-top-text, .products-top-text{
   width: 90%;
-}
-.galerie-overlay{
-  position: relative !important;
-  margin-top: -60px;
-  margin-bottom: -60px;
 }
 .galerie-container{
   flex-direction: column;
@@ -172,6 +167,12 @@
 }
 .products-title{
   font-size: 3rem;
+}
+.price, .galerie{
+  padding: 0 !important;
+}
+.price-overlay, .galerie-overlay{
+  padding: 50px 0 !important;
 }
 .price-title{
   text-align: center;
@@ -208,6 +209,12 @@
 }
 .footer-text{
   display: none;
+}
+.footer-info-container{
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 200px;
 }
 .standort{
   width: 100% !important;

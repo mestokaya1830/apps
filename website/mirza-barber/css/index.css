@@ -231,7 +231,7 @@ a:visited {
 .banner-text {
   font-size: 1rem !important;
 }
-.price {
+.price, .galerie {
   padding: 0 !important;
   position: relative;
   height: auto;
@@ -239,13 +239,20 @@ a:visited {
   background-size: cover;
   background-position: center;
 }
-.price-overlay{
+.galerie{
+  background-image: url(../images/banner.jpg);
+  height: 100dvh;
+}
+.price-overlay, .galerie-overlay{
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.7);
   width: 100%;
   padding: 100px 0;
+}
+.galerie-overlay{
+  background-color: rgba(0, 0, 0, 0.8);
 }
 .price-list{
   width: 60%;
@@ -256,25 +263,7 @@ a:visited {
   justify-content: space-between;
   padding: 20px;
 }
-.galerie{
-  position: relative;
-  background-image: url(../images/banner.jpg);
-  background-size: cover;
-  background-position: center;
-}
-.galerie-overlay{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 2;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.8);
-  padding-top: 80px;
-}
+
 .galerie-container{
   display: flex;
   justify-content: space-between;
@@ -601,7 +590,7 @@ footer {
 .slider{
   position: relative;
   width: 60%;
-  height: 80%;
+  height: 90%;
   margin-top: 20px;
   border: 24px solid rgba(0, 0, 0, 0.5);
   border-radius: 2px;
