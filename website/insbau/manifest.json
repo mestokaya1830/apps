@@ -1,6 +1,6 @@
 {
-  "name":"mestokaya",
-  "short_name":"mesto",
+  "name":"ins-bau-profis",
+  "short_name":"ins-bau",
   "start_url":"/",
   "theme_color":"red",
   "background_color":"blue",
@@ -8,39 +8,39 @@
   "oriantation":"portrait-primary",
   "icons":[
     {
-      "src":"./ins-bau-icons/icon_48.png",
+      "src":"./icons/icon_48.webp",
       "sizes":"48X48",
-      "type":"image/png"
+      "type":"image/webp"
     },
     {
-      "src":"./ins-bau-icons/icon_64.png",
+      "src":"/icons/icon_64.webp",
       "sizes":"64X64",
-      "type":"image/png"
+      "type":"image/webp"
     },
     {
-      "src":"./ins-bau-icons/icon_72.png",
+      "src":"/icons/icon_72.webp",
       "sizes":"72X72",
-      "type":"image/png"
+      "type":"image/webp"
     },
     {
-      "src":"./ins-bau-icons/icon_96.png",
+      "src":"/icons/icon_96.webp",
       "sizes":"96X96",
-      "type":"image/png"
+      "type":"image/webp"
     },
     {
-      "src":"./ins-bau-icons/icon_128.png",
+      "src":"/icons/icon_128.webp",
       "sizes":"128X128",
-      "type":"image/png"
+      "type":"image/webp"
     },
     {
-      "src":"./ins-bau-icons/icon_256.png",
+      "src":"/icons/icon_256.webp",
       "sizes":"192X192",
-      "type":"image/png"
+      "type":"image/webp"
     },
     {
-      "src":"./ins-bau-icons/icon_512.png",
+      "src":"/icons/icon_512.webp",
       "sizes":"512X512",
-      "type":"image/png"
+      "type":"image/webp"
     }
   ]
 }

@@ -132,13 +132,11 @@ document.addEventListener("DOMContentLoaded", function() {
   sr.reveal(".abouts-img", { delay: 200, origin: "top" });
   sr.reveal(".contact-container", { delay: 100, origin: "top" });
   
-  // if ('serviceWorker' in navigator) {
-  //   navigator.serviceWorker.register('sw.js').then(res => {
-  //       console.log(res)
-  //   }).catch((err) => {
-  //       console.log(err)
-  //   })
-  // }
-  
-
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js').then(res => {
+        console.log(res)
+    }).catch((err) => {
+        console.log(err)
+    })
+  }
 });  
