@@ -1,7 +1,7 @@
-@import "https://fonts.googleapis.com/css?family=Dangrek";
-@import "https://fonts.googleapis.com/css?family=Emblema One";
-@import "https://fonts.googleapis.com/css?family=Teko";
-@import "https://fonts.googleapis.com/css?family=Merriweather";
+@font-face {
+  font-family: 'custom';
+  src: url('/css/ethnocentric\ rg.woff2') format('woff2');
+}
 * {
   font-family: "Poppins", sans-serif;
   margin: 0;
@@ -19,7 +19,7 @@ html::-webkit-scrollbar-track {
   background: transparent;
 }
 html::-webkit-scrollbar-thumb {
-  background: #d5a353;
+  background: #4e805d;
   border-radius: 5rem;
 }
 .material-symbols-outlined {
@@ -36,8 +36,9 @@ a:visited {
   height: 100dvh;
   padding: 170px 0;
 }
+
 .banner {
-  background-image: url(../images/banner2.jpg);
+  background-image: url(../images/banner.jpeg);
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
@@ -71,7 +72,10 @@ a:visited {
   background-color: #333;
 }
 .navbar-logo > img{
-  width: 140px;
+  width: 260px;
+}
+.logo-2{
+  width: 140px !important;
 }
 .navbar-overlay {
   display: flex;
@@ -89,7 +93,7 @@ a:visited {
   box-shadow: -5px 5px 5px #000;
 }
 .navbar-overlay > nav > .links {
-  font-size: 20px;
+  font-size: 1.2rem;
   color: darkgray;
   margin: 0 10px;
   font-weight: bold;
@@ -103,8 +107,8 @@ a:visited {
 .navbar .links::after {
   content: "";
   width: var(--afterWidth);
-  height: 3px;
-  background: #d5a353;
+  height: 2px;
+  background-color: #80af8e;
   bottom: -4px;
   left: 0;
   transition: 0.3s;
@@ -177,7 +181,7 @@ a:visited {
   width: 80%;
 }
 .info-titles {
-  color: #d5a353;
+  color: #80af8e;
   text-shadow: 1px 1px #000;
 }
 .info-text {
@@ -190,7 +194,11 @@ a:visited {
 .info-text-navbar{
   display: flex;
   align-items: center;
-  color: #fff;
+  color: darkgray;
+  font-style: italic;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-size: 1.2rem;
 }
 .info-text-navbar > img{
   width: 30px;
@@ -208,23 +216,24 @@ a:visited {
 .logo-container-center h1 {
   font-size: 24px;
   font-weight: bold;
-  color: #d5a353;
+  color: #fff;
   text-shadow: 1px 2px #000;
   margin: 0 20px;
 }
 .logo-container-center img {
   width: 100px;
 }
+
 .banner-title {
-  font-family: "Dangrek";
-  font-size: 120px;
-  color: #d5a353;
+  font-family: "custom";
+  font-size: 5rem;
+  color: #4e805d;
   text-shadow: 2px 5px #000;
 }
 .banner-sub-title {
   font-family: "Sofia serif";
   font-size: 30px;
-  color: #d5a353;
+  color: #80af8e;
   letter-spacing: 3px;
   text-shadow: 1px 2px #000;
 }
@@ -235,12 +244,12 @@ a:visited {
   padding: 0 !important;
   position: relative;
   height: auto;
-  background-image: url(../images/banner3.jpg);
+  background-image: url(../images/banner3.webp);
   background-size: cover;
   background-position: center;
 }
 .galerie{
-  background-image: url(../images/banner.jpg);
+  background-image: url(../images/banner.webp);
   height: 100dvh;
 }
 .price-overlay, .galerie-overlay{
@@ -271,7 +280,7 @@ a:visited {
 
 }
 .galerie-img-container{
-  background-color: #d5a3538f;
+  background-color: #333;
   padding: 10px;
   margin: 0 10px;
   border-radius: 20px;
@@ -294,9 +303,9 @@ a:visited {
 .contact-title, .galerie-title {
   font-family: "Teko", serif;
   letter-spacing: 4px;
-  font-size: 4rem;
-  color: #d5a353;
-  text-shadow: 1px 2px #000;
+  font-size: 2.2rem;
+  color: #80af8e;
+  text-shadow: 1px 1px #000;
 }
 .services-top-text,
 .products-top-text {
@@ -332,6 +341,22 @@ a:visited {
   border-radius: 20px;
   background-color: #fff;
 }
+.rest-product{
+  width: 100dvw;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: bold;
+  font-style: italic;
+  transition: all 0.4s linear;
+  margin-top: 30px;
+ 
+}
+.rest-product > a{
+  color: cadetblue;
+}
+.rest-product:hover {
+  transform: scale(1.1);
+}
 .services-img {
   width: 50px;
 }
@@ -350,25 +375,25 @@ a:visited {
 
 .price-title {
   font-family: "Teko";
-  color: #d5a353;
-  font-size: 4rem;
+  color: #4e805d;
+  font-size: 2.2rem;
   letter-spacing: 1px;
   text-shadow: 1px 1px #000;
 }
 .price-category-title {
-  color: #d5a353;
+  color: #80af8e;
   margin: 10px 0;
 }
 .price-unit, .price-items {
   font-weight: 100;
-  color: #d8b884;
-  font-size: 1.4rem;
-  font-family: sans-serif;
+  color: #ccc;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
 }
 .price-line{
   height: 1px;
   width: 100%;
-  background-image: linear-gradient(to right, #000, #d5a353, #000);
+  background-image: linear-gradient(to right, #000, #4e805d, #000);
 }
 .products {
   height: auto;
@@ -408,14 +433,9 @@ a:visited {
   align-items: center;
   width: 100%;
   background-color: #f3f0ea9e;
+  padding: 100px 0 !important;
 }
 
-.contact-title {
-  font-size: 50px;
-  font-family: "Toke" serif;
-  margin-bottom: 20px;
-  color: #d5a353;
-}
 .contact > form {
   display: flex;
   flex-direction: column;
@@ -440,11 +460,9 @@ a:visited {
   padding: 10px;
 }
 .contact > form > input[type="submit"] {
-  align-self: flex-end;
-  height: 50px;
-  font-size: 1.7rem;
-  width: 240px;
-  background-color: #d5a353;
+  font-size: 1.6rem;
+  width:100%;
+  background-color: #4e805d;
   color: #fff;
   border: none;
 }
@@ -464,9 +482,9 @@ footer {
   padding: 50px;
   color: #fff;
   position: relative;
-  background-position: center;
+  background-image: url(../images/foooterbg.jpeg);
   background-size: cover;
-  background-image: url(../images/banner.jpg);
+  background-position: bottom;
 }
 .footer-overlay {
   display: flex;
@@ -477,12 +495,14 @@ footer {
   top: 0;
   left: 0;
   z-index: 2;
-  padding: 40px 0;
+  padding: 80px 0;
   background: rgba(0, 0, 0, 0.8);
 }
 .footer-container {
   display: flex;
   justify-content: space-around;
+  align-items: center;
+  height: 100%;
 }
 .copyright {
   display: flex;
@@ -494,6 +514,9 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.logo-footer > img{
+  width: 260px;
 }
 .standort {
   width: 500px;
@@ -539,10 +562,11 @@ footer {
   margin-right: 20px;
 }
 .footer-social-icons {
-  margin-top: 50px;
+  display: flex;
+  justify-content: center;
 }
 .footer-social-icons > a {
-  margin-right: 20px;
+  margin: 0 10px;
 }
 .footer-social-icons > a > img {
   width: 40px;

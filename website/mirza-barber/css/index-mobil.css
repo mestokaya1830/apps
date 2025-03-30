@@ -1,3 +1,7 @@
+@font-face {
+  font-family: 'custom';
+  src: url('/css/ethnocentric\ rg.woff2') format('woff2');
+}
 @media only screen and (max-width: 1024px){
 .go-top{display: none;}
 .sections{
@@ -18,11 +22,13 @@
   margin: 40px 0;
 }
 .standort-banner{
-  width: 80%;
-  margin-bottom: 20px;
+  width: 70%;
 }
 .navbar-navigation-menu{
   display: none;
+}
+.logo-container-center{
+  margin-top: 1.5em;
 }
 
 .logo-container-center > img{
@@ -36,11 +42,12 @@
   border-bottom-right-radius: 40px;
   padding: 20px;
   background-color: rgba(0, 0, 0, 0.6);
-  box-shadow: -2px 4px 25px #f8ba00;
+  box-shadow: -2px 4px 25px #4e805d;
   position: relative;
 }
 .logo-container-center h1{
   text-align: center;
+  font-size: 1.4rem;
 }
 .navbar-logo{
   margin-left: 0 !important;
@@ -52,12 +59,17 @@
   width: 100%;
 }
 .logo-text-big-mobil{
-  color: #f8ba00 !important;
-  font-size: 2.5rem;
+  color: #4e805d !important;
+  font-size: 2rem;
+  font-family: custom;
 }
 .logo-text-small-mobil{
   font-size: 14px;
   color: #fff;
+}
+.rest-product{
+  font-size: 1rem;
+  margin-top: 0 !important;
 }
 .slider{
   width: 90% !important;
@@ -144,8 +156,9 @@
 .navbar{
   display: none;
 }
-.services-title{
-  font-size: 3rem;
+.services-title, .galerie-title, .products-title, .contact-title{
+  text-align: center;
+  font-size: 2rem;
 }
 .services{
   height: auto;
@@ -196,9 +209,6 @@
 }
 .contact > form > textarea{
   height: 8em;
-}
-.submit{
-  width: 100% !important;
 }
 .footer-overlay{
   height: auto;

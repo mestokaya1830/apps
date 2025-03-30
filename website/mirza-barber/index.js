@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   if(document.querySelector('.banner-overlay').offsetWidth > 1024){
-    document.querySelectorAll(".links")[0].style.color = "#fddf85";
+    document.querySelectorAll(".links")[0].style.color = "#0eaa93ff";
     document.querySelectorAll(".links")[0].style.setProperty("--afterWidth", "100%");
   }
   document.getElementById("loading-container").style.display = "none";
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
         item.style.setProperty("--afterWidth", 0);
         item.style.color = "darkgray";
         if (item.getAttribute("id") == current + "-link") {
-          item.style.color = "#fddf85";
+          item.style.color = "#80af8e";
           item.style.setProperty("--afterWidth", "100%");
         }
       });
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".links").forEach((item2) => {
       item2.style.color = "darkgray";
     });
-    document.getElementById("startseite-link").style.color = "#fddf85";
+    document.getElementById("startseite-link").style.color = "#80af8e";
 
     setTimeout(() => {
       document
