@@ -4,9 +4,6 @@
 }
 @media only screen and (max-width: 1024px){
 .go-top{display: none;}
-.sections{
-  padding: 60px 0 !important;
-}
 .banner-overlay{
   padding: 0 !important;
   overflow: auto;
@@ -72,7 +69,8 @@
   margin-top: 0 !important;
 }
 .slider{
-  width: 90% !important;
+  width: 100% !important;
+  border: 10px solid #222 !important;
 }
 .mobil-navigation {
   display: flex;
@@ -156,9 +154,8 @@
 .navbar{
   display: none;
 }
-.services-title, .galerie-title, .products-title, .contact-title{
+.services-title, .galerie-title, .products-title, .contact-title, .price-title{
   text-align: center;
-  font-size: 2rem;
 }
 .services{
   height: auto;
@@ -172,24 +169,8 @@
 .galerie-container{
   flex-direction: column;
 }
-.galerie-img-container{
-  margin: 15px;
-}
-.galerie-title{
-  font-size: 2.6rem;
-}
-.products-title{
-  font-size: 3rem;
-}
-.price, .galerie{
-  padding: 0 !important;
-}
-.price-overlay, .galerie-overlay{
-  padding: 50px 0 !important;
-}
-.price-title{
-  text-align: center;
-  font-size: 2.4rem !important;
+.price-overlay, .galerie-overlay, .products, .contact, .services{
+  padding-top: 5em  !important;
 }
 .services-items, .products-items{
   width: 100%;
@@ -248,7 +229,7 @@
 }
 @media only screen and (min-width: 1024px) and (max-width: 1860px){
   .services, .products{
-    padding: 100px 50px !important;
+    /* padding: 100px 50px !important; */
   }
   .services-container, .products-container{
     padding: 0 50px !important;
