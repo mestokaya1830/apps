@@ -3,7 +3,7 @@
   "short_name":"ins-bau",
   "start_url":"/",
   "theme_color":"red",
-  "background_color":"blue",
+  "background_color":"#f8ba00",
   "display":"standalone",
   "oriantation":"portrait-primary",
   "icons":[
