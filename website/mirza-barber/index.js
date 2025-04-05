@@ -7,17 +7,15 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("main-container").style.display = "block";
 
   window.onscroll = () => {
-    
-    
+    if (
+      document.body.scrollTop > 500 ||
+      document.documentElement.scrollTop > 500
+    ) {
+      document.getElementById("go-top").style.display = "block";
+    } else {
+      document.getElementById("go-top").style.display = "none";
+    }
     if(document.querySelector('.banner-overlay').offsetWidth > 1024){
-      if (
-        document.body.scrollTop > 500 ||
-        document.documentElement.scrollTop > 500
-      ) {
-        document.getElementById("go-top").style.display = "block";
-      } else {
-        document.getElementById("go-top").style.display = "none";
-      }
       const sections = document.querySelectorAll(".sections");
       let current = "";
       sections.forEach((item) => {
@@ -53,11 +51,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   if(document.querySelector('.banner-overlay').offsetWidth > 1024){
-    console.log('links')
     document.querySelectorAll(".links").forEach((item) => {
       item.addEventListener("click", () => {
         document.querySelector(".mobil-navigation").style.display = "none";
-  
         setTimeout(() => {
           history.replaceState(
             "",
