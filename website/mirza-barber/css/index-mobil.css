@@ -18,6 +18,10 @@
   margin: 40px 0;
   height: auto !important;
 }
+.info-text{
+  width: 90% !important;
+  justify-content: center;
+}
 .standort-container{
   width: 100%;
 }
@@ -229,12 +233,11 @@
 .mobil-icons{
   margin-bottom: 5px;
 }
-
+.artical-container > span {
+  font-size: 0.9rem !important;
+}
 }
 @media only screen and (min-width: 1024px) and (max-width: 1860px){
-  .services, .products{
-    /* padding: 100px 50px !important; */
-  }
   .services-container, .products-container{
     padding: 0 50px !important;
     justify-content: center;
