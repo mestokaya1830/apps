@@ -85,8 +85,9 @@
 .banner-text{
   top: 25em !important;
 }
+.banner-text{width:100%;}
 .banner-text > h1{
-  font-size: 2.4rem;
+  display:none;
 }
 .banner-side-img{
   top: 12em;
