@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".links")[0].style.setProperty("--afterWidth", "100%");
   if(document.querySelector('.banner-overlay').offsetWidth > 1024){
     document.querySelectorAll(".links")[0].style.color = "#0eaa93ff";
     document.querySelectorAll(".links")[0].style.setProperty("--afterWidth", "100%");
@@ -55,9 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
       item.addEventListener("click", () => {
         document.querySelector(".mobil-navigation").style.display = "none";
         setTimeout(() => {
-          history.replaceState(
-            "",
-            document.title,
+          history.replaceState("", document.title,
             window.location.origin +
               window.location.pathname +
               window.location.search
@@ -122,13 +121,13 @@ document.addEventListener("DOMContentLoaded", () => {
   sr.reveal(".price-title", { delay: 100, origin: "top" });
   sr.reveal(".contact-title", { delay: 100, origin: "top" });
 
-  // if ('serviceWorker' in navigator) {
-  //   navigator.serviceWorker.register('sw.js').then(res => {
-  //       console.log(res)
-  //   }).catch((err) => {
-  //       console.log(err)
-  //   })
-  // }
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js').then(res => {
+        console.log(res)
+    }).catch((err) => {
+        console.log(err)
+    })
+  }
 
   document.getElementById("submit").addEventListener("click", (e) => {
     e.preventDefault();
