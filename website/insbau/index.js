@@ -1,5 +1,7 @@
 
 document.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll(".links")[0].style.setProperty("--afterWidth", "100%");
+  document.querySelectorAll(".links")[0].style.color = "#fddf85";
   document.getElementById('loading-container').style.display = 'none'
   document.getElementById('home').style.display = 'block'
 
@@ -12,21 +14,41 @@ document.addEventListener("DOMContentLoaded", function() {
     } else {
       document.getElementById("go-top").style.display = "none";
     }
+    if(document.querySelector('.banner-overlay').offsetWidth > 1024){
+      const sections = document.querySelectorAll(".sections");
+      let current = "";
+      sections.forEach((item) => {
+        const sectionTop = item.offsetTop;
+        if (scrollY >= sectionTop - 60) {
+          current = item.getAttribute("id");
+        }
+      });
+  
+      document.querySelectorAll(".links").forEach((item) => {
+        item.style.setProperty("--afterWidth", 0);
+        item.style.color = "#eee";
+        if (item.getAttribute("id") == current + "-link") {
+          item.style.color = "#fddf85";
+          item.style.setProperty("--afterWidth", "100%");
+        }
+      });
+    }
   };
+
 
   document.querySelector(".startseite").style.color = "#fddf85";
 
   document.getElementById("go-top").addEventListener("click", (e) => {
     window.scrollTo(0, 0);
-    document.querySelectorAll(".navigation-bar-links").forEach((item2) => {
+    document.querySelectorAll(".links").forEach((item2) => {
       item2.style.color = "#fff";
     });
     document.querySelector(".startseite").style.color = "#fddf85";
   });
   
-  document.querySelectorAll(".navigation-bar-links").forEach((item) => {
+  document.querySelectorAll(".links").forEach((item) => {
     item.addEventListener("click", () => {
-      document.querySelectorAll(".navigation-bar-links").forEach((item2) => {
+      document.querySelectorAll(".links").forEach((item2) => {
         item2.style.color = "#fff" ;
       });
       item.style.color = "#fddf85";

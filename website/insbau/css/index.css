@@ -19,7 +19,9 @@ html::-webkit-scrollbar-thumb {
   background: #f8ba00;
   border-radius: 5rem;
 }
-
+:root{
+  --afterWidth: 0;
+}
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }
@@ -117,31 +119,26 @@ a:visited {
 }
 .navigation-bar {
   display: flex;
-  list-style: none;
   margin-left: 100px;
 }
-.navigation-bar-list{
+.navigation-bar > .links {
   position: relative;
-}
-.navigation-bar-list > a {
-  color: #fff;
+  color: #eee;
   font-size: 1.4rem;
   font-weight: 400;
   margin: 0 24px;
+  padding: 0 5px;
 }
-.navigation-bar-links::after {
+.navigation-bar > .links::after {
   content: "";
-  width: 0;
-  height: 3px;
+  width: var(--afterWidth);
+  height: 2px;
   background: #f8ba00;
   bottom: -4px;
   left: 0;
   transition: 0.5s;
   position: absolute;
 }
-.navigation-bar-links:hover::after {
-  width: 100%;
-} 
 
 .sections {
   display: flex;
