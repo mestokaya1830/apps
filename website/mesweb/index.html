@@ -31,13 +31,13 @@
         <a href="#home" class="links" id="home-link">Home</a>
         <a href="#services" class="links" id="services-link">Services</a>
         <a href="#workflow" class="links" id="workflow-link">Workflow</a>
+        <a href="#technologies" class="links" id="technologies-link">Technologies</a>
         <a href="#contact" class="links" id="contact-link">Contact</a>
       </div>
     </nav>
-    </nav>
     <!-- home -->
     <section class="sections" id="home">
-      <div class="banner-left">
+      <div class="banner-left" id="banner-left">
         <h2 class="banner-h2">Perfect Company Solution</h2>
         <h1 class="banner-h1">We Help Companies in <span>Digitizing</span> Their Businesses.</h1>
         <p class="banner-p">In today's rapidly evolving digital landscape, staying ahead of the curve is essential for businesses aiming to thrive and succeed.</p>
@@ -48,9 +48,10 @@
         <button class="contact-us">CONTACT US TODAY</button>
       </div>
       <div class="banner-right">
-        <img src="./images/banner.png" alt="">
+        <img src="./images/banner.png" alt="" id="banner-img" >
       </div>
     </section>
+
     <!-- services -->
     <section class="sections" id="services">
       <h1>Services</h1>
@@ -117,6 +118,8 @@
         </div>
       </div>
     </section>
+    
+    <!-- workflow -->
     <section class="sections" id="workflow">
       <h1>Project Workflow</h1>
       <div class="workflow-container">
@@ -142,11 +145,151 @@
         </div>
       </div>
     </section>
-    <section class="sections" id="contact">
-      <h1>Contact</h1>
-    </section>
+    
+    <!-- technologies -->
+     <section class="sections" id="technologies">
+      <h1>Technologies</h1>
+      <ul>
+        <li>
+          <img src="" alt=""> 
+          <span>Html5</span>
+        </li>
+        <li>
+          <img src="" alt=""> 
+          <span>Css3</span>
+        </li>
+        <li>
+          <img src="" alt=""> 
+          <span>Javascript</span>
+        </li>
+        <li>
+          <img src="" alt=""> 
+          <span>PWA</span>
+        </li>
+        <li>
+          <img src="" alt=""> 
+          <span>React</span>
+        </li>
+        <li>
+          <img src="" alt=""> 
+          <span>Vue3</span>
+        </li>
+        <li>
+          <img src="" alt=""> 
+          <span>Nodejs</span>
+        </li>
+        <li>
+          <img src="" alt=""> 
+          <span>Laravel</span>
+        </li>
+        <li>
+          <img src="" alt=""> 
+          <span>Mongodb</span>
+        </li>
+        <li>
+          <img src="" alt=""> 
+          <span>Mysql</span>
+        </li>
+        <li>
+          <img src="" alt=""> 
+          <span>Nginx</span>
+        </li>
+      </ul>
+     </section>
+     <!-- contact -->
+     <div class="sections" id="contact">
+      <h1 class="contact-title">Contact</h1>
+      <!-- <img src="./images/separator3.webp" alt=""> -->
+      <form action="#" id="email-form" class="contact-form">
+        <input type="text" class="inputs"  id="username" placeholder="Name">
+        <div id="error-username" class="errors"></div>
+
+        <input type="email"  class="inputs"  id="email" placeholder="E-Mail">
+        <div id="error-email" class="errors"></div>
+
+        <input type="text"  class="inputs"  id="subject" placeholder="Subject">
+        <div id="error-subject" class="errors"></div>
+
+        <textarea class="inputs" id="message"></textarea>
+        <div id="error-message" class="errors"></div>
+
+        <input type="submit" class="submit" id="submit" value="Send">
+      </form>
+    </div>
+
+    <!-- footer -->
     <footer>
-      <h1>Footer</h1>
+      <div class="footer-container">
+        <div class="footer-logo-container">
+          <!-- <img src="./images/logo.webp" alt="" />
+          <div class="footer-logo-text">
+            <h3 class="footer-logo-text-big" #fff;>MESWEB</h3>
+            <h5 class="logo-text-small-footer">Qualitet ist alles</h5>
+            <div class="navbar-top-right footer-social-icons">
+              <a href="https://www.facebook.com/profile.php?id=61574274640731" target="_blank"><img src="./images/facebook.webp" alt=""></a>
+              <a href="https://www.instagram.com/ins_bau_profis/" target="_blank"><img src="./images/instagram.webp" alt=""></a>
+              <a href="https://x.com/ins_bau_profis" target="_blank"><img src="./images/twitter.webp" alt=""></a>
+            </div>
+          </div> -->
+        </div>  
+        <div class="footer-info-container">
+          <h2 class="footer-text">Info</h2>
+          <ul>
+            <!-- <li>
+              <a href="tel:+491634814438"><img src="./images/call.webp" alt=""> +491634814438</a>
+              <a href="mailto:info@ins-bau.de"><img src="./images/email.webp" alt=""> info@ins-bau.de</a>
+            </li> -->
+            <li class="footer-standort">
+              <box-icon name='target-lock' color="yellow" size="md" style="margin-top: 5px; margin-right: 12px;"></box-icon>
+              <div>
+                <span>Schmindener Str.62</span>
+                <span>70372 Stuttgart</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="standort-container">
+          <div>
+            <h2 class="footer-text">Standort</h2>
+          </div>
+          <div class="standort">
+            <iframe class="standort-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2627.4930791830866!2d9.21830469249657!3d48.81065279739144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4799c51450ff7f03%3A0x662ddf9b88aa2a2!2sSchmidener%20Str.%2062%2C%2070372%20Stuttgart!5e0!3m2!1sen!2sde!4v1742932652867!5m2!1sen!2sde" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="copyright"><span class="copy">&copy;</span>Copyright 2025 BY MESWEB</div>
     </footer>
+    <!-- <img src="./images/go-top.webp" alt="" class="go-top" id="go-top"> -->
+    
+    <nav class="mobil-navigation">
+      <div class="mobil-logo-container-mobil">
+        <div class="logo-text">
+          <h3 class="logo-text-big-mobil" #fff;>MESWEB</h3>
+          <h5 class="logo-text-small-mobil">Qualitet ist alles</h5>
+        </div>
+      </div>
+      <ul>
+        <li class="mobil-nav-list"> <a href="#home" class="mobil-links"><box-icon name='home'class="mobil-icons"></box-icon> Home</a></li>
+        <li class="mobil-nav-list"> <a href="#services" class="mobil-links"><box-icon name='cog' class="mobil-icons"></box-icon> Services</a></li>
+        <li class="mobil-nav-list"> <a href="#workflow" class="mobil-links"><box-icon name='image-alt' class="mobil-icons"></box-icon> Workflow</a></li>
+        <li class="mobil-nav-list"><a href="#technologies" class="mobil-links"><box-icon name='user-voice' class="mobil-icons"></box-icon> Technologies</a></li>
+        <li class="mobil-nav-list"><a href="#contact" class="mobil-links"><box-icon name='user-voice' class="mobil-icons"></box-icon> Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+ 
+  <!-- <div id="loading-container">
+    <img src="./images/loading.webp" alt="" id="loading">
+  </div> -->
+  
+
+
+    <!-- scripts -->
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script src="./email.js"></script>
+    <script src="./index.js"></script>
+
   </body>
 </html>
