@@ -13,8 +13,10 @@ document.addEventListener("DOMContentLoaded", () => {
       document.documentElement.scrollTop > 500
     ) {
       document.getElementById("go-top").style.display = "block";
+      document.querySelector('.navbar').style.backgroundColor = '#00265a'
     } else {
       document.getElementById("go-top").style.display = "none";
+      document.querySelector('.navbar').style.backgroundColor = '#00265ae8'
     }
     if(document.querySelector('.sections').offsetWidth > 1024){
       const sections = document.querySelectorAll(".sections");

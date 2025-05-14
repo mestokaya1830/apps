@@ -334,7 +334,7 @@ footer {
   bottom: 30px;
   right: 0.5em;
   cursor: pointer;
-  width: 80px;
+  width: 50px;
   z-index: 5;
   display: none;
 }
