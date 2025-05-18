@@ -65,7 +65,7 @@ a{
 }
 #home{
   display: flex;
-  background-image: url('../images/banner-bg.jpg');
+  background-image: url('../images/banner-bg.webp');
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -100,19 +100,28 @@ a{
   border: 1px solid #ddd;
   border-radius: 20px;
   margin: 20px 0;
-  font-weight: bold;
+}
+.contact-us > a{
+  color: #00265a;
   font-size: 1rem;
+  font-weight: bold;
 }
 .section-title{
   font-size: 3rem;
+  margin-bottom: 2rem;
 }
-#services{
+#services, #workflow, #technologies, #contact{
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #d7e9f1;
+}
+#services, #workflow{
   height: auto;
 }
+#contact {
+  padding-top: 8em;
+}
+
 .services-card-container{
   display: flex;
   align-content: center;
@@ -124,13 +133,14 @@ a{
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  flex: 1 30%;
+  flex: 1 28%;
   min-height: 100%;
   border-radius: 10px;
   height: auto;
-  margin: 1%;
+  margin: 2%;
   padding: 30px;
   background-color: #fff;
+  border: 1px solid #ddd;
 }
 .services-logos{
   width: 80px;
@@ -143,14 +153,15 @@ a{
   font-size: 2rem;
   text-align: center;
   margin-top: 30px;
+  color: #00265a;
 }
 .services-cards ul li{
   display: flex;
   align-items: center;
   height: 42px;
   margin: 7px 0;
-  background-color: #0e4279b8;
-  color: #fff;
+  color: #000;
+  border: 1px solid #0e4279b8;;
   border-radius: 20px;
 }
 .services-cards ul li span{
@@ -162,46 +173,25 @@ a{
   outline: 2px solid #fff;
   background-color: #fff;
 }
-#workflow{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: auto;
-}
 .workflow-container{
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 5%;
+  padding: 0 5%;
 }
-.workflow-items{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 60%;
-  height:auto;
-  background-color:#ccc;
-  width: 60%;
- height: 200px;
- margin: -5px 0;
- padding-top: 50px;
- border-radius: 50%;
+.workflof-img{
+  width: 50%;
 }
 .workflow-items-title{
   margin-bottom: 20px;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 .workflow-items-text{
   width: 80%;
   text-align: center;
   font-size: 1.2rem;
-}
-#technologies{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: auto;
 }
 .technologies-container{
   display: flex;
@@ -235,20 +225,10 @@ a{
   box-shadow: 5px 5px 5px #999;
   border-radius: 10px;
 }
-
 .technologies-img{
-  width: 80px;
+  width: 4.5rem;
   transform: rotate(-45deg);
 }
-#contact {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  background-color: #f3f0ea9e;
-  padding-top: 8em;
-}
-
 #contact > form {
   display: flex;
   flex-direction: column;
@@ -294,7 +274,7 @@ footer {
   height: 34em;
   color: #ddd;
   padding: 60px 0;
-  background-image: url(../images/banner-bg.jpg);
+  background-image: url(../images/banner-bg.webp);
   background-size: cover;
   background-position: top;
 }

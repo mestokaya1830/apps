@@ -113,8 +113,15 @@ document.addEventListener("DOMContentLoaded", () => {
     reset: true,
   });
 
-  sr.reveal("#banner-img", { delay: 300, origin: "right" });
-  sr.reveal("#banner-left", { delay: 300, origin: "left" });
+  sr.reveal("#banner-img", { delay: 100, origin: "right" });
+  sr.reveal("#banner-left", { delay: 100, origin: "left" });
+  sr.reveal("#workflow-1", { delay: 100, origin: "left" });
+  sr.reveal("#workflow-2", { delay: 100, origin: "right" });
+  sr.reveal("#workflow-3", { delay: 100, origin: "left" });
+  sr.reveal("#workflow-4", { delay: 100, origin: "right" });
+  sr.reveal("#workflow-5", { delay: 100, origin: "left" });
+  sr.reveal("#technologies-top", { delay: 100, origin: "top" });
+  sr.reveal("#technologies-bottom", { delay: 100, origin: "bottom" });
 
   // if ('serviceWorker' in navigator) {
   //   navigator.serviceWorker.register('sw.js').then(res => {
