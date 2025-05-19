@@ -7,6 +7,7 @@
 html, body{
   scroll-behavior: smooth;
   overflow-x: hidden;
+  font-family: sans-serif;
 }
 a{
   text-decoration: none;
@@ -39,7 +40,7 @@ a{
 .links {
   position: relative;
   color: #eee;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   font-weight: 400;
   margin: 0 24px;
   padding: 0 5px;
@@ -48,7 +49,7 @@ a{
   content: "";
   width: var(--afterWidth);
   height: 2px;
-  background: yellow;
+  background: #f8ba00;
   bottom: -4px;
   left: 0;
   transition: 0.5s;
@@ -87,12 +88,20 @@ a{
   color: red;
 }
 .banner-p{
-  color: yellow;
+  color: #fff;
   font-size: 1.2rem;
 }
 .banner-list{
   margin: 20px 0;
   color: #f1f1f1;
+}
+.banner-list-items{
+  color: #f8ba00;
+  font-size: 1.4rem;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 20px;
+  background-image: linear-gradient(to right, #0d448061, transparent);
 }
 .contact-us{
   width: 240px;
