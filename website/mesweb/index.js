@@ -146,14 +146,14 @@ document.addEventListener("DOMContentLoaded", () => {
         "Die Nachricht muss mehr als 10 Buchstaben haben!";
     } else {
       emailjs.init({
-        publicKey: "pvpLz1XCQL_clu1Cr",
+        publicKey: "dfViWTkCiA7tGvXSm",
       });
       const data = {
         email: document.getElementById("email").value,
         subject: document.getElementById("subject").value,
         message: document.getElementById("message").value,
       };
-      emailjs.send("service_haih1te", "template_qxyo28p", data).then(
+      emailjs.send("service_18hr2f9", "template_nr7p6b2", data).then(
         (response) => {
           alert("Ihre Nachricht wurde erfolgreich gesendet");
         },

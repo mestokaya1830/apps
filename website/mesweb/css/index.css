@@ -109,11 +109,13 @@ a{
   border: 1px solid #ddd;
   border-radius: 20px;
   margin: 20px 0;
-}
-.contact-us > a{
   color: #00265a;
   font-size: 1rem;
   font-weight: bold;
+  cursor: pointer;
+}
+.contact-us-con a img{
+  width: 50px;
 }
 .section-title{
   font-size: 3rem;
@@ -254,7 +256,6 @@ a{
   background-color: #fff;
   padding: 0 10px;
   font-size: 1.1rem;
-  font-weight: bold;
   color: #444;
 }
 #contact > form > textarea {
@@ -370,16 +371,7 @@ footer {
   color:#fff;
   font-size: 0.8rem;
 }
-.footer-social-icons {
-  display: flex;
-  justify-content: center;
-}
-.footer-social-icons > a {
-  margin: 0 10px;
-}
-.footer-social-icons > a > img {
-  width: 36px;
-}
+
 .go-top {
   position: fixed;
   bottom: 30px;
@@ -388,6 +380,9 @@ footer {
   width: 50px;
   z-index: 5;
   display: none;
+  background-color: #fff;
+  padding: 5px;
+  border-radius: 5px;
 }
 .mobil-navigation {
   display: none;
