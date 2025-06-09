@@ -15,8 +15,6 @@ document.addEventListener("DOMContentLoaded", function() {
   let errorEmail = document.getElementById("error-email");
   let errorMessage = document.getElementById("error-message");
 
-  // document.querySelectorAll(".links")[0].style.setProperty("--afterWidth", "100%");
-  // document.querySelectorAll(".links")[0].style.color = "#fddf85";
   document.getElementById('loading-container').style.display = 'none'
   document.getElementById('home').style.display = 'block'
 
