@@ -14,13 +14,14 @@ document.addEventListener("DOMContentLoaded", () => {
   let errorEmail = document.getElementById("error-email");
   let errorMessage = document.getElementById("error-message");
 
+  // document.getElementById("loading-container").style.display = "none";
+  // document.getElementById("main-container").style.display = "block";
+  
   if (window.innerWidth > 1024) {
     linkEls[0].style.color = "#f8ba00";
   }
   linkEls[0].style.setProperty("--afterWidth", "100%"); 
 
-  // document.getElementById("loading-container").style.display = "none";
-  // document.getElementById("main-container").style.display = "block";
 
   window.onscroll = () => {
     clearTimeout(timeout);

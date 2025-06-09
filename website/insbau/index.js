@@ -1,50 +1,69 @@
 
 document.addEventListener("DOMContentLoaded", function() {
-  document.querySelectorAll(".links")[0].style.setProperty("--afterWidth", "100%");
-  document.querySelectorAll(".links")[0].style.color = "#fddf85";
+  const goTopBtn = document.getElementById("go-top");
+  const navbar = document.querySelector(".navbar");
+  const sectionEls = document.querySelectorAll(".sections");
+  const linkEls = document.querySelectorAll(".links");
+  let timeout;
+
+  const username = document.getElementById("username");
+  const email = document.getElementById("email");
+  const subject = document.getElementById("subject");
+  const message = document.getElementById("message");
+  let errorUsername = document.getElementById("error-username");
+  let errorSubject = document.getElementById("error-subject");
+  let errorEmail = document.getElementById("error-email");
+  let errorMessage = document.getElementById("error-message");
+
+  // document.querySelectorAll(".links")[0].style.setProperty("--afterWidth", "100%");
+  // document.querySelectorAll(".links")[0].style.color = "#fddf85";
   document.getElementById('loading-container').style.display = 'none'
   document.getElementById('home').style.display = 'block'
 
+  if (window.innerWidth > 1024) {
+    linkEls[0].style.color = "#fddf85";
+  }
+  linkEls[0].style.setProperty("--afterWidth", "100%"); 
+
   window.onscroll = () => {
-    if (
-      document.body.scrollTop > 500 ||
-      document.documentElement.scrollTop > 500
-    ) {
-      document.getElementById("go-top").style.display = "block";
+    clearTimeout(timeout);
+    timeout = setTimeout(handleScroll, 50);
+  };
+
+  function handleScroll() {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+  
+    // show/hide
+    if (scrollTop > 500) {
+      goTopBtn.style.display = "block";
     } else {
-      document.getElementById("go-top").style.display = "none";
+      goTopBtn.style.display = "none";
     }
-    if(document.querySelector('.banner-overlay').offsetWidth > 1024){
-      const sections = document.querySelectorAll(".sections");
+  
+    // Navigation highlight
+    if (document.querySelector(".sections").offsetWidth > 1024) {
       let current = "";
-      sections.forEach((item) => {
-        const sectionTop = item.offsetTop;
-        if (scrollY >= sectionTop - 60) {
+      sectionEls.forEach((item) => {
+        if (scrollTop >= item.offsetTop - 60) {
           current = item.getAttribute("id");
         }
       });
-  
-      document.querySelectorAll(".links").forEach((item) => {
+
+      linkEls.forEach((item) => {
         item.style.setProperty("--afterWidth", 0);
-        item.style.color = "#eee";
-        if (item.getAttribute("id") == current + "-link") {
+        item.style.color = "darkgray";
+        if (item.getAttribute("id") === `${current}-link`) {
           item.style.color = "#fddf85";
           item.style.setProperty("--afterWidth", "100%");
         }
       });
     }
-  };
+  }
 
-
-  document.querySelector(".startseite").style.color = "#fddf85";
-
-  document.getElementById("go-top").addEventListener("click", (e) => {
-    window.scrollTo(0, 0);
-    document.querySelectorAll(".links").forEach((item2) => {
-      item2.style.color = "#fff";
-    });
-    document.querySelector(".startseite").style.color = "#fddf85";
+  goTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   });
+
   
   document.querySelectorAll(".links").forEach((item) => {
     item.addEventListener("click", () => {
@@ -81,14 +100,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .classList.toggle("mobil-menu-handle");
     });
   
-  const username = document.getElementById("username");
-  const email = document.getElementById("email");
-  const subject = document.getElementById("subject");
-  const message = document.getElementById("message");
-  let errorUsername = document.getElementById("error-username");
-  let errorSubject = document.getElementById("error-subject");
-  let errorEmail = document.getElementById("error-email");
-  let errorMessage = document.getElementById("error-message");
+
   
   let pattern = {
     username: /^.{3,50}[a-z0-9]$/,
@@ -110,10 +122,13 @@ document.addEventListener("DOMContentLoaded", function() {
       errorUsername.innerText =
         "Der Benutzername muss mehr als 2 Buchstaben haben!";
     } else if (!email.value.match(pattern.email)) {
+      email.focus()
       errorEmail.innerText = "E-Mail hat ein ungültiges Format!";
     } else if (!subject.value.match(pattern.subject)) {
+      subject.focus()
       errorSubject.innerText = "Der Betreff muss mehr als 5 Buchstaben haben!";
     } else if (!message.value.match(pattern.message)) {
+      message.focus()
       errorMessage.innerText =
         "Die Nachricht muss mehr als 10 Buchstaben haben!";
     } else {
