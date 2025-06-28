@@ -136,7 +136,7 @@ app.post('/api/download/:imagepath', async (req, res) => {
 // Remove Images Endpoint
 app.post('/api/remove-images', async (req, res) => {
   try {
-    const folder = path.basename(req.body.imagepath)
+    const folder = path.basename(String(req.body.imagepath))
     const folderPath = path.join(__dirname, 'dist/uploads', folder)
 
     if (!fs.existsSync(folderPath)) {
@@ -152,7 +152,7 @@ app.post('/api/remove-images', async (req, res) => {
 })
 
 // Error Middleware
-app.use((error, req, res, next) => {
+app.use((error, req, res) => {
   if (error.code === 'LIMIT_FILE_TYPES') {
     return res.status(400).json({ error: 'Wrong file type!' })
   }
