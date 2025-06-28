@@ -5,7 +5,6 @@ import fs from 'fs'
 import dotenv from 'dotenv'
 import path from 'path'
 import ytdl from 'ytdl-core'
-import cookie  from 'cookie-parser'
 
 dotenv.config()
 app.use(helmet())

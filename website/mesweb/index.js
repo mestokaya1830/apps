@@ -23,10 +23,10 @@ document.addEventListener("DOMContentLoaded", () => {
   linkEls[0].style.setProperty("--afterWidth", "100%"); 
 
 
-  window.onscroll = () => {
+  window.addEventListener("scroll", () => {
     clearTimeout(timeout);
     timeout = setTimeout(handleScroll, 50);
-  };
+  }, { passive: true });
 
   function handleScroll() {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;

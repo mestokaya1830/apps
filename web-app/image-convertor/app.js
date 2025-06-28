@@ -1,115 +1,169 @@
 import express from 'express'
-const app = express()
 import helmet from 'helmet'
 import multer from 'multer'
 import sharp from 'sharp'
 import fs from 'fs'
 import dotenv from 'dotenv'
 import path from 'path'
+import { fileURLToPath } from 'url'
 import zip from 'express-zip'
+import rateLimit from 'express-rate-limit'
+
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // Maksimum 100 request
+  message: {
+    code: 429,
+    error: 'Try again after 15 minutes.'
+  }
+})
 
 dotenv.config()
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const app = express()
+
+// Middleware
 app.use(helmet())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true, limit: '3mb' }))
 app.use(express.static('dist'))
+app.use('/api', apiLimiter)
 
-if(process.env.NODE_ENV == 'production'){
+if (process.env.NODE_ENV === 'production') {
   app.use(express.static('dist'))
-  app.get('*', (req, res) => res.sendFile(path.resolve('dist/index.html')))
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve('dist/index.html'))
+  })
 }
 
+// Multer setup
 const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'dist/')
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname)
-  },
+  destination: (_, __, cb) => cb(null, 'dist/'),
+  filename: (_, file, cb) => {
+    const uniqueName = `${Date.now()}-${file.originalname}`
+    cb(null, uniqueName)
+  }
 })
-const fileFilter = function (req, file, cb) {
-  const types = ['image/jpeg','image/jpg','image/png','image/gif', 'image/webp', 'image/avif']
-  if(!types.includes(file.mimetype)){
+
+const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp', 'image/avif']
+const fileFilter = (_, file, cb) => {
+  if (!allowedTypes.includes(file.mimetype)) {
     const error = new Error('Wrong file type')
     error.code = 'LIMIT_FILE_TYPES'
     return cb(error, false)
   }
   cb(null, true)
 }
-const resize = multer({
+
+const upload = multer({
   storage,
   fileFilter,
-  limits:{
-    fileSize: 1e+7 //10 mb
-    // fileSize: 5e+6 //5 mb
-  }
+  limits: { fileSize: 10 * 1024 * 1024 } // 10 MB
 })
 
-app.post('/api/convert/:format/:imagepath', resize.array('files', 20), async (req, res, ) => {
+// Sharp format handlers
+const formatHandlers = {
+  jpeg: img => img.jpeg({ quality: 100 }),
+  jpg:  img => img.jpeg({ quality: 100 }),
+  png:  img => img.png({ quality: 100 }),
+  gif:  img => img.gif({ quality: 100 }),
+  webp: img => img.webp({ quality: 100 }),
+  avif: img => img.avif({ quality: 100 })
+}
+
+// Convert Endpoint
+app.post('/api/convert/:format/:imagepath', upload.array('files', 20), async (req, res) => {
   try {
-    fs.mkdir(path.resolve('./dist/uploads/', req.params.imagepath), { recursive: true }, () => {
-      return false
-    })
-    const originalName = []
-    const convertedName = []
-    const imageFormat = req.params.format
-    for (const item of req.files) {
-      const imageName = item.originalname.lastIndexOf(".");
-      await sharp(item.path)
-      [imageFormat]({quality: 100})
-      .toFile('./dist/uploads/'+ req.params.imagepath +'/'+ item.originalname.substring(0, imageName) +'.'+imageFormat)
-      fs.unlink(item.path, () => {
-        originalName.push(item.originalname)
-      })
-      convertedName.push({
-        filename: item.originalname.substring(0, imageName) +'.'+ imageFormat,
-        mimetype: 'image/'+ imageFormat
+    const format = req.params.format.toLowerCase()
+    const folder = path.basename(req.params.imagepath)
+    const uploadDir = path.join(__dirname, 'dist/uploads', folder)
+    await fs.promises.mkdir(uploadDir, { recursive: true })
+
+    const convertedFiles = []
+
+    for (const file of req.files) {
+      const extIndex = file.originalname.lastIndexOf('.')
+      const baseName = file.originalname.substring(0, extIndex)
+      const newFilename = `${baseName}.${format}`
+      const outputPath = path.join(uploadDir, newFilename)
+
+      const transformer = formatHandlers[format]
+      if (!transformer) {
+        throw new Error('Unsupported format')
+      }
+
+      await transformer(sharp(file.path)).toFile(outputPath)
+      await fs.promises.unlink(file.path)
+
+      convertedFiles.push({
+        filename: newFilename,
+        mimetype: `image/${format}`
       })
     }
-    res.json({code: 200, files:convertedName})
-  } catch (error) {
-    console.log(error)
+
+    res.json({ code: 200, files: convertedFiles })
+
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({ error: 'Conversion failed' })
   }
 })
 
+// Download Endpoint
 app.post('/api/download/:imagepath', async (req, res) => {
-  const imagePath = `./dist/uploads/${req.params.imagepath}`
-  if (fs.existsSync(imagePath)){
-    fs.readdir(imagePath, function (err, files) {
-      if (err) return console.log('Unable to scan directory: ' + err)
-      const allFiles = files.map(item => {
-        return {
-          path: `${imagePath}/${item}`,
-          name: item
-        }
-      })
-      res.zip(allFiles);
-    })
-  } else {
-    res.json({code: 400, message:'Sorry no images to download!'})
-  }
-})
-app.post('/api/remove-images', async (req, res) => {
-  const imagePath = './dist/uploads/'+req.body.imagepath
-  if (fs.existsSync(imagePath)){
-    fs.rmSync(imagePath, { recursive: true }, () => {
-      res.json({code:200})
-    })
-  } else {
-    res.json({code: 400, message:'Sorry no images to remove!'})
-  }
-})
-app.use((error, req, res, next) => {
-  if(error.code == 'LIMIT_FILE_TYPES'){
-    res.json({error:'Wrong file type!'})
-    next()
-  }
-  if(error.code == 'LIMIT_FILE_SIZE'){
-    res.json({error:'File to large! Each file must be less then 10 MB'})
-    next()
+  try {
+    const folder = path.basename(req.params.imagepath)
+    const folderPath = path.join(__dirname, 'dist/uploads', folder)
+
+    if (!fs.existsSync(folderPath)) {
+      return res.status(400).json({ code: 400, message: 'No images found' })
+    }
+
+    const files = await fs.promises.readdir(folderPath)
+    const zipFiles = files.map(file => ({
+      path: path.join(folderPath, file),
+      name: file
+    }))
+
+    res.zip(zipFiles)
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({ error: 'Download failed' })
   }
 })
 
+// Remove Images Endpoint
+app.post('/api/remove-images', async (req, res) => {
+  try {
+    const folder = path.basename(req.body.imagepath)
+    const folderPath = path.join(__dirname, 'dist/uploads', folder)
+
+    if (!fs.existsSync(folderPath)) {
+      return res.status(400).json({ code: 400, message: 'No folder to delete' })
+    }
+
+    fs.rmSync(folderPath, { recursive: true, force: true })
+    res.json({ code: 200, message: 'Images removed' })
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({ error: 'Removal failed' })
+  }
+})
+
+// Error Middleware
+app.use((error, req, res, next) => {
+  if (error.code === 'LIMIT_FILE_TYPES') {
+    return res.status(400).json({ error: 'Wrong file type!' })
+  }
+  if (error.code === 'LIMIT_FILE_SIZE') {
+    return res.status(400).json({ error: 'File too large! Max 10MB.' })
+  }
+  console.error(error)
+  res.status(500).json({ error: 'Server error' })
+})
+
+// Start Server
 app.listen(3000, () => {
-  console.log('Server is running...')
+  console.log('Server is running on http://localhost:3000')
 })
